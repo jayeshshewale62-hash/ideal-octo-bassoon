@@ -719,14 +719,19 @@ class Panels(Shot):
     def world(self, c, t):
         self.draw_bg(c); cols = ['#BFD9F2', '#F6C7B6', '#D6EBC4']
         for i, d in enumerate(self.panels):
-            if t < d["t"]: continue
-            x0, y0, x1, y1 = d["rect"]; k = back(K(t, d["t"], .35), 1.4); dy = (1 - min(k, 1)) * 140
+            tf = min(d["t"], self.t0 + .08 * i)  # the empty frames are up from the cut; the contents land on the cue
+            if t < tf: continue
+            x0, y0, x1, y1 = d["rect"]; k = back(K(t, tf, .35), 1.4); dy = (1 - min(k, 1)) * 140
             c.save(); c.translate(0, dy); c.drawRect(skia.Rect(x0 + 14, y0 + 14, x1 + 14, y1 + 14), fp((0, 0, 0), 50))
             c.drawRect(skia.Rect(x0, y0, x1, y1), fp(colr(d.get("color"), cols[i % 3])))
+            if t < d["t"]:
+                c.drawRect(skia.Rect(x0, y0, x1, y1), ink(LW * 1.3)); label(c, "?", (x0 + x1) / 2, (y0 + y1) / 2 + 40, 160, '#FFFFFF', font=MARKER, align='center', skew=0, alpha=.7)
+                c.restore(); continue
             c.save(); c.clipRect(skia.Rect(x0, y0, x1, y1), doAntiAlias=True)
+            c.save(); u = back(K(t, d["t"], .3), 1.5); cx_, cy_ = (x0 + x1) / 2, y1; c.translate(cx_, cy_); c.scale(1, min(u, 1.1)); c.translate(-cx_, -cy_)
             if d.get("icon"): draw_prop(c, d["icon"], (x0 + x1) / 2 + (x1 - x0) * .26, y0 + 330, d.get("icon_s", .5), t)
             if d.get("actor"): d["actor"].draw(c, t)
-            c.restore(); c.drawRect(skia.Rect(x0, y0, x1, y1), ink(LW * 1.3))
+            c.restore(); c.restore(); c.drawRect(skia.Rect(x0, y0, x1, y1), ink(LW * 1.3))
             cap = d.get("caption")
             if cap:
                 sz = fit_size(cap, 52, x1 - x0 - 90); w = text_w(cap, sz)
