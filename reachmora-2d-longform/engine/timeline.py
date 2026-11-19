@@ -36,6 +36,21 @@ class Timeline:
             if j == 0 or a not in self.S or (a - 1) not in self.S: cut[k] = 0.0 if j == 0 else self.S.get(a, {"start": 0})["start"] - .2; continue
             e = self.S[a - 1]["end"]; s0 = self.S[a]["start"]
             cut[k] = s0 - .03 if s0 - e < .1 else max((e + s0) / 2, s0 - .35)
+        # J-cut: the new sentence starts over the previous picture and the cut lands later.
+        # L-cut: the previous sentence lingers over the new picture (the cut lands early).
+        self.cuts = {}
+        for j, k in enumerate(spoken):
+            cs = shots[k].get("cut")
+            if not cs or j == 0: continue
+            typ, by = (cs, None) if isinstance(cs, str) else (cs.get("type", "j"), cs.get("by"))
+            if typ not in ("j", "l"): self.warn.append(f"shot {k}: cut must be 'j' or 'l'"); continue
+            by = float(by if by is not None else (1.0 if typ == "j" else .8))
+            prev = cut[spoken[j - 1]]; r = srange(shots[k]); last = self.S.get(r[1], {}).get("end", cut[k] + by + 2)
+            if typ == "j": new = min(cut[k] + by, last - 1.0)
+            else: new = cut[k] - by
+            new = max(new, prev + 1.0)
+            if abs(new - cut[k]) < .2: self.warn.append(f"shot {k}: no room for a {typ.upper()}-cut (neighbouring shots too short)"); continue
+            self.cuts[k] = (typ, new - cut[k]); cut[k] = new
         # walk shots, accumulate gaps
         self.shots = []; self.gaps = []; G = 0.0; vcur = 0.0
         for k, sh in enumerate(shots):

@@ -37,13 +37,13 @@ Mix: at least 4 niches, at least 3 formats (story, explainer, list or versus), a
 
 Never: medical or legal advice, personal financial advice ("buy this stock"), real private individuals, mocking real living people, graphic violence, partisan politics, copying another channel's video or series name. Explaining money concepts is fine: keep it educational and use one line like "this isn't financial advice, it's how the math works" when the video gives money tactics.
 
-## Script length (about 150 spoken words per minute)
+## Script length (about 140-150 spoken words per minute)
 
 | length | words | shots | chapters (silent cards) |
 |---|---|---|---|
 | 3 min | 430-470 | 30-40 | 0-1 |
 | 5 min | 720-780 | 50-65 | 1-2 |
-| 10 min | 1,450-1,550 | 100-130 | 3-4 |
+| 10 min | 1,400-1,500 | 100-130 | 3-4 |
 | 15 min | 2,200-2,300 | 150-190 | 4-6 |
 
 Check with `python3 -m engine sentences <P>` (it prints the word count). If a story can't fill the length honestly, say so and suggest the shorter length rather than padding.
@@ -54,20 +54,29 @@ Check with `python3 -m engine sentences <P>` (it prints the word count). If a st
 
 **5 min**: hook → promise ("by the end, you'll know why...") → chapter 1 (setup + 2 beats + mini-payoff) → chapter 2 (escalation + twist) → payoff → takeaway → teaser.
 
-**10 min**: cold open in the middle of the action (30-45 s) → title promise → 4 chapters of about 2 min. Each chapter opens with a mini-hook and ends on an open loop ("but that wasn't the problem"). A reversal comes around minute 6, then a callback ending that returns to the cold open, and a teaser for the next video.
+**10 min**: follow `references/longform-template.md` (five acts: hook 0:00-0:45, context 0:45-3:00, escalation 3:00-6:30, climax 6:30-9:00, takeaway and bridge 9:00-10:00). In short: cold open in the middle of the action (30-45 s) → title promise → 4 chapters of about 2 min. Each chapter opens with a mini-hook and ends on an open loop ("but that wasn't the problem"). A reversal comes around minute 6, then a callback ending that returns to the cold open, and a teaser for the next video.
 
 **15 min**: the 10 min shape with 5-6 chapters, a midpoint reversal around minute 7, two or three short two-character skits (one narrator reading both is fine), a "you" moment every ~45 s, and a bigger final act.
 
+## Retention rules for long scripts
+
+- **The 15-second hook.** The first sentence is the boldest claim, the weirdest paradox or the highest-stakes moment, in about 12 words or fewer. Never "hey guys", "welcome back", "in this video" or channel lore. Plan the strongest picture for that first line.
+- **Mini-chapters.** Treat a 10-15 minute video as four to six 2-3 minute stories, each with its own setup, payoff and transition. Mark each with a `# ` chapter line.
+- **Open loops.** The last line before each chapter card teases a bigger question or twist ("That solved the immediate problem, but it triggered a disaster nobody saw coming."). Answer it in the next chapter.
+- **Late in, early out.** Start each scene as late as possible; once the point or joke lands, move on. No long goodbyes: the last line bridges to the next video.
+- **Write for the eye.** While writing, keep a visual note for every 2-3 sentences (what we see). If four sentences pass with no clear visual action, rewrite them punchier or split them. After the storyboard exists, `python3 -m engine board <P>` gives the full VO | VISUAL table.
+- Run `python3 -m engine script <P>` after saving `script.txt`. It flags throat-clearing openers and outros, sentences over 18 words, digits, chapters without an open loop, chapters over ~3.5 min and too few "you" moments.
+
 ## Line rules (the voice is the timeline, so write for the ear)
 
-- Short sentences: 6-14 words, average about 9. One idea per sentence, because each sentence becomes a shot beat.
+- Short sentences: 6-14 words, average about 9, never over 18. One idea per sentence, because each sentence becomes a shot beat.
 - Spoken English with contractions. Write numbers the way they're said ("two hundred and forty thousand dollars").
 - Every big number gets an everyday comparison ("that's six years of rent").
 - Put in "you" moments that tie the story to the viewer's life about every 30-45 s.
 - Re-hook every 60-90 s: "Here's the strange part.", "But that's not the crazy bit.", "And then it got worse."
 - Never describe what the viewer already sees. No headings, stage directions or [brackets] in the spoken text.
 - Chapter cards are silent. Put them in `script.txt` as lines starting with `# ` (the engine skips them). In the copy you give the user to record, leave them out and list the chapter titles separately.
-- Optional subscribe line near the end, natural and specific: "If this changed how you see money, subscribe. Next week: the man who bought a pizza for a fortune."
+- Optional subscribe line before the final beat, natural and specific: "If this changed how you see money, subscribe." End on the bridge to the next video, not on thanks: "Next week: the man who bought a pizza for a fortune."
 
 ## Recording tips to give the user
 

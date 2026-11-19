@@ -7,7 +7,7 @@ description: "Make long-form 2D animated YouTube videos (3, 5, 10 or 15 min) for
 
 **Made by ReachMora.** Keep this credit when sharing the skill.
 
-Turns a topic into a finished, fully animated 16:9 video in four steps: **ideas → length → script → voiceover → MP4**. The look: flat cel-shaded round-head puppets with one thick ink outline, moody night lighting or bright day sets, a camera that never stops moving, hand-lettered pop-in labels, rubber stamps, documents sliding across a desk, charts, counters, maps, split screens and a polaroid ending. The user's own voice (or their ElevenLabs voice) drives the timing, and an original music bed and sound effects are mixed under it. Everything is drawn with code (skia-python + ffmpeg): no paid tools and no stock footage.
+Turns a topic into a finished, fully animated 16:9 video in four steps: **ideas → length → script → voiceover → MP4**. The look: flat cel-shaded round-head puppets with one thick ink outline, moody night lighting or bright day sets, a 2.5D layered camera that never stops moving (shot sizes, angles, push-ins, punch-ins, reveals, glides, tilts, thuds and handheld float), a colour-mood grade per act, J- and L-cuts, room tone under every place, hand-lettered pop-in labels, rubber stamps, documents sliding across a desk, charts, counters, maps, split screens and a polaroid ending. The user's own voice (or their ElevenLabs voice) drives the timing, and an original music bed and sound effects are mixed under it. Everything is drawn with code (skia-python + ffmpeg): no paid tools and no stock footage.
 
 You don't write drawing code. You write a **`story.json` storyboard** (shot kinds plus fields), and the engine in `engine/` aligns it to the voiceover word by word and renders it.
 
@@ -32,14 +32,14 @@ As soon as they pick an idea, ask with **AskUserQuestion** (plain text if that t
 
 ## Stage 3: Script
 
-Write it following `references/ideas-and-scripts.md`: about 150 words per minute (3 min ≈ 450, 5 min ≈ 750, 10 min ≈ 1,500, 15 min ≈ 2,250 words), the structure for that length, short spoken sentences, re-hooks every 60-90 s, and numbers written as words.
+Write it following `references/ideas-and-scripts.md` (and, for 10-15 min, the five-act beat sheet in `references/longform-template.md`): about 140-150 words per minute (3 min ≈ 450, 5 min ≈ 750, 10 min ≈ 1,450, 15 min ≈ 2,200 words), the structure for that length, a 15-second hook with no throat-clearing, mini-chapters of 2-3 minutes that each end on an open loop, short spoken sentences (under 18 words), re-hooks every 60-90 s, numbers written as words, and an ending that bridges to the next video instead of saying goodbye.
 
 1. Make a project folder: `~/reachmora-videos/<slug>/` (or a folder in the user's working directory when running locally). Save the script as `script.txt`, one paragraph per line, with chapter-card titles on their own lines starting with `# `.
-2. Run `python3 -m engine sentences <P>` (see Setup for how to run it) to confirm the word count and estimated length. Adjust until you're within ±5 % of the target.
+2. Run `python3 -m engine sentences <P>` (see Setup for how to run it) to confirm the word count and estimated length. Adjust until you're within ±5 % of the target. Then run `python3 -m engine script <P>` and fix every warning (openers, outros, long sentences, chapter length); treat its notes as suggestions.
 3. Reply with:
    - the **spoken script** in one copyable block, without the `#` chapter lines (that's exactly what they record);
    - word count, estimated length, and the chapter card titles;
-   - a 3-5 line visual plan (main characters, key scenes, the ending);
+   - a 3-5 line visual plan (main characters with their shape language and accent colour, key scenes and metaphors, the colour-mood arc, the ending);
    - facts you verified and any you couldn't;
    - recording tips (from the reference file): one voice, no music, read it exactly, mp3/wav/m4a, ElevenLabs settings;
    - the ask: **"Upload the voiceover when it's ready and I'll make the full video."**
@@ -60,15 +60,18 @@ Work through to the end without stopping. Ask only if something can't be resolve
 - Run `python3 -m engine align <P>`. It reports `method=asr matched=NN%`. 85 % or more is normal; below 70 % usually means the recording differs from `script.txt` (ad-libs, a different draft), so ask for the final text. Very short sentences get flagged; that's fine.
 
 ### 4.2 Storyboard (`<P>/story.json`)
-Read `references/story-format.md` fully, and look at `examples/marshmallow/story.json` (a tested 2:20 video using every shot kind). Then run `python3 -m engine sentences <P>` and write `story.json`:
-- `cast`: 2-4 original characters with distinct silhouettes and colours.
+Read `references/story-format.md` and `references/production-playbook.md` fully (and `references/longform-template.md` for 10-15 min), and look at `examples/marshmallow/story.json` (a tested 2:27 video using nearly every shot kind, camera preset, grade and cut). Then run `python3 -m engine sentences <P>` and write `story.json`:
+- `cast`: 2-4 original characters with distinct silhouettes (hair, hat, `build`) and 3-4 colours each with one bright `accent`. Run `python3 -m engine cast <P>`, look at `work/cast_sheet.jpg` (colour, silhouette test, expression sheet) and fix its warnings before writing shots.
 - `shots`: cover every sentence number once, in order, about one shot per 3-8 s (3 min ≈ 35 shots, 15 min ≈ 170). Follow the pacing rules at the end of the reference: rotate world shots and graphics, put every number on screen, a closeup after big claims, tags and lower thirds, chapter cards, and a polaroid ending.
-- Cue mid-shot events with **words from that shot's sentences** (`"at": "fortune"`).
+- Cue mid-shot events with **words from that shot's sentences** (`"at": "fortune"`). Something new every 4-6 s: beats (2-3 key poses), labels, props, stamps or camera `moves`.
+- Camera and colour: open each new place wide, then cut closer; never cut between neighbouring sizes on the same character; pick a camera preset per beat (`creep` for exposition, `push` into a twist, `punch` on a punchline, `reveal`, `glide`, `tilt_up/down`); `angle` for power (`low`/`high`, `dutch` rarely); an `act_grade` per act and a `from`→`to` grade shift on the climax; `"cut": "j"`/`"l"` on a few emotional transitions.
+- Break up any run of 3+ narrated sentences on one character with a `metaphor`, `panels`, `map` or `chart`.
 - `mood` to match the topic.
 - For 10-15 min videos, write the shots in chunks (for example, one chapter at a time) and run `plan` after each chunk.
 
 ### 4.3 Plan check
-Run `python3 -m engine plan <P>`. It prints the shot table (times, length, whips) and warnings: uncovered sentences, cue words not found, shots shorter than 6 frames. Fix every warning. Split shots longer than about 10 s, and merge fragments shorter than 1.5 s into a neighbour.
+Run `python3 -m engine plan <P>`. It prints the shot table (times, length, whips, J/L-cuts), a pacing summary and warnings: uncovered sentences, cue words not found, shots shorter than 6 frames, static holds over 6.5 s, slow beats in the hook, three of a kind in a row, jump cuts, mini-chapters over 3.5 min, no re-hook for 100 s, too many dutch angles. Fix every warning; treat `NOTE:` lines as suggestions. Split shots longer than about 10 s, and merge fragments shorter than 1.5 s into a neighbour.
+Then run `python3 -m engine board <P>` and skim `<P>/storyboard.md` (VO | VISUAL | CAMERA | SOUND). It's also a hand-off document if the user wants to share the plan.
 
 ### 4.4 Look check (before the long render)
 - Run `python3 -m engine stills <P>`. It writes contact sheets of every shot's mid-frame to `<P>/work/sheet_N.jpg` (24 per sheet). For a closer look: `--shots 3,8,12 --fracs .2,.6,.95`.
@@ -81,7 +84,7 @@ Run `python3 -m engine plan <P>`. It prints the shot table (times, length, whips
 - To fix a few shots after the full render: edit `story.json`, run `render <P> --shots 12,13`, which also re-joins the video.
 
 ### 4.6 Sound + final
-- `python3 -m engine audio <P>` builds the music bed (original, synthesized from the `mood`, with an arrangement that changes every 8 bars), adds SFX from the shot events (pops on labels, thuds on stamps, whooshes on whips, paper on documents, ticks on counters, footsteps on walks, a boom under chapter cards, a shutter and sting on the polaroid), ducks the music under speech, and masters to about -14 to -15 LUFS. The voice is untouched. It prints the levels: music should read about -18 to -21 dB against the voice during speech (it rises in pauses). Use `--music-db -20` for a quieter bed or `--mood calm` to change the style.
+- `python3 -m engine audio <P>` builds the music bed (original, synthesized from the `mood`, with an arrangement that changes every 8 bars), a room-tone ambience bed per place (it leads each change of place by 1 s, an audio J-cut; `--amb-db -30` sets its level), adds SFX from the shot events (pops on labels, thuds on stamps, whooshes on whips, paper on documents, ticks on counters, footsteps on walks, a boom under chapter cards, a shutter and sting on the polaroid), ducks the music under speech, and masters to about -14 to -15 LUFS. The voice is untouched. It prints the levels: music should read about -18 to -21 dB against the voice during speech (it rises in pauses). Use `--music-db -20` for a quieter bed or `--mood calm` to change the style.
 - `python3 -m engine final <P>` muxes `<P>/out/<title>.mp4`.
 - Or run everything after the storyboard is written: `python3 -m engine all <P>`.
 
@@ -92,16 +95,18 @@ Run `python3 -m engine plan <P>`. It prints the shot table (times, length, whips
 
 ## Engine map (for edits beyond story.json)
 
-- `engine/kit.py`: colours, easing, ink shapes, lighting (`night()` multiply darkness with punched light pools), grade and quarter-res bloom, and the puppet `draw_char()` (outfits, hair, hats, expressions, arm poses, walk cycle). Fonts ship in `fonts/` (OFL/Apache).
+- `engine/kit.py`: colours, easing, ink shapes, lighting (`night()` multiply darkness with punched light pools), grade, colour moods (`GRADES`) and quarter-res bloom, and the puppet `draw_char()` (builds, outfits, accents, hair, hats, expressions, arm poses, walk cycle).
+- `engine/camera.py`: shot sizes, angles, presets, timed moves, handheld float, overscan clamp and the parallax layer transform. `engine/layers.py`: foreground silhouettes and particles.
+- `engine/audit.py`: the `plan` storyboard audit and the `script` audit. `engine/sheets.py`: the cast sheet and `storyboard.md`. Fonts ship in `fonts/` (OFL/Apache).
 - `engine/sets.py`: office, home, street, skyline, board, table, void, black and map sets, each with night, dusk and day versions.
 - `engine/props.py`: table documents and icons. Add a new icon as `ic_name(c, t, o)` drawn about 300 px wide around (0,0), and register it in `ICONS`.
 - `engine/fx.py`: pop labels, stamps, tags, lower thirds, typed cards, bubbles and badges.
 - `engine/shots.py`: shot kinds (`KINDS`). A new kind subclasses `Shot`, draws in `world()` (lit), `over()` (unlit overlay) and `screen()` (after the grade).
 - `engine/timing.py`: sentence splitting, ASR word timestamps aligned to the script, and the pause-based fallback. `engine/timeline.py`: shot times, cues and silent-card gaps.
-- `engine/render.py`: camera, whips, shake, polaroid, parallel segment render, contact sheets. `engine/audio.py`: music, SFX, mix and loudness.
+- `engine/render.py`: frame assembly, whips, shake, polaroid, act grades, parallel segment render, contact sheets. `engine/audio.py`: music, SFX, ambience beds, mix and loudness.
 - **Performance rule:** CPU skia is very slow at full-frame gradients, blend modes, colour filters, blur filters and rotated image draws (hundreds of ms per frame). Anything static goes into the per-shot caches built in `Shot.prepare()` (background, light map, glow map). Full-frame effects run in numpy (`finish`, `multiply_into`, `add_into`, `hblur` in `kit.py`). Per-frame drawing should be vector shapes and axis-aligned image blits only. Frame buffers are premultiplied native-format numpy arrays (`np_surface`); other formats trigger a slow conversion.
 
-Style bible (keep it when extending): one uniform near-black ink line (#18161B, 6 px at 1080p) on everything; flat fills with one hard shadow; poses snap with overshoot; every shot slowly pushes in; navy night with warm lamp pools, or a soft cream-paper day; lime and cream hand-lettering with a thick ink stroke; red marker rings and stamps; black chapter cards typed in white handwriting.
+Style bible (keep it when extending): one uniform near-black ink line (#18161B, 6 px at 1080p) on everything; flat fills with one hard shadow; poses snap with overshoot and a two-frame smear; every shot moves (never a static frame); background, characters and foreground on separate parallax layers; navy night with warm lamp pools, or a soft cream-paper day; lime and cream hand-lettering with a thick ink stroke; red marker rings and stamps; black chapter cards typed in white handwriting.
 
 ---
 *ReachMora 2D Long-Form. Made by ReachMora. Third-party credits: `CREDITS.md`.*

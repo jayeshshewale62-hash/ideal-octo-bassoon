@@ -188,8 +188,42 @@ def _vig16(strength):
     return _VIG[k]
 
 
-def finish(buf, bloom=0.40, vig=0.64, contrast=0.97, lift=0.012):
-    """Grade (contrast/lift LUT) + quarter-res bloom (screen blend) + vignette, in place, integer math (~90 ms at 1080p)."""
+# Colour-mood system: one palette per emotional beat, so a change of tone reads instantly.
+# sat, per-channel gain (r, g, b), per-channel lift (r, g, b, 0-1), contrast around mid-grey
+GRADES = {
+    "neutral":   (1.00, (1.00, 1.00, 1.00), (0.000, 0.000, 0.000), 1.00),
+    "cool":      (0.55, (0.90, 0.98, 1.10), (0.000, 0.012, 0.035), 0.93),   # bleak, serious, the problem
+    "warm":      (1.18, (1.08, 1.00, 0.86), (0.020, 0.006, -0.01), 1.07),   # breakthrough, payoff, humour
+    "tense":     (0.72, (0.94, 1.04, 0.98), (0.000, 0.016, 0.010), 1.10),   # suspense, the investigation
+    "panic":     (0.95, (1.14, 0.90, 0.88), (0.025, 0.000, 0.000), 1.12),   # danger, alarm, sudden realisation
+    "nostalgic": (0.62, (1.06, 1.00, 0.84), (0.050, 0.040, 0.020), 0.90),   # flashback, history, memory
+}
+
+
+def grade_params(g):
+    """g: grade name, or (name_a, name_b, k) for a blend."""
+    if g is None: return None
+    if isinstance(g, str):
+        if g not in GRADES: raise SystemExit(f"unknown grade '{g}'. Grades: {', '.join(GRADES)}")
+        p = GRADES[g]
+    else:
+        a, b, k = GRADES[g[0]], GRADES[g[1]], g[2]; L = lambda u, v: tuple(lerp(x, y, k) for x, y in zip(u, v))
+        p = (lerp(a[0], b[0], k), L(a[1], b[1]), L(a[2], b[2]), lerp(a[3], b[3], k))
+    return None if p == GRADES["neutral"] else p
+
+
+def apply_grade(x, p):
+    """x: HxWx3 uint16 (native channel order) -> graded uint16, in float32 (~35 ms at 1080p)."""
+    sat, gain, lift, con = p; f = x.astype(np.float32); o = slice(None, None, -1) if BGR else slice(None)
+    if sat != 1.0:
+        lum = f @ LUM; lum = lum[..., None]; f -= lum; f *= sat; f += lum
+    f *= np.array(gain, np.float32)[o]; f += np.array(lift, np.float32)[o] * 255
+    if con != 1.0: f -= 128; f *= con; f += 128
+    np.clip(f, 0, 255, out=f); return f.astype(np.uint16)
+
+
+def finish(buf, bloom=0.40, vig=0.64, contrast=0.97, lift=0.012, grade=None):
+    """Grade (contrast/lift LUT + colour mood) + quarter-res bloom (screen blend) + vignette, in place (~90 ms at 1080p)."""
     from scipy.ndimage import gaussian_filter
     if 'small' not in _POST: _POST['small'] = np_surface(OW // 4, OH // 4); _POST['up'] = np_surface(OW, OH)
     if bloom > 0:
@@ -198,6 +232,8 @@ def finish(buf, bloom=0.40, vig=0.64, contrast=0.97, lift=0.012):
         sa[..., :3] = (s * (255 * bloom)).astype(np.uint8); sa[..., 3] = 255
         ua, us = _POST['up']; uc = us.getCanvas(); uc.save(); uc.scale(4, 4); uc.drawImage(np_image(sa), 0, 0, LINEAR); uc.restore()
     x = _lut(contrast, lift)[buf[..., :3]].astype(np.uint16)
+    gp = grade_params(grade)
+    if gp: x = apply_grade(x, gp)
     if bloom > 0:
         b = ua[..., :3].astype(np.uint16); xb = x * b; xb += 255; xb >>= 8; x += b; x -= xb  # screen: x + b - x*b/255
     if vig > 0: x *= _vig16(vig); x >>= 8
@@ -245,8 +281,9 @@ SKINS = dict(light=('#F1CFA8', '#D6AE84'), fair=('#EBC79C', '#CFA677'), tan=('#E
 def make_look(d):
     """Fill a cast look with defaults. Keys: skin (preset or hex), outfit suit|hoodie|tshirt|dress|sweater,
     color, shirt, tie, bowtie, hair slick|short|bun|long|curly|bald|none, hair_col, glasses, moustache,
-    beard, hat fedora|cap|none, hat_col."""
-    d = dict(d or {}); sk = d.get('skin', 'tan')
+    beard, hat fedora|cap|none, hat_col, build round|square|triangle (shape language), accent (one bright colour:
+    a scarf on casual outfits, tie + pocket square on suits)."""
+    d = dict(d or {}); d['_given'] = tuple(k for k in d if not k.startswith('_')); sk = d.get('skin', 'tan')
     if sk in SKINS:
         d.setdefault('skin_d', SKINS[sk][1]); d['skin'] = SKINS[sk][0]
     else:
@@ -256,7 +293,29 @@ def make_look(d):
     d.setdefault('shirt', '#F4EFE2'); d.setdefault('tie', '#A8232B'); d.setdefault('hair', 'short')
     d.setdefault('hair_col', '#1C1B22'); d.setdefault('hat_col', '#2E2E38'); d.setdefault('hat_band', '#7E1C24')
     if d.get('hat') is True: d['hat'] = 'fedora'
+    d.setdefault('build', 'round')
+    if d['build'] not in BUILDS: raise SystemExit(f"unknown build '{d['build']}'. Builds: {', '.join(BUILDS)}")
+    if d.get('accent'):
+        d['accent'] = NAMED.get(d['accent'], d['accent'])
+        if d['outfit'] == 'suit' and 'tie' not in (d.get('_given') or ()): d['tie'] = d['accent']; d.setdefault('hanky', d['accent'])
     return d
+
+
+BUILDS = ('round', 'square', 'triangle')
+
+
+def body_path(build):
+    """Torso outline by shape language: round = friendly, square = solid/stubborn, triangle = sharp/high-energy."""
+    p = skia.Path()
+    if build == 'square':
+        p.addRRect(skia.RRect.MakeRectXY(skia.Rect(-98, BODY_TOP + 4, 98, BODY_BOT), 24, 24))
+    elif build == 'triangle':  # broad shoulders tapering to a narrow waist
+        p.moveTo(-82, BODY_TOP); p.lineTo(82, BODY_TOP); p.quadTo(112, BODY_TOP + 6, 104, BODY_TOP + 40)
+        p.lineTo(52, BODY_BOT - 8); p.quadTo(48, BODY_BOT, 38, BODY_BOT); p.lineTo(-38, BODY_BOT); p.quadTo(-48, BODY_BOT, -52, BODY_BOT - 8)
+        p.lineTo(-104, BODY_TOP + 40); p.quadTo(-112, BODY_TOP + 6, -82, BODY_TOP); p.close()
+    else:
+        p.addRRect(skia.RRect.MakeRectXY(skia.Rect(-84, BODY_TOP, 84, BODY_BOT), 66, 72))
+    return p
 
 
 def _arm(spec):  # 'name' or ('from', 'to', k) blended with overshoot
@@ -287,7 +346,7 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
         shape(c, sk, spec['suit'], lw)
     if spec.get('hair') == 'long':
         lh = skia.Path(); lh.addRRect(skia.RRect.MakeRectXY(skia.Rect(-R - 14, HEAD_CY - 40, R + 14, HEAD_CY + 150), 60, 60)); shape(c, lh, spec['hair_col'], lw)
-    body = skia.Path(); body.addRRect(skia.RRect.MakeRectXY(skia.Rect(-84, BODY_TOP, 84, BODY_BOT), 66, 72))
+    body = body_path(spec.get('build', 'round'))
     c.drawPath(body, fp(spec['suit'])); c.save(); c.clipPath(body, doAntiAlias=True)
     sh = skia.Path(body); sh.offset(light * 16, -5); c.drawPath(skia.Op(body, sh, skia.PathOp.kDifference_PathOp), fp(spec['suit_d']))
     if outfit == 'suit':
@@ -310,6 +369,11 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
             for yy in (BODY_BOT - 22,): c.drawLine(-84, yy, 84, yy, ink(lw * .6))
     if spec.get('hanky'): poly(c, [(30, BODY_TOP + 96), (52, BODY_TOP + 92), (48, BODY_TOP + 76), (40, BODY_TOP + 86), (33, BODY_TOP + 76)], spec['hanky'], lw * .55)
     c.restore(); c.drawPath(body, ink(lw))
+    if spec.get('accent') and outfit != 'suit':  # scarf: the one bright accent that leads the eye to the face
+        ac = spec['accent']; sd = -1 if face > 0 else 1
+        tail = skia.Path(); tail.moveTo(sd * 30, BODY_TOP + 14); tail.lineTo(sd * 58, BODY_TOP + 14); tail.lineTo(sd * 52, BODY_TOP + 112); tail.lineTo(sd * 30, BODY_TOP + 106); tail.close()
+        shape(c, tail, ac, lw * .8)
+        band = skia.Path(); band.addRRect(skia.RRect.MakeRectXY(skia.Rect(-66, BODY_TOP - 14, 66, BODY_TOP + 24), 18, 18)); shape(c, band, ac, lw * .8)
     for side, a in ((-1, arms[0]), (1, arms[1])):
         e, h, show = _arm(a); m = 1 if side < 0 else -1
         sx, sy = SHOULDER[0] * m, SHOULDER[1]; ex, ey, hx_, hy_ = e[0] * m, e[1], h[0] * m, h[1]

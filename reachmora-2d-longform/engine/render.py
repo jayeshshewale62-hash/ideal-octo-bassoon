@@ -5,6 +5,7 @@ from .kit import *
 from .timeline import Timeline
 from .timing import load_audio
 from . import shots as SH
+from . import camera as CAM
 
 _G = {}
 
@@ -34,10 +35,23 @@ class Env:
         f = int(round(t * FPS)); return self.track[f] if 0 <= f < len(self.track) else 'closed'
 
 
+def assign_grades(story, tl):
+    """Colour-mood system. "act_grade" on a shot sets the grade for it and every later shot (a whole act);
+    "grade" on a shot overrides that one shot (a name, or {"from", "to", "at", "dur"} for an on-cue shift)."""
+    cur = story.get("grade")
+    for s in tl.shots:
+        sp = s["spec"]
+        if sp.get("act_grade"): cur = sp["act_grade"]
+        s["grade"] = sp.get("grade", cur)
+        g = s["grade"]
+        for name in ([g] if isinstance(g, str) else [g.get("from", "neutral"), g.get("to", "neutral")] if isinstance(g, dict) else []):
+            if name not in GRADES: raise SystemExit(f"shot {s['k']}: unknown grade '{name}'. Grades: {', '.join(GRADES)}")
+
+
 def load_project(P):
     story = json.load(open(os.path.join(P, "story.json"), encoding="utf-8"))
     timing = json.load(open(os.path.join(P, "timing.json"), encoding="utf-8"))
-    tl = Timeline(story, timing)
+    tl = Timeline(story, timing); assign_grades(story, tl)
     cast = {k: make_look(v) for k, v in story.get("cast", {}).items()}
     for sh in story["shots"]:  # validate cast ids early
         ids = [d.get("id") for d in sh.get("chars", [])] + [sh.get("who")] + [sh.get(s, {}).get("who") for s in ("left", "right")]
@@ -85,14 +99,14 @@ class Frame:
     def image(self): return np_image(self.buf.copy())
 
 
-def _cam(c, z, fx, fy, rot, dx=0.0, dy=0.0):
-    c.save(); c.scale(OS, OS); c.translate(W / 2 + dx, H / 2 + dy); c.scale(z, z); c.rotate(rot); c.translate(-fx, -fy)
+def _cam(c, cs, dx=0.0, dy=0.0):
+    cs2 = CAM.CamState(*cs.tuple()); cs2.dx += dx; cs2.dy += dy; CAM.apply(c, cs2, OS)
 
 
 def draw_frame(shot, fr_, f, whip_in, whip_out):
     """Draw frame f of a shot into fr_.buf (HxWx4 uint8, native skia order)."""
-    c = fr_.surf.getCanvas(); t = f / FPS; u = (f - shot.f0) / max(shot.f1 - shot.f0 - 1, 1)
-    z, fx, fy, rot = shot.camera(u); wx = sig = 0
+    c = fr_.surf.getCanvas(); t = f / FPS
+    cs = shot.cam_at(t); shot.cs = cs; z, fx, fy = cs.z, cs.fx, cs.fy; wx = sig = 0
     if whip_out and shot.f1 - f <= 5: wx = -((6 - (shot.f1 - f)) ** 2) * 34; sig = (6 - (shot.f1 - f)) * 16
     if whip_in and f - shot.f0 < 4: wx = (4 - (f - shot.f0)) ** 2 * 52; sig = (4 - (f - shot.f0)) * 18
     shx = shy = 0
@@ -103,15 +117,15 @@ def draw_frame(shot, fr_, f, whip_in, whip_out):
         img = fr_.frozen
     else:
         dx, dy = wx + shx, shy
-        c.clear(C((0, 0, 0))); _cam(c, z, fx, fy, rot, dx, dy); shot.world(c, t); c.restore()
+        c.clear(C((0, 0, 0))); _cam(c, cs, dx, dy); shot.world(c, t); c.restore()
         if shot.mask is not None:
-            mc = fr_.msurf.getCanvas(); mc.clear(C((255, 255, 255))); _cam(mc, z, fx, fy, rot, dx, dy); mc.drawImage(shot.mask, -SH.PADX, -SH.PADY, LINEAR); mc.restore()
+            mc = fr_.msurf.getCanvas(); mc.clear(C((255, 255, 255))); _cam(mc, cs, dx, dy); shot.draw_cached(mc, shot.mask); mc.restore()
             multiply_into(fr_.buf, fr_.mbuf)
         if shot.glow is not None:
-            gc = fr_.gsurf.getCanvas(); gc.clear(C((0, 0, 0))); _cam(gc, z, fx, fy, rot, dx, dy); gc.drawImage(shot.glow, -SH.PADX, -SH.PADY, LINEAR); gc.restore()
+            gc = fr_.gsurf.getCanvas(); gc.clear(C((0, 0, 0))); _cam(gc, cs, dx, dy); shot.draw_cached(gc, shot.glow); gc.restore()
             add_into(fr_.buf, fr_.gbuf)
-        _cam(c, z, fx, fy, rot, dx, dy); shot.over(c, t); c.restore()
-        if not shot.card: finish(fr_.buf, bloom=.4, vig=shot.vig)
+        _cam(c, cs, dx, dy); shot.over(c, t); c.restore()
+        if not shot.card: finish(fr_.buf, bloom=.4, vig=shot.vig + (.12 if shot.camx.angle == "high" else 0), grade=shot.grade_at(t))
         c.save(); c.scale(OS, OS); shot.screen(c, t); c.restore(); img = None
         if pol and t >= pol["t"]:
             fr_.frozen = fr_.image(); a = shot.actor(pol.get("who"))
@@ -138,11 +152,11 @@ def draw_frame(shot, fr_, f, whip_in, whip_out):
 
 def seg_hash(tl, i, whips):
     s = tl.shots[i]; prev = whips[i - 1] if i else False
-    h = json.dumps([s["spec"], s["f0"], s["f1"], whips[i], prev, VERSION], sort_keys=True, default=str)
+    h = json.dumps([s["spec"], s["f0"], s["f1"], whips[i], prev, s.get("grade"), VERSION], sort_keys=True, default=str)
     return hashlib.md5(h.encode()).hexdigest()[:12]
 
 
-VERSION = "rm3"
+VERSION = "rm4"
 SEGS = "segs" if RES == 1080 else f"segs{RES}"
 
 

@@ -6,8 +6,10 @@ from .kit import *
 from .sets import SETS, block
 from .props import DOCS, draw_prop, sleeve, bills, arrow
 from .fx import poplabel, stamp, tag, lower_third, typed, ring, bubble, number_badge
+from . import camera as CAM
+from .layers import FG, Particles
 
-PADX, PADY = 420, 260
+PADX, PADY = CAM.PADX, CAM.PADY
 LABEL_SLOTS = [(330, -5), (560, 4), (780, -3), (200, 5)]
 
 
@@ -23,6 +25,8 @@ class Actor:
         self.beats = sorted([dict(b, t=shot.cue(b.get("at"))) for b in shot.spec.get("beats", []) if b.get("who", d["id"]) == d["id"]]
                             + [dict(b, t=shot.cue(b.get("at"))) for b in d.get("beats", [])], key=lambda b: b["t"])
         self.talk = shot.tl.talk_spans(shot.sh, d.get("talk", shot.spec.get("talk") if shot.spec.get("who") == d["id"] else None))
+        for b in self.beats:  # "hit": true -> impact thud on the camera (slam, landing, punchline)
+            if b.get("hit"): shot.auto_moves.append({"type": "thud", "at": b.get("at"), "px": 18 if b["hit"] is True else float(b["hit"])})
         self.walk = d.get("walk"); self.enter = d.get("enter"); self.exit = d.get("exit")
         self.head = (self.x, self.y - 420 * self.s)
 
@@ -70,6 +74,17 @@ class Actor:
                   tilt=tilt + (-4 if st["emotion"] in ("smug", "sad", "tired") else 0), bob=bob, squash=sq, sweat=sweat,
                   light=1 if face < 0 else -1, rim='#FFE6B0' if self.sh.night else None, legs=legs, pupil=ex.get('pupil', 0), sparkle=sparkle)
         self.head = (x, self.y + HEAD_CY * self.s)
+        if tb > t0 and 0 <= t - tb < 2.5 / FPS and prev["pose"] != st["pose"]: self.smear(c, x, bob, pa, pb, face, K(t, tb, 2.5 / FPS))
+
+    def smear(self, c, x, bob, pa, pb, face, k):
+        """Two-frame smear between key poses: motion arcs from the old hand position to the new one."""
+        for i in range(2):
+            if pa[i] == pb[i]: continue
+            m = 1 if i == 0 else -1; ha = ARM[pa[i]][1]; hb = ARM[pb[i]][1]
+            ax, ay = x + ha[0] * m * self.s, self.y + (ha[1] - bob) * self.s; bx, by = x + hb[0] * m * self.s, self.y + (hb[1] - bob) * self.s
+            for j, off in enumerate((-16, 0, 16)):
+                p = skia.Path(); p.moveTo(ax, ay + off * self.s); mx_, my_ = (ax + bx) / 2 - (by - ay) * .25, (ay + by) / 2 + (bx - ax) * .25
+                p.quadTo(mx_, my_ + off * self.s, bx, by + off * self.s); c.drawPath(p, ink(LW * (1.6 - .4 * abs(j - 1)) * self.s ** .5, INK, 150 * (1 - k)))
 
 
 class Shot:
@@ -81,7 +96,8 @@ class Shot:
         self.time = self.spec.get("time", "night"); self.night = self.time == "night"; self.dark_ok = True
         self.setname = self.spec.get("set"); self.info = None; self.bg = None; self.mask = None
         self.actors = []; self.cam = self.spec.get("cam", {}); self.shakes = []; self.events = []
-        self.labels = []
+        self.labels = []; self.auto_moves = []; self.camx = None; self.cs = None; self.fg = None; self.parts = None
+        self.grade_spec = sh.get("grade")
         for i, L in enumerate(self.spec.get("labels", [])):
             y, rot = LABEL_SLOTS[i % len(LABEL_SLOTS)]
             self.labels.append(dict(L, t=self.cue(L.get("at"), .25 + .2 * i), y=L.get("y", y), rot=L.get("rot", rot)))
@@ -106,9 +122,19 @@ class Shot:
         o = dict(self.spec); o.setdefault("time", self.time)
         self.info = SETS[self.setname or "void"](c, o)
 
+    bg_depth = 1.0  # parallax depth of the cached background (<1 = moves slower than the characters)
+
     def prepare(self):
-        """Cache the static background, the light map (multiply) and the glow map (add) for the whole shot."""
-        PW, PH = W + 2 * PADX, H + 2 * PADY
+        """Cache the static background, the light map (multiply) and the glow map (add) for the whole shot,
+        plus the camera, the blurred foreground layer and the particles."""
+        self.camx = CAM.Camera(self); PW, PH = W + 2 * PADX, H + 2 * PADY
+        fg = self.spec.get("fg", self.auto_fg())
+        if fg and fg != "none":
+            if fg not in FG: raise SystemExit(f"shot {self.sh['k']}: unknown fg '{fg}'. Foregrounds: {', '.join(FG)}")
+            a, surf = np_surface(PW, PH); c = surf.getCanvas(); c.clear(C((0, 0, 0), 0)); c.save(); c.translate(PADX, PADY)
+            blur_begin(c, float(self.spec.get("fg_blur", 7))); FG[fg](c, self.spec); c.restore(); c.restore(); self.fg = np_image(a)
+        pk = self.spec.get("particles", self.auto_particles())
+        if pk and pk != "none": self.parts = Particles(pk, self.sh["k"] + 1, self.time != "day", float(self.spec.get("particle_density", 1.0)))
         a, surf = np_surface(PW, PH); c = surf.getCanvas(); c.clear(C((0, 0, 0))); c.save(); c.translate(PADX, PADY); self.build_bg(c); c.restore()
         self.bg = np_image(a); info = self.info or {}; self.glow = None
         if info.get("ambient") and info.get("lights") is not None and self.light_on():
@@ -120,17 +146,52 @@ class Shot:
             for b in bulbs: add_light(gc, *b)
             gc.restore(); self.glow = np_image(g)
 
+    def auto_fg(self):
+        if (self.cam or {}).get("preset") == "glide": return {"office": "plants", "home": "plants", "street": "posts"}.get(self.setname)
+        return None
+
+    def auto_particles(self): return None
+    def float_default(self): return False
+
+    def pivot(self):
+        xs = [a.x for a in self.actors]; fl = (self.info or {}).get("floor")
+        return (sum(xs) / len(xs) if xs else W / 2, fl if (fl and xs) else H / 2)
+
+    def draw_cached(self, c, img, depth=None):
+        """Blit a cached PADX/PADY-padded layer at its parallax depth (background, light map, glow map)."""
+        d = self.bg_depth if depth is None else depth
+        pushed = self.cs is not None and CAM.layer(c, self.cs, self.camx.start(), d, self.pivot() if d < 1 else (W / 2, H / 2))
+        c.drawImage(img, -PADX, -PADY, LINEAR)
+        if pushed: c.restore()
+
+    def draw_fg(self, c):
+        if self.fg is not None: self.draw_cached(c, self.fg, float(self.spec.get("fg_depth", 1.5)))
+
+    def draw_particles(self, c, t):
+        if self.parts is None: return
+        pushed = self.cs is not None and CAM.layer(c, self.cs, self.camx.start(), 1.2, (W / 2, H / 2))
+        self.parts.draw(c, t)
+        if pushed: c.restore()
+
+    def grade_at(self, t):
+        g = self.grade_spec
+        if not g or isinstance(g, str): return g
+        a = g.get("from", "neutral"); b = g.get("to", "neutral"); tt = self.cue(g.get("at"), .3)
+        return (a, b, ease(K(t, tt, float(g.get("dur", 1.5)))))
+
+    def cam_at(self, t): return self.camx.at(t)
+
     def light_on(self): return True
     def extra_lights(self): return [('pool', a.x, a.y - 300 * a.s, 330 * a.s, .55) for a in self.actors]
     def extra_glow(self): return []
 
-    def draw_bg(self, c): c.drawImage(self.bg, -PADX, -PADY, LINEAR)
+    def draw_bg(self, c): self.draw_cached(c, self.bg)
 
     # --- per-frame layers
     def world(self, c, t):
         self.draw_bg(c)
         for a in sorted(self.actors, key=lambda a: a.y): a.draw(c, t)
-        self.world_props(c, t)
+        self.world_props(c, t); self.draw_fg(c)
 
     def world_props(self, c, t):
         for p in self.spec.get("props", []):
@@ -138,6 +199,7 @@ class Shot:
             if t >= tt: draw_prop(c, p["icon"], p.get("x", 1500), p.get("y", 760), p.get("s", .6) * back(u, 1.5), t, rot=p.get("rot", 0), **{k: v for k, v in p.items() if k not in ("icon", "x", "y", "s", "at", "rot")})
 
     def over(self, c, t):
+        self.draw_particles(c, t)
         for L in self.labels:
             font = MARKER if L.get("font") == "marker" else None; x = L.get("x", self.label_x()); mw = max(400, min(1500, 2 * min(x, W - x) - 140))
             poplabel(c, L["text"], x, L["y"], t - L["t"], L.get("size", 120), colr(L.get("color"), LIME if len(self.labels) < 2 or self.labels.index(L) % 2 else CREAM), L["rot"], font, max_w=mw)
@@ -165,11 +227,6 @@ class Shot:
             if a.d["id"] == id_: return a
         return self.actors[0] if self.actors else None
 
-    def camera(self, u):
-        z = self.cam.get("zoom", [1.0, self.default_zoom()]); f = self.cam.get("focus", [[960, 545], [960, 545]])
-        if isinstance(f[0], (int, float)): f = [f, f]
-        e = ease(u); return lerp(z[0], z[1], e), lerp(f[0][0], f[1][0], e), lerp(f[0][1], f[1][1], e), self.cam.get("rot", 0) * (e - .5)
-
     def default_zoom(self): return 1.07
 
     def sfx_events(self): return self.events + [(n, t) for n, t in self.extra_sfx]
@@ -177,18 +234,23 @@ class Shot:
 
 # ---------------------------------------------------------------- kinds
 class Wide(Shot):
-    kind = "wide"
+    kind = "wide"; bg_depth = .7
 
     def __init__(self, *a):
         super().__init__(*a); self.setname = self.setname or "office"
         floor = {"office": 1024, "home": 1030, "street": 1000, "skyline": 1000, "board": 1060, "void": 1010}.get(self.setname, 1010)
         chars = self.spec.get("chars", [])
-        default_x = {1: [1000], 2: [700, 1250], 3: [520, 960, 1400]}.get(len(chars), [300 + i * 300 for i in range(len(chars))])
+        # rule of thirds: a lone character with graphics stands on the left third, the open two-thirds carry the text
+        busy = any(self.spec.get(k) for k in ("labels", "props", "bubble", "stamp"))
+        default_x = {1: [640 if busy else 1000], 2: [700, 1250], 3: [520, 960, 1400]}.get(len(chars), [300 + i * 300 for i in range(len(chars))])
         for i, d in enumerate(chars):
             x = default_x[i] if i < len(default_x) else 960; face = .7 if x < 960 else -.7
             if len(chars) == 1: face = d.get("face", -.3)
             self.actors.append(Actor(self, d, x, d.get("y", floor), d.get("s", 1.0), face))
             if d.get("enter") or d.get("walk"): self.events.append(("steps", self.t0))
+
+    def auto_particles(self): return "dust" if self.time != "day" else None
+    def float_default(self): return any(a.talk for a in self.actors) or len(self.actors) >= 2
 
 
 class Walk(Wide):
@@ -201,7 +263,10 @@ class Walk(Wide):
 
 
 class Closeup(Shot):
-    kind = "closeup"; vig = .6
+    kind = "closeup"; vig = .6; bg_depth = .5
+
+    def auto_particles(self): return "dust" if self.time != "day" else None
+    def float_default(self): return True
 
     def __init__(self, *a):
         super().__init__(*a); self.setname = self.setname or "office"
@@ -240,7 +305,7 @@ class Title(Shot):
 
 
 class Skyline(Shot):
-    kind = "skyline"
+    kind = "skyline"; bg_depth = .85
 
     def __init__(self, *a):
         super().__init__(*a); self.setname = "skyline"
@@ -285,8 +350,8 @@ class Table(Shot):
 
     def default_zoom(self): return 1.08
 
-    def camera(self, u):
-        z, fx, fy, r = super().camera(u); return z, fx, fy, 0.0
+    def cam_at(self, t):
+        cs = super().cam_at(t); cs.rot = 0.0; return cs  # the papers drift-rotate instead (cheap)
 
 
 class Map(Shot):
@@ -505,6 +570,8 @@ class Versus(Shot):
 class Crowd(Shot):
     kind = "crowd"; vig = .55
 
+    def auto_particles(self): return "dust" if self.time == "night" else None
+
     def __init__(self, *a):
         super().__init__(*a); self.setname = self.setname or "void"
         n = int(self.spec.get("count", 21)); r = random.Random(n); palette = ['#3B4660', '#7A5A3C', '#5A6B4A', '#6A4A6A', '#3F5F72', '#8A3A3A', '#C9A04A', '#2F6B9A']
@@ -530,13 +597,148 @@ class Crowd(Shot):
             draw_char(c, x, y, s, look, face=f, eyes='closed' if blink(t, 2.6, ph) else e[0], mouth=e[1], brow=e[2], brow_tilt=e[3],
                       bob=3 * abs(math.sin(t * 2 + ph)), tilt=2 * math.sin(t * 1.7 + ph), light=-1)
         if self.hl: ring(c, self.hl["x"], self.hl["y"] - 330 * self.hl["s"], 190 * self.hl["s"] + 40, 330 * self.hl["s"] + 40, (t - self.hl["t"]) / .45)
+        self.draw_fg(c)
 
     def light_on(self): return self.time != "day"
     def extra_lights(self): return []
 
 
+class Metaphor(Shot):
+    """Abstract visual metaphor cutaway: turns a mechanism into one picture.
+    type: dominoes (a chain reaction), scale (a balance tipping), hourglass (time running out), iceberg (the hidden part)."""
+    kind = "metaphor"; vig = .5
+    TYPES = ("dominoes", "scale", "hourglass", "iceberg")
+
+    def __init__(self, *a):
+        super().__init__(*a); self.setname = "void"; self.night = False; self.dark_ok = False
+        self.mt = self.spec.get("type", "dominoes")
+        if self.mt not in self.TYPES: raise SystemExit(f"shot {self.sh['k']}: unknown metaphor '{self.mt}'. Types: {', '.join(self.TYPES)}")
+        self.mt_t = self.cue(self.spec.get("at"), .25)
+        if self.mt == "dominoes":
+            self.n = int(self.spec.get("count", 7)); self.gap = float(self.spec.get("gap", .14))
+            self.events += [("tick", self.mt_t)] + [("clack", self.mt_t + i * self.gap) for i in range(self.n)]
+        elif self.mt == "scale":
+            self.events += [("thud", self.mt_t)]
+            for side in ("left", "right"):
+                d = self.spec.get(side) or {}
+                if d.get("at") is not None: self.events.append(("pop", self.cue(d["at"])))
+        elif self.mt == "hourglass":
+            self.flip_t = self.cue(self.spec["flip_at"]) if self.spec.get("flip_at") else None
+            if self.flip_t: self.events.append(("whoosh", self.flip_t))
+        elif self.mt == "iceberg":
+            self.cam = dict(self.cam); self.cam.setdefault("preset", "tilt_down"); self.spec = dict(self.spec, cam=self.cam)
+            self.events.append(("boom", self.cue(self.spec.get("bottom_at"), .55)))
+
+    def build_bg(self, c):
+        if self.mt == "iceberg":
+            c.drawRect(skia.Rect(-900, -700, W + 900, 420), sp(linear(0, -700, 0, 420, [hx('#BFE3F7'), hx('#EAF6FC')])))
+            c.drawRect(skia.Rect(-900, 420, W + 900, H + 700), sp(linear(0, 420, 0, H + 600, [hx('#2E7DB8'), hx('#0B1F45')])))
+            for i in range(5):
+                x = 200 + i * 380; c.drawPath(skia.Path.Polygon([(x, 420), (x + 90, 420), (x - 160, H + 600), (x - 300, H + 600)], True), fp('#FFFFFF', 14))
+            self.info = dict(floor=None, ambient=None, lights=[], bulbs=[])
+        else:
+            self.info = SETS["void"](c, {"color": self.spec.get("color", "#F3E6C8"), "floor": self.mt in ("dominoes", "scale")})
+
+    def world(self, c, t):
+        self.draw_bg(c); getattr(self, "_" + self.mt)(c, t); self.world_props(c, t)
+
+    def _dominoes(self, c, t):
+        n = self.n; x0, x1 = 300, 1620; step = (x1 - x0) / max(1, n - 1); tags = self.spec.get("tags", [])
+        hi = self.spec.get("highlight", n - 1); fall = 75.0
+        for i in range(n):
+            x = x0 + i * step; k = back(K(t, self.mt_t + i * self.gap, .22), 1.1); ang = fall * min(k, 1.05)
+            c.save(); c.translate(x + 34, 1010); c.rotate(ang); col_ = RED if i == hi else '#F7F2E6'
+            rect(c, -68, -250, 0, 0, col_, LW, r=10); circ(c, -34, -185, 11, INK, 0); circ(c, -34, -65, 11, INK, 0); c.restore()
+            if i < len(tags) and tags[i]:
+                label(c, tags[i], x, 700, fit_size(tags[i], 44, step * .95), INK, align='center', skew=-0.1, alpha=1 - K(t, self.mt_t + i * self.gap, .2) * .6)
+
+    def _scale(self, c, t):
+        heavy = self.spec.get("heavy", "right"); sgn = 1 if heavy == "right" else -1
+        k = back(K(t, self.mt_t, .6), 1.8); ang = sgn * 14 * k + 1.2 * math.sin(t * 1.4) * (1 - k * .5)
+        cx, cy = 960, 430; L = 560
+        poly(c, [(cx - 110, 1010), (cx + 110, 1010), (cx + 30, cy + 20), (cx - 30, cy + 20)], '#6B4A2A', LW)
+        circ(c, cx, cy, 26, GOLD, LW)
+        c.save(); c.translate(cx, cy); c.rotate(ang); rect(c, -L, -14, L, 14, '#8A5C38', LW, r=8); c.restore()
+        r = math.radians(ang)
+        for side, sx in (("left", -1), ("right", 1)):
+            px, py = cx + sx * L * math.cos(r), cy + sx * L * math.sin(r); d = self.spec.get(side) or {}
+            line(c, px, py, px - 120, py + 230); line(c, px, py, px + 120, py + 230)
+            pan = skia.Path(); pan.moveTo(px - 170, py + 230); pan.quadTo(px, py + 330, px + 170, py + 230); pan.close(); shape(c, pan, '#D9B25A')
+            ta = self.cue(d.get("at"), .05 if side == "left" else .15)
+            if t >= ta:
+                u = back(K(t, ta, .35), 1.6)
+                if d.get("icon"): draw_prop(c, d["icon"], px, py + 150, d.get("s", .5) * u, t)
+                if d.get("text"): poplabel(c, d["text"], px, py + 400, t - ta, 70, colr(d.get("color"), INK), -3 * sx, None, stroke=0, max_w=520)
+
+    def _hourglass(self, c, t):
+        cx, cy = 960, 520; flip = 0.0; ft = self.flip_t
+        if not ft: u = K(t, self.t0 + .2, max(.5, (self.t1 - self.t0) - .6))
+        elif t < ft: u = K(t, self.t0 + .2, max(.3, ft - self.t0 - .2))
+        else: flip = 180 * ease(K(t, ft, .5)); u = 1 - K(t, ft + .5, max(.5, self.t1 - ft - 1))  # sand runs back the other way
+        c.save(); c.translate(cx, cy); c.rotate(flip)
+        for y in (-330, 330): rect(c, -230, y - 26, 230, y + 26, '#6B4A2A', LW, r=10)
+        glass = skia.Path(); glass.moveTo(-180, -304); glass.lineTo(180, -304); glass.cubicTo(180, -120, 26, -60, 26, 0); glass.cubicTo(26, 60, 180, 120, 180, 304)
+        glass.lineTo(-180, 304); glass.cubicTo(-180, 120, -26, 60, -26, 0); glass.cubicTo(-26, -60, -180, -120, -180, -304); glass.close()
+        c.drawPath(glass, fp('#E8F4FA', 200)); c.save(); c.clipPath(glass, doAntiAlias=True)
+        sand = '#E3B04B'; top = -40 - 220 * (1 - u); c.drawRect(skia.Rect(-200, top, 200, -10), fp(sand))
+        pile = skia.Path(); ph = 30 + 200 * u; pile.moveTo(-200, 304); pile.lineTo(200, 304); pile.lineTo(200, 304 - ph * .5); pile.quadTo(0, 304 - ph * 1.3, -200, 304 - ph * .5); pile.close(); c.drawPath(pile, fp(sand))
+        if 0 < u < 1: c.drawLine(0, -10, 0, 304 - ph, ink(7, sand))
+        c.restore(); c.drawPath(glass, ink(LW)); c.restore()
+        if self.spec.get("label"): label(c, self.spec["label"], cx, 1000, fit_size(self.spec["label"], 80, 1400), INK, align='center', skew=-0.1, alpha=K(t, self.t0 + .3, .3))
+
+    def _iceberg(self, c, t):
+        top = skia.Path(); top.moveTo(780, 420); top.lineTo(880, 300); top.lineTo(930, 330); top.lineTo(1000, 250); top.lineTo(1080, 340); top.lineTo(1150, 420); top.close()
+        shape(c, top, '#F7FBFF')
+        body = skia.Path(); body.moveTo(760, 422); body.lineTo(1170, 422); body.lineTo(1500, 760); body.lineTo(1420, 1160); body.lineTo(1080, 1290); body.lineTo(700, 1230); body.lineTo(420, 900); body.close()
+        shape(c, body, '#7FB8DC'); c.drawPath(body, fp('#0B1F45', 60))
+        line(c, -900, 420, W + 900, 420, LW * .8, '#FFFFFF', 200)
+        tt = self.cue(self.spec.get("top_at"), .1); tb = self.cue(self.spec.get("bottom_at"), .55)
+        if self.spec.get("top"): poplabel(c, self.spec["top"], 1420, 230, t - tt, 84, INK, 3, None, stroke=0, max_w=760)
+        if self.spec.get("bottom"): poplabel(c, self.spec["bottom"], 960, 1010, t - tb, 110, CREAM, -2, max_w=1300)
+
+    def default_zoom(self): return 1.06
+
+
+class Panels(Shot):
+    """Comic-strip split: 2-3 panels popping in on cue (expectation vs reality, before / during / after)."""
+    kind = "panels"; vig = .45
+
+    def __init__(self, *a):
+        super().__init__(*a); self.setname = "void"; self.night = False; self.dark_ok = False
+        ps = self.spec.get("panels", []); n = max(1, len(ps)); gut = 36; pw = (W - 120 - gut * (n - 1)) / n
+        self.panels = []
+        for i, d in enumerate(ps):
+            x0 = 60 + i * (pw + gut); d = dict(d); d["rect"] = (x0, 110, x0 + pw, 980); d["t"] = self.cue(d.get("at"), .03 + i * .3)
+            if d.get("who"):
+                ad = dict(id=d["who"], emotion=d.get("emotion", "neutral"), pose=d.get("pose", "idle"), face=d.get("face", 0.3 if i % 2 == 0 else -0.3), beats=d.get("beats", []))
+                d["actor"] = Actor(self, ad, x0 + pw * (.4 if d.get("icon") else .5), 980 - 30, d.get("s", 1.2 if n < 3 else 1.02), ad["face"]); self.actors.append(d["actor"])
+            self.panels.append(d); self.events.append(("pop", d["t"]))
+
+    def build_bg(self, c): self.info = SETS["void"](c, {"color": self.spec.get("color", "#F3E6C8"), "floor": False})
+
+    def world(self, c, t):
+        self.draw_bg(c); cols = ['#BFD9F2', '#F6C7B6', '#D6EBC4']
+        for i, d in enumerate(self.panels):
+            if t < d["t"]: continue
+            x0, y0, x1, y1 = d["rect"]; k = back(K(t, d["t"], .35), 1.4); dy = (1 - min(k, 1)) * 140
+            c.save(); c.translate(0, dy); c.drawRect(skia.Rect(x0 + 14, y0 + 14, x1 + 14, y1 + 14), fp((0, 0, 0), 50))
+            c.drawRect(skia.Rect(x0, y0, x1, y1), fp(colr(d.get("color"), cols[i % 3])))
+            c.save(); c.clipRect(skia.Rect(x0, y0, x1, y1), doAntiAlias=True)
+            if d.get("icon"): draw_prop(c, d["icon"], (x0 + x1) / 2 + (x1 - x0) * .26, y0 + 330, d.get("icon_s", .5), t)
+            if d.get("actor"): d["actor"].draw(c, t)
+            c.restore(); c.drawRect(skia.Rect(x0, y0, x1, y1), ink(LW * 1.3))
+            cap = d.get("caption")
+            if cap:
+                sz = fit_size(cap, 52, x1 - x0 - 90); w = text_w(cap, sz)
+                rect(c, x0 - 4, y0 - 4, x0 + w + 56, y0 + sz + 34, '#FFE27A', LW); label(c, cap, x0 + 26, y0 + sz + 6, sz, INK, skew=-0.1)
+            if d.get("text"): poplabel(c, d["text"], (x0 + x1) / 2, y1 - 70, t - d["t"] - .25, 76, colr(d.get("text_color"), RED), -4, max_w=x1 - x0 - 60)
+            c.restore()
+
+    def default_zoom(self): return 1.03
+
+
 KINDS = dict(wide=Wide, dialogue=Wide, walk=Walk, closeup=Closeup, title=Title, skyline=Skyline, table=Table, map=Map, chart=Chart,
-             counter=Counter, icon=Icon, list=ListItem, versus=Versus, crowd=Crowd)
+             counter=Counter, icon=Icon, list=ListItem, versus=Versus, crowd=Crowd, metaphor=Metaphor, panels=Panels)
 
 
 def build(sh, tl, cast, env):

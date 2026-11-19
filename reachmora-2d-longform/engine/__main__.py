@@ -1,9 +1,12 @@
 """ReachMora 2D long-form engine CLI.  python3 -m engine <command> <project_dir> [options]
 
   sentences <P> [--minutes M]   number the sentences of P/script.txt (use these indices in story.json)
+  script    <P>                 script audit: hook/outro throat-clearing, long sentences, open loops, mini-chapters
+  cast      <P>                 cast sheet (colour, silhouette test, 8 expressions) -> P/work/cast_sheet.jpg + checks
   join      <P> a.mp3 b.mp3 ..  join voiceover parts into P/voice.wav (0.45 s pauses)
   align     <P>                 voice.* + script.txt -> P/timing.json (word-level timing)
-  plan      <P>                 check story.json against the timing; print the shot table
+  plan      <P>                 check story.json against the timing; shot table + pacing/camera audit
+  board     <P>                 two-column storyboard (VO | VISUAL | CAMERA | SOUND) -> P/storyboard.md
   stills    <P> [--shots 0,5,9] [--fracs .3,.7]   contact sheets in P/work/sheet_*.jpg
   render    <P> [--jobs N] [--shots ...] [--res 720]   render shot segments (resumable) + concat
             (--res 720 = fast 1280x720 draft/final; the default is 1920x1080. Use the same --res for final.)
@@ -43,6 +46,21 @@ def main():
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, os.path.join(P, "voice.wav")], check=True)
         for q in norm_ + [gap, lst]: os.remove(q)
         print("joined", len(parts), "parts ->", os.path.join(P, "voice.wav")); return
+    if cmd == "script":
+        from .audit import script
+        W_, N_ = script(open(os.path.join(P, "script.txt"), encoding="utf-8").read())
+        for n in N_: print("NOTE:", n)
+        for w in W_: print("WARNING:", w)
+        if not W_: print("script audit: no warnings")
+        return
+    if cmd == "cast":
+        from .kit import make_look
+        from .sheets import cast_sheet
+        story = json.load(open(os.path.join(P, "story.json"), encoding="utf-8"))
+        pth, W_ = cast_sheet(P, {k: make_look(v) for k, v in story.get("cast", {}).items()})
+        print(pth)
+        for w in W_: print("WARNING:", w)
+        return
     if cmd == "sentences":
         ss = sentences(open(os.path.join(P, "script.txt"), encoding="utf-8").read()); nw = sum(len(s.split()) for s in ss)
         for i, s in enumerate(ss): print(f"{i:3d}  {s}")
@@ -64,13 +82,24 @@ def main():
             print(f"#{s['k']:3d} {sp.get('kind', 'wide'):9s} {sp.get('set', ''):8s} {s['t0']:7.2f}-{s['t1']:7.2f} ({s['t1'] - s['t0']:4.1f}s) sents {rng_:9s}{' whip' if w else ''}")
         print(f"\n{len(tl.shots)} shots, {tl.duration / 60:.2f} min, {tl.total_frames} frames")
         for w in tl.warn: print("WARNING:", w)
+        for k, (typ, d) in sorted(getattr(tl, "cuts", {}).items()): print(f"{typ.upper()}-cut into shot {k}: picture moves {d:+.2f} s against the voice")
         # build every shot once so cue warnings and bad params surface before rendering
         from .render import setup, _G
         from .shots import build
-        setup(P); n0 = len(tl.warn)
-        for s in _G["tl"].shots: build(s, _G["tl"], _G["cast"], _G["env"])
+        from .audit import storyboard
+        setup(P); n0 = len(_G["tl"].warn)
+        built = [build(s, _G["tl"], _G["cast"], _G["env"]) for s in _G["tl"].shots]
         for w in _G["tl"].warn[n0:]: print("WARNING:", w)
+        W_, N_ = storyboard(_G["tl"], built, story)
+        for n in N_: print("NOTE:", n)
+        for w in W_: print("WARNING:", w)
         if cmd == "plan": return
+    if cmd == "board":
+        from .render import setup, _G, whip_flags
+        from .shots import build
+        from .sheets import board
+        setup(P); built = [build(s, _G["tl"], _G["cast"], _G["env"]) for s in _G["tl"].shots]
+        print(board(P, _G["tl"], built, whip_flags(_G["tl"]))); return
     if cmd == "stills":
         from .render import stills
         fr = [float(x) for x in arg("--fracs", ".5").split(",")]; stills(P, ints(arg("--shots")), fr); return
@@ -80,7 +109,7 @@ def main():
         if cmd == "render": return
     if cmd in ("audio", "all"):
         from .audio import build, loudness
-        raw = build(P, arg("--mood"), float(arg("--music-db", -17)), float(arg("--sfx-db", -9)))
+        raw = build(P, arg("--mood"), float(arg("--music-db", -17)), float(arg("--sfx-db", -9)), float(arg("--amb-db", -30)))
         loudness(raw, os.path.join(P, "work", "mix.wav"))
         if cmd == "audio": return
     if cmd in ("final", "all"):

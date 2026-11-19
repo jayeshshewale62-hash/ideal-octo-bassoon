@@ -126,11 +126,84 @@ def sting():
     out = np.zeros(int(1.8 * SR))
     for n, g in ((45, .3), (57, .25), (64, .22), (68, .18), (72, .15)): out += np.pad(vibes(hz(n), 1.6, g) + pluck(hz(n), 1.6, .2, 4), (0, int(.2 * SR)))[:len(out)]
     return out
-SFX = dict(pop=lambda: popfx(rng.uniform(320, 440)), thud=thud, whoosh=lambda: whoosh(.45), tick=tick, shutter=shutter, scribble=scribble,
+def clack(): n = int(.08 * SR); t = np.arange(n) / SR; return (bp(rng.standard_normal(n), 900, 4200) * np.exp(-t * 70) + np.sin(2 * np.pi * 520 * t) * np.exp(-t * 60) * .4) * .7
+def rumble(dur=1.2):
+    n = int(dur * SR); t = np.arange(n) / SR; env = np.minimum(1, t / .08) * np.clip((dur - t) / .4, 0, 1)
+    return (lp(rng.standard_normal(n), 120, 2) * 3 + np.sin(2 * np.pi * 31 * t) * .4) * env * .8
+def whoosh_soft(): return whoosh(1.1) * .35
+SFX = dict(clack=clack, whoosh_soft=whoosh_soft, pop=lambda: popfx(rng.uniform(320, 440)), thud=thud, whoosh=lambda: whoosh(.45), tick=tick, shutter=shutter, scribble=scribble,
            boom=boom, ding=ding, paper=paper, step=step, sting=sting)
 
 
-def build(P, mood=None, music_db=-17.0, sfx_db=-9.0):
+# ---------------------------------------------------------------- ambience beds (room tone under each place)
+def _noise(n, lo=None, hi=None):
+    x = rng.standard_normal(n)
+    if lo and hi: return bp(x, lo, hi)
+    if hi: return lp(x, hi)
+    if lo: return hp(x, lo)
+    return x
+def amb_room(n):
+    t = np.arange(n) / SR; return _noise(n, hi=260) * 1.6 + np.sin(2 * np.pi * 60 * t) * .015 + _noise(n, 2000, 6000) * .04
+def amb_street(n):
+    t = np.arange(n) / SR; base = _noise(n, hi=500) * 1.4; cars = np.zeros(n)
+    k = 0
+    while k < n:  # cars passing: slow swells every few seconds
+        d = int(rng.uniform(2.5, 5.0) * SR); w = np.sin(np.pi * np.arange(min(d, n - k)) / d) ** 2; cars[k:k + len(w)] += w * rng.uniform(.5, 1); k += int(d * rng.uniform(.6, 1.4))
+    return base * (.5 + .7 * cars) + _noise(n, 1500, 5000) * .05 * cars
+def amb_night(n):
+    t = np.arange(n) / SR; chirp = np.sin(2 * np.pi * 4300 * t) * (np.sin(2 * np.pi * 28 * t) > .2) * ((t % .9) < .22)
+    return chirp * .05 + _noise(n, 150, 600) * .5
+def amb_rain(n):
+    x = _noise(n, 900, 9000) * .8; crack = (rng.random(n) < 0.0016) * rng.standard_normal(n) * 4; return x + hp(crack, 2500)
+def amb_crowd(n):
+    t = np.arange(n) / SR; out = np.zeros(n)
+    for f0 in (320, 520, 760, 1100):
+        out += _noise(n, f0 * .8, f0 * 1.3) * (0.6 + 0.4 * np.sin(2 * np.pi * rng.uniform(2.5, 5.5) * t + rng.uniform(0, 6)))
+    return out * .9
+def amb_wind(n):
+    t = np.arange(n) / SR; return _noise(n, 180, 900) * (0.6 + 0.4 * np.sin(2 * np.pi * .13 * t) + .2 * np.sin(2 * np.pi * .31 * t))
+def amb_clock(n):
+    out = amb_room(n) * .7; tk = tick() * .5
+    for k in range(0, n - len(tk), SR): out[k:k + len(tk)] += tk * (1.0 if (k // SR) % 2 == 0 else .7)
+    return out
+def amb_city(n): return amb_street(n) * .5 + _noise(n, hi=200) * .8
+AMBIENCE = dict(room=amb_room, street=amb_street, night=amb_night, rain=amb_rain, crowd=amb_crowd, wind=amb_wind, clock=amb_clock, city=amb_city)
+SET_AMBIENCE = dict(office="room", home="room", street="street", skyline="city")
+
+
+def ambience_spans(tl):
+    """[(name, t0, t1)] merged over consecutive shots. World shots get room tone from their set; "ambience" overrides;
+    graphics shots inherit the previous place's tone (the viewer is still 'there'), silent title cards cut it."""
+    from .render import DEFAULT_SET
+    spans = []; cur = None
+    for s in tl.shots:
+        sp = s["spec"]; k = sp.get("kind", "wide")
+        if "ambience" in sp: name = sp["ambience"]
+        elif k in DEFAULT_SET: name = SET_AMBIENCE.get(sp.get("set", DEFAULT_SET[k]))
+        elif k == "title": name = None
+        else: name = cur
+        if k in ("crowd",) and "ambience" not in sp: name = "crowd"
+        if name in (None, "none"): name = None
+        elif name not in AMBIENCE: raise SystemExit(f"shot {s['k']}: unknown ambience '{name}'. Ambience: {', '.join(AMBIENCE)}, none")
+        if name and spans and spans[-1][0] == name and abs(spans[-1][2] - s["t0"]) < 1e-6: spans[-1][2] = s["t1"]
+        elif name: spans.append([name, s["t0"], s["t1"]])
+        cur = name
+    return spans
+
+
+def ambience_bed(tl, N, lead=1.0, tail=.6):
+    """Each place's tone starts `lead` s before its cut (J-cut: we hear the next scene first) and lingers `tail` s (L-cut)."""
+    out = np.zeros((N, 2))
+    for name, a, b in ambience_spans(tl):
+        a0 = max(0.0, a - lead); b1 = min(N / SR, b + tail); n = int((b1 - a0) * SR)
+        if n <= 0: continue
+        x = AMBIENCE[name](n); t = np.arange(n) / SR; env = np.minimum(1, t / max(lead, .05)) * np.clip((b1 - a0 - t) / max(tail, .05), 0, 1)
+        x = x / (np.sqrt(np.mean(x ** 2)) + 1e-9) * env; st = np.stack([x, np.roll(x, int(.011 * SR))], 1)
+        place(out, st, a0)
+    return out
+
+
+def build(P, mood=None, music_db=-17.0, sfx_db=-9.0, amb_db=-30.0):
     from .render import setup, _G, whip_flags
     from .shots import build as build_shot
     setup(P); tl = _G["tl"]; story = _G["story"]; mood = mood or story.get("mood", "mystery")
@@ -146,7 +219,9 @@ def build(P, mood=None, music_db=-17.0, sfx_db=-9.0):
         if whips[i]: place(sfx, whoosh(.45), s["t1"] - .3, .45, rng.uniform(-.3, .3))
         if s["spec"].get("kind") == "title" and not s["silent"]: place(sfx, boom(), s["t0"], .4)
         shot = build_shot(s, tl, _G["cast"], _G["env"]) if True else None
-        for name, t in shot.sfx_events():
+        for ev in shot.sfx_events():
+            name, t = ev[0], ev[1]
+            if name == "rumble": place(sfx, rumble(ev[2] if len(ev) > 2 else 1.2), t, .9); continue
             if name == "steps":
                 walk_d = (s["t1"] - s["t0"]) if any(a.walk for a in shot.actors) else 1.1
                 for k in range(int(walk_d / .285)): place(sfx, step(), t + .1 + k * .285, .35, -.4 + .03 * k)
@@ -166,11 +241,13 @@ def build(P, mood=None, music_db=-17.0, sfx_db=-9.0):
     srms = np.sqrt(np.mean(sfx[np.abs(sfx).mean(1) > 1e-3] ** 2)) + 1e-9 if (np.abs(sfx).mean(1) > 1e-3).any() else 1.0
     sfx *= vref * 10 ** (sfx_db / 20) / srms; vpk = np.abs(voice).max() + 1e-9; spk = np.abs(sfx).max()
     if spk > .7 * vpk: sfx *= .7 * vpk / spk
-    mix = voice + music + sfx
+    amb = ambience_bed(tl, N); arms = np.sqrt(np.mean(amb[np.abs(amb).mean(1) > 1e-6] ** 2)) + 1e-9 if (np.abs(amb).mean(1) > 1e-6).any() else 1.0
+    amb *= vref * 10 ** (amb_db / 20) / arms; amb *= (1 - .3 * lp(speech, 3, 1).clip(0, 1))[:, None]
+    mix = voice + music + sfx + amb
     os.makedirs(os.path.join(P, "work"), exist_ok=True); rawp = os.path.join(P, "work", "mix_raw.wav"); sf.write(rawp, mix[:int(L * SR)].astype(np.float32), SR)
-    for nm, x in (("voice", voice), ("music", music), ("sfx", sfx)): sf.write(os.path.join(P, "work", f"stem_{nm}.wav"), x[:int(L * SR)].astype(np.float32), SR)
+    for nm, x in (("voice", voice), ("music", music), ("sfx", sfx), ("ambience", amb)): sf.write(os.path.join(P, "work", f"stem_{nm}.wav"), x[:int(L * SR)].astype(np.float32), SR)
     db = lambda x: 20 * np.log10(np.sqrt(np.mean(x[gate] ** 2)) + 1e-12)
-    print(f"levels in speech: voice {db(voice):.1f} dBFS, music {db(music) - db(voice):+.1f} dB, sfx peak {20 * np.log10(np.abs(sfx).max() / vpk + 1e-9):+.1f} dB vs voice peak")
+    print(f"levels in speech: voice {db(voice):.1f} dBFS, music {db(music) - db(voice):+.1f} dB, sfx peak {20 * np.log10(np.abs(sfx).max() / vpk + 1e-9):+.1f} dB vs voice peak, ambience {db(amb) - db(voice):+.1f} dB")
     return rawp
 
 
