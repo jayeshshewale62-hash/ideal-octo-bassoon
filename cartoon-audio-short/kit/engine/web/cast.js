@@ -143,7 +143,8 @@ export const bodyFrontX = (p, o, opts) => {
     const hem = hipY + (o.shorts ? 0.3 : 0.7) * (sole - hipY);
     for (const side of [-1, 1]) {
       const fx = 300 + side * 20 * u, fy = sole - 4 * u;
-      p.stroke([[300 + side * 15 * u, hem - 10 * u], [fx, fy]], 5.6 * u, skinLeg);
+      if (o.pants && !o.shorts) p.line([[300 + side * 15 * u, hipY + 0.02 * HH], [fx, fy - 6 * u]], o.pants, 7.5 * u);
+      else p.stroke([[300 + side * 15 * u, hem - 10 * u], [fx, fy]], 5.6 * u, skinLeg);
       foot(fx, fy + 3 * u, side);
     }
     const lowCol = o.dhoti || o.shorts;
@@ -221,6 +222,7 @@ export const bodyFrontX = (p, o, opts) => {
   if (o.pagri) pagriOn(p, o, hp, H, 300, hc, light, false, facing);
   if (o.sari) palluFront(p, o, hp, H, 300, hc, light, false);
   if (pot) potDraw(p, 300 + 6 * u, crown + 0.06 * HH, 0.36 * HH);
+  if (opts.comic) comicFx(p, opts.comic, 300 + 7 * u * facing, hc, H, false, facing);
   p.rot = tilt ? [rad(tilt), 300, hipY] : null;
   for (const a of arms) if (a.late) drawArm(a);
   // madman swirl next to the temple finger
@@ -313,6 +315,11 @@ export const bodySideX = (p, o, opts) => {
     const el = (dx, dy) => [(S[0] + grip[0]) / 2 + dx * u, (S[1] + grip[1]) / 2 + dy * u];
     far = [S, el(-10, 14), [grip[0] - 4 * u, grip[1] + 6 * u]];
     near = [S, el(10, 16), grip];
+  } else if (opts.push || opts.armsUp) {
+    // v2: push (both arms straight forward at handle height, e.g. a cart) or armsUp (cheer / panic, both arms raised)
+    const tgt = opts.push ? [S[0] + 0.62 * HH, S[1] + 0.12 * HH + (opts.pushY || 0) * u] : [S[0] + 0.18 * HH, S[1] - 0.66 * HH];
+    near = [S, [(S[0] + tgt[0]) / 2 + 4 * u, (S[1] + tgt[1]) / 2 + 8 * u], tgt];
+    far = [S, [(S[0] + tgt[0]) / 2 - 6 * u, (S[1] + tgt[1]) / 2 + 10 * u], [tgt[0] - 10 * u, tgt[1] + 4 * u]];
   } else if (pot) {
     far = [S, [S[0] - 22 * u, S[1] - 0.32 * HH], [300 - 30 * u, crown - 0.08 * HH]];
     near = swingArm(rad(-25) * nearFwd);
@@ -343,10 +350,61 @@ export const bodySideX = (p, o, opts) => {
   if (o.pagri) pagriOn(p, o, hp, H, hx, hc, light, true, 1);
   if (o.sari) palluFront(p, o, hp, H, hx, hc, light, true);
   if (pot) { potDraw(p, hx + 4 * u, crown + 0.05 * HH, 0.34 * HH); hand(far[2], skinFar); }
+  if (opts.comic) comicFx(p, opts.comic, hx, hc, H, true, 1);
   p.rot = null;
   return { grip, hammerHead: mode === "hammer" ? [grip[0] + Math.cos(rad(hAng)) * 0.95 * HH, grip[1] + Math.sin(rad(hAng)) * 0.95 * HH] : null };
 };
 
+// ---------------- comic expression overlays (v2) ----------------
+// opts.comic = { rage: 0..1, sweat: 0..1 (drop phase), whiteout: 0..1, lines: 0..1 (impact / shock lines), steam: 0..1 }
+// Drawn in head space (follows head tilt) on top of the face. Frame-trigger them from story.js with comicAt().
+FACE.rage = { eye: ["lid", "lid"], brow: [8, -4], mouth: "teeth" };
+FACE.whiteout = { eye: ["shock", "shock"], brow: [-7, -6], mouth: "O" };
+FACE.smug = { eye: ["slit", "slit"], brow: [-2, -4], mouth: "smirk" };
+const comicFx = (p, c, cx, hc, H, side, facing) => {
+  const u = (2 * H.a) / 100, g = p.g;
+  const eyesX = side ? [cx + 27 * u] : [cx - 13 * u, cx + 13 * u];
+  if (c.whiteout > 0) {
+    for (const x of eyesX) { p.ell(x, hc, 12.5 * u, 13 * u, "#ffffff", 3.2 * u); }
+    // tiny pupils shrink to nothing
+    const k = 1 - c.whiteout;
+    if (k > 0.05) for (const x of eyesX) p.dot(x, hc + u, 2.4 * u * k);
+  }
+  if (c.rage > 0) {
+    const a = Math.min(1, c.rage);
+    for (const x of eyesX) {
+      const [gx, gy] = p.P(x, hc), R = 26 * u * (0.7 + 0.3 * a);
+      const gr = g.createRadialGradient(gx, gy, 0, gx, gy, R);
+      gr.addColorStop(0, `rgba(255,240,200,${a})`); gr.addColorStop(0.25, `rgba(255,60,30,${0.95 * a})`); gr.addColorStop(1, "rgba(255,0,0,0)");
+      g.fillStyle = gr; g.beginPath(); g.arc(gx, gy, R, 0, Math.PI * 2); g.fill();
+      p.ell(x, hc, 8 * u, 5.5 * u, `rgba(255,${(40 + 180 * (1 - a)) | 0},20,1)`, 2.4 * u);
+      p.ell(x, hc, 3.5 * u, 2.4 * u, "#fff6c8", 0);
+    }
+    // angry vein cross on the temple
+    const vx = side ? cx - 20 * u : cx + 28 * u * (facing || 1), vy = hc - 30 * u, s = 7 * u;
+    for (const [dx, dy] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) p.arc(vx + dx * s, vy + dy * s, s * 0.9, s * 0.9, dx > 0 ? (dy > 0 ? 180 : 90) : dy > 0 ? 270 : 0, dx > 0 ? (dy > 0 ? 270 : 180) : dy > 0 ? 360 : 90, 2.6 * u, "#e0262b");
+  }
+  if (c.sweat > 0) {
+    for (const [k, off] of [[0, 0], [1, 0.45]]) {
+      const t = (c.sweat + off) % 1, x = (side ? cx - 24 * u : cx + 38 * u * (facing || 1)) + k * 8 * u, y = hc - 26 * u + t * 40 * u, r = 4.2 * u;
+      p.poly([[x, y - 2.6 * r], [x + r, y - 0.2 * r], [x + 0.7 * r, y + 0.7 * r], [x, y + r], [x - 0.7 * r, y + 0.7 * r], [x - r, y - 0.2 * r]], "#9fd8ff", 2 * u);
+      p.dot(x - 0.3 * r, y - 0.2 * r, 0.9 * u, "#ffffff");
+    }
+  }
+  if (c.lines > 0) { // radiating shock / impact lines around the head
+    const L = 0.35 + 0.65 * c.lines;
+    for (let i = 0; i < 9; i++) {
+      const a = rad(-160 + i * 17.5), r0 = H.a * 1.25, r1 = r0 + 34 * u * L;
+      p.stroke([[cx + Math.cos(a) * r0, hc - H.b * 0.2 + Math.sin(a) * r0], [cx + Math.cos(a) * r1, hc - H.b * 0.2 + Math.sin(a) * r1]], (4.5 - (i % 2) * 1.5) * u);
+    }
+  }
+  if (c.steam > 0) {
+    for (const s of side ? [-1] : [-1, 1]) {
+      const t = c.steam, x = cx + s * H.a * 0.95, y = hc - H.b * 0.9 - 20 * u * t;
+      p.ell(x + s * 8 * u * t, y, (8 + 10 * t) * u, (6 + 7 * t) * u, `rgba(255,255,255,${(0.9 * (1 - t * 0.6)).toFixed(3)})`, 2.2 * u);
+    }
+  }
+};
 // ---------------- props / fx ----------------
 /** clay pot shards on a 400 x 200 canvas */
 export const fxShards = (p, seed = 1) => {

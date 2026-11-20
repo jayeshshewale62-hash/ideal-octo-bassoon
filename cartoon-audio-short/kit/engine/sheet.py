@@ -5,6 +5,8 @@ from PIL import Image, ImageDraw
 d, out = sys.argv[1], sys.argv[2]
 cols = int(sys.argv[3]) if len(sys.argv) > 3 else 6
 files = sorted(glob.glob(os.path.join(d, "*.jpg")))
+if not files:
+    sys.exit(f"no .jpg files in {d}")
 tw, th = 270, 480
 rows = (len(files) + cols - 1) // cols
 sheet = Image.new("RGB", (cols * tw, rows * (th + 22)), (20, 20, 24))

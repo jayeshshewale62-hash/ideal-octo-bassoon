@@ -1,12 +1,12 @@
-# cartoon-audio-short kit
-Engine + tools for the cartoon-audio-short skill (first used on "The Man Who Moved a Mountain", 41.8 s, 12 shots).
-- `tools/setup.sh ~/shorts/<slug>`: copy the engine into a project, install three.js r160, build `web/toon.js`, link Playwright.
-- `engine/web/`: `main.js` (renderer, toon + triplanar materials, world builder, cards with depth pull, ink, grade, DOF, route lines),
-  `story.js` (worked example: shots, cameras, lights, actors, fx as pure functions of the frame), `terrain.js` (ridge + cut heightfield),
-  `motion.js` (easing, camKeys, kicks, blinks, idle), `paint.js` (canvas textures), `toonbase.js` (Pen API from
-  mromidev/claude-animated-shorts toon.ts, MIT, types stripped), `cast.js` (dhoti, kurta, sari + pallu, pagri, beards, arm poses,
-  two-handed sledgehammer, pot, fx), `castdefs.js` (outfits), `charsheet.html` (character test sheet).
-- `engine/render.mjs` (Playwright + SwiftShader frames/stills/test pages), `timing.py` (script-to-voice alignment, no ASR needed),
-  `sheet.py` (contact sheets), `finish.sh` (loudness, encode, QA).
-- `engine/audio/`: `audio.py` (worked example cue table), `mix.py` (music -6 dB, SFX -6 dB + peak cap), `finish_audio.py`,
-  and the synth modules `dsp.py`, `instruments.py`, `sfx_gen.py` from mromidev/claude-animated-shorts (MIT).
+# cartoon-audio-short kit (v2)
+Engine + tools for the cartoon-audio-short skill: 58-65 s, 1080x1920, 30 fps vertical shorts with 2D ink characters in a
+realistic PBR 3D world. Demo story: "The Grocer's Rocket Cart" (62 s, 9 shots, all 5 beats, 3 lighting presets, X-ray cutaway).
+- `tools/setup.sh ~/shorts/<slug>`: copy the engine, install three.js r160, build `web/toon.js`, link Playwright, syntax-check.
+- `engine/web/`: `main.js` (renderer, lit + shadowed cards with depth pull, lantern/headlight pools, sky IBL, grade, motion blur, DOF),
+  `world.js` (PBR terrain, roads, houses, trees, instanced wind grass, props, mountains, sky), `pbr.js` (procedural albedo/normal/roughness
+  painters), `terrain.js`, `layout.js`, `lighting.js` (crispDay, nightRain, stormyRoad, golden, memory), `vfx.js` (sparks, debris, sawdust,
+  smoke, explosion, firework, dust, rain, shock ring), `motion.js` (whip-glides, tracking cam, breathing, damped shake, shockwave, shell fade,
+  comic overlay timing), `story.js` (demo staging), `toonbase.js` + `cast.js` (Pen API, MIT, + poses and comic overlays), `castdefs.js`, `paint.js`.
+- `engine/`: `render.mjs`, `audit.mjs` (retention audit + stills list), `pacing.py`, `timing.py`, `captions.py` (.ass pop words), `sheet.py`, `finish.sh`.
+- `engine/audio/`: `audio.py` (cue table), `mix.py` (-6.0 dB lock), `finish_audio.py` (-14 LUFS, LRA 2.4-2.9, -1 dBTP), synth modules (MIT).
+- `example/rocket_cart/script.txt` (demo narration), `example/mountain_man_v1/` (original toon engine + story, reference only).

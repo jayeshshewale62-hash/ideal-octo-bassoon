@@ -3,7 +3,7 @@
 // seeded side bulge + tilt), bean torsos, single-stroke limbs with ink-dot hands, a thick-thin plum outline weighted
 // away from the light, soft painted crescents, deadpan lidded eyes, no blush, no catchlights.
 // Design space 600 x 1000 units (soles at y = 975); the canvas transform scales it.
-export const INK = "#241726";
+export const INK = "#0e0c10"; // bold near-black ink (v2; v1 used plum #241726)
 export const SKIN = "#ffe2c2";
 const WHITE = "#ffffff";
 const MOUTH = "#5a1e28";
