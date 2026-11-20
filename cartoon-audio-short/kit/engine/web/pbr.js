@@ -214,8 +214,8 @@ export const roofTiles = (seed = 9, S = 1024, { kind = "terracotta", rows = 8, c
 export const fabric = (seed = 10, S = 512, colr = "#c9b48a") => {
   const T = makeSet(S), [cr, cg, cb] = hex(colr);
   pixelPass(T, (d, i, x, y, k) => {
-    const w = 0.5 + 0.25 * (Math.sin(x * 0.4) + Math.sin(y * 0.4)), n = fbmT(x, y, S, 6, 3, seed), v = 0.85 + 0.05 * w + 0.25 * (n - 0.5);
-    d[i] = cr * v; d[i + 1] = cg * v; d[i + 2] = cb * v; d[i + 3] = 255; T.h[k] = w * 0.5; T.r[k] = 0.95;
+    const w = 0, n = fbmT(x, y, S, 6, 3, seed), v = 0.86 + 0.28 * (n - 0.5); // no fine weave: it aliased into moire on curved covers
+    d[i] = cr * v; d[i + 1] = cg * v; d[i + 2] = cb * v; d[i + 3] = 255; T.h[k] = n * 0.3 + w; T.r[k] = 0.95;
   });
   return { ...T, tile: 1.6, rough: 0.95 };
 };
@@ -223,10 +223,13 @@ export const fabric = (seed = 10, S = 512, colr = "#c9b48a") => {
 /** leaf cluster albedo with alpha (for leaf cards) */
 export const leafCard = (seed = 11, S = 512, colr = "#4f7a34") => {
   const c = cv(S), g = c.getContext("2d"), r = rng(seed), [cr, cg, cb] = hex(colr);
-  for (let i = 0; i < 260; i++) {
-    const x = S / 2 + (r() - 0.5) * S * 0.85 * Math.sqrt(r()), y = S / 2 + (r() - 0.5) * S * 0.85 * Math.sqrt(r()), a = r() * 6.3, l = 18 + r() * 26, k = 0.6 + 0.6 * r();
-    g.save(); g.translate(x, y); g.rotate(a); g.beginPath(); g.ellipse(0, 0, l, l * 0.42, 0, 0, Math.PI * 2);
-    g.fillStyle = `rgb(${cr * k | 0},${cg * k | 0},${cb * k | 0})`; g.fill(); g.strokeStyle = `rgba(20,35,15,0.5)`; g.lineWidth = 1.2; g.beginPath(); g.moveTo(-l, 0); g.lineTo(l, 0); g.stroke(); g.restore();
+  // 700 overlapping leaves: darker inside the cluster, sunlit yellow-green tips, midrib + soft edge shading
+  for (let i = 0; i < 700; i++) {
+    const rr = Math.sqrt(r()) * 0.46, th = r() * 6.283, x = S / 2 + Math.cos(th) * rr * S, y = S / 2 + Math.sin(th) * rr * S * 0.92, a = th + (r() - 0.5) * 1.6, l = 12 + r() * 20;
+    const k = (0.45 + 0.75 * rr * 2 * (0.6 + 0.4 * r())) * (y < S / 2 ? 1.12 : 0.9), warm = r() < 0.15 ? 1.18 : 1;
+    g.save(); g.translate(x, y); g.rotate(a); g.beginPath(); g.moveTo(-l, 0); g.quadraticCurveTo(0, -l * 0.55, l, 0); g.quadraticCurveTo(0, l * 0.55, -l, 0);
+    const gr = g.createLinearGradient(0, -l * 0.5, 0, l * 0.5); gr.addColorStop(0, `rgb(${Math.min(255, cr * k * warm * 1.15) | 0},${Math.min(255, cg * k * 1.15) | 0},${cb * k | 0})`); gr.addColorStop(1, `rgb(${cr * k * 0.7 | 0},${cg * k * 0.75 | 0},${cb * k * 0.7 | 0})`);
+    g.fillStyle = gr; g.fill(); g.strokeStyle = "rgba(15,30,10,0.45)"; g.lineWidth = 1; g.beginPath(); g.moveTo(-l * 0.9, 0); g.lineTo(l * 0.9, 0); g.stroke(); g.restore();
   }
   return c;
 };
@@ -235,7 +238,7 @@ export const leafCard = (seed = 11, S = 512, colr = "#4f7a34") => {
 const texCache = new Map();
 /** canvases -> THREE textures (sRGB albedo, linear normal / roughness), repeat wrap, mipmaps, anisotropy */
 export const toTextures = (set, normalStrength = 2.2) => {
-  const t = (c, srgb) => { const x = new THREE.CanvasTexture(c); x.wrapS = x.wrapT = THREE.RepeatWrapping; x.anisotropy = 8; if (srgb) x.colorSpace = THREE.SRGBColorSpace; return x; };
+  const t = (c, srgb) => { const x = new THREE.CanvasTexture(c); x.wrapS = x.wrapT = THREE.RepeatWrapping; x.anisotropy = 16; if (srgb) x.colorSpace = THREE.SRGBColorSpace; return x; };
   return { map: t(set.col, true), normalMap: t(normalCanvas(set.h, set.S, normalStrength), false), roughnessMap: t(grayCanvas(set.r, set.S), false) };
 };
 /** world-space macro variation (breaks tiling on big surfaces) injected into a standard material */

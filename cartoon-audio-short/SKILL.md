@@ -154,6 +154,15 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 - Hit a beat every ~11 frames: something changes on most caption words (an expression, a gesture, a prop move, a camera accent).
 - Characters never freeze: `idle`, `blinkAt`, head bobs on stressed words; actions use anticipation → `back` overshoot → `spring` settle.
 
+### 4.6b Render quality (graphics)
+`QUALITY=draft|high|ultra node render.mjs ...` (default **high**). All presets keep characters tack-sharp.
+| Preset | Internal render | Shadows | Lens blur | AO samples | Grass / foliage | Speed (CPU SwiftShader) |
+|---|---|---|---|---|---|---|
+| draft | 1080x1920 | 2048 | 32 taps | 8 | 0.6x | ~7 s/frame (quick stills, layout checks) |
+| high | 1620x2880 supersampled → 1080x1920 | 4096 | 64 taps | 16 | 1.4x | ~13-18 s/frame (~7-9 h for 62 s) |
+| ultra | 2160x3840 → 1080x1920 | 4096 | 96 taps | 24 | 2x | ~2x high |
+What the high-quality path adds: supersampled anti-aliasing with a resolve pass (4-tap downsample + light unsharp mask + fine film grain on the world only), screen-space ambient occlusion on the world (characters darken the ground they stand on but never receive AO), filmic contrast on the world only, bloom on practicals, procedural self-shadowed sky clouds (also in reflections), smooth noise-displaced tree crowns with vertex-colour depth + 70 detailed leaf cards per tree, layered conifers, curved two-tone grass blades, 16x anisotropic textures. Use `draft` for layout stills, then check 3-4 key stills in `high` before the full `high` render.
+
 ### 4.7 Look check + retention audit (before ANY full render)
 1. `node audit.mjs web/story.js --stills` must print **audit OK**. It checks 1,750-1,950 frames, the 5 beats (hook at frame 0, cutaway/X-ray inside 38-52 s with a 10-frame shell fade, climax event on the last word, no slow outro), no camera static for 4+ frames, a pattern interrupt at least every 90 frames, and **flags any 90-frame (3 s) stretch with no camera move, prop interaction or expression change**. Fix every FLAG.
 2. Render the stills it lists: `node render.mjs stills/a "<STILLS list>"` then `python3 sheet.py stills/a stills/sheet_a.jpg 8`. Look at the sheet and fix: hero hidden behind props (move the camera to the hero's open side), camera too close (cards fill the frame), foreground posts across faces, props < 2 m from the lens, mirrored text, dark backlit cards (raise `bright`), repeating ground tiles, cards slicing into walls (`pull`), a camera inside terrain (frameState clamps to ground + 0.6 m). Narrow frame: horizontal half-width = d·tan(hfov/2), hfov = 2·atan(tan(vfov/2)·0.5625).
@@ -172,7 +181,7 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 
 ## Engine gotchas (keep them if rebuilding)
 - No-blur contract: cards write rgb 0 + depth into the normal/depth target; DOF and motion blur return the sharp pixel for card pixels and give card samples zero weight when blurring the background; the bloom bright-pass skips card pixels; the card shader clamps output to ≤ 0.93 (never clips) with a 62 % readability floor.
-- Render targets are linear HalfFloat; the DOF pass encodes sRGB at the end. Grade = exposure, optional world ink (`ink`, 0 for realism), saturation, lift/gain, filmic shoulder, vignette, flash.
+- Render targets are linear HalfFloat at the supersampled size (RW x RH); the resolve pass downsamples to 1080x1920 and encodes sRGB. Point-sprite sizes use RH. SSAO runs at half internal resolution on the view-space normal/depth target and is blurred before the grade. Grade = exposure, optional world ink (`ink`, 0 for realism), saturation, lift/gain, filmic shoulder, vignette, flash.
 - Normal+depth target is FloatType RGBA cleared to alpha 0 (read as far). In that pass: world → normals/depth (alpha-tested materials use a map-aware variant), cards → alpha-tested depth with the same pull, instanced grass / particles / rain / sky / clouds / blobs / beams hidden, fog and shadows off.
 - Card material is MeshLambertMaterial with `lights_lambert_pars_fragment` inlined and its `dotNL` wrapped (0.78 + 0.22·N·L), output multiplied by `uGain` = preset-normalised; shadow lookups use the un-pulled world position so a card never shadows itself.
 - Constant light counts (6 lantern PointLights, 2 SpotLights, 1 explosion light, always in the scene, intensity 0 when off) so shaders never recompile mid-render.
