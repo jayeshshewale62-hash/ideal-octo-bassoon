@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""mix.py voice music.wav sfx.wav [out.wav]
-The voice is never touched (no gain, EQ, edit or retime). The music bed and the SFX stem are each locked to exactly
+"""mix.py voice sfx.wav [out.wav]       (voiceover + SFX only: NO background music)
+The voice is never touched (no gain, EQ, edit or retime). The SFX stem is locked to exactly
 -6.0 dB (50 % gated RMS, BS.1770 integrated) below the voice. SFX peaks are capped below the voice peak
 (0.7 x voice peak by default): the cap and the -6.0 dB gain are iterated together until both hold, so the SFX stem
-lands at -6.0 dB, not lower. No ducking, no compression on the voice or music: one gain per stem + the SFX peak cap.
-Prints the measured levels; exit code 2 if a stem misses -6.0 +/- 0.1 dB or an SFX peak pokes over the cap."""
+lands at -6.0 dB, not lower. No ducking, no compression on the voice: one gain + the SFX peak cap. A music file passed in the old
+3-stem form (voice music sfx out) is ignored with a warning.
+Prints the measured levels; exit code 2 if the SFX misses -6.0 +/- 0.1 dB or an SFX peak pokes over the cap."""
 import sys, subprocess
 import numpy as np
 from dsp import SR, integrated, read_wav, write_wav, st
@@ -57,22 +58,23 @@ def lock(stem, Lv, ceiling=None, iters=8):
 
 
 if __name__ == "__main__":
-    v = load_voice(sys.argv[1]); m, _ = read_wav(sys.argv[2]); s, _ = read_wav(sys.argv[3])
-    out = sys.argv[4] if len(sys.argv) > 4 else "mix.wav"
-    n = v.shape[1]; m = st(m)[:, :n]; s = st(s)[:, :n]
-    m = np.pad(m, ((0, 0), (0, n - m.shape[1]))); s = np.pad(s, ((0, 0), (0, n - s.shape[1])))
+    args = sys.argv[1:]
+    if len(args) == 4:  # old form: voice music sfx out
+        print(f"NOTE: background music is not used (voiceover + SFX only): ignoring {args[1]}"); args = [args[0]] + args[2:]
+    v = load_voice(args[0]); s, _ = read_wav(args[1])
+    out = args[2] if len(args) > 2 else "mix.wav"
+    n = v.shape[1]; s = st(s)[:, :n]
+    s = np.pad(s, ((0, 0), (0, n - s.shape[1])))
     Lv, vpk = integrated(v), np.abs(v).max()
-    m = lock(m, Lv)
     s = lock(s, Lv, ceiling=SFX_PEAK * vpk)
-    mix = v + m + s
+    mix = v + s
     write_wav(out, mix)
-    dm, ds, spk = integrated(m) - Lv, integrated(s) - Lv, np.abs(s).max() / vpk
+    ds, spk = integrated(s) - Lv, np.abs(s).max() / vpk
     print(f"voice {Lv:.2f} LUFS  peak {20*np.log10(vpk):.2f} dBFS  (untouched)")
-    print(f"music {dm:+.2f} dB vs voice (gated)   peak {20*np.log10(np.abs(m).max()):.2f} dBFS")
-    print(f"sfx   {ds:+.2f} dB vs voice (gated)   peak {spk:.2f} x voice peak (cap {SFX_PEAK})")
+    print(f"sfx   {ds:+.2f} dB vs voice (gated)   peak {spk:.2f} x voice peak (cap {SFX_PEAK})   [no music]")
     print(f"mix   {integrated(mix):.2f} LUFS  peak {20*np.log10(np.abs(mix).max()):.2f} dBFS  -> {out}")
-    bad = abs(dm - TARGET) > 0.1 or abs(ds - TARGET) > 0.1 or spk > SFX_PEAK + 0.01
+    bad = abs(ds - TARGET) > 0.1 or spk > SFX_PEAK + 0.01
     if bad:
-        print("WARNING: level lock missed (music/SFX must read -6.0 dB, SFX peaks below the voice). If the SFX stem is "
+        print("WARNING: level lock missed (SFX must read -6.0 dB with peaks below the voice). If the SFX stem is "
               "all sharp hits, add a quiet bed (wind / room tone) so its gated level can reach -6 dB under the cap.")
         sys.exit(2)

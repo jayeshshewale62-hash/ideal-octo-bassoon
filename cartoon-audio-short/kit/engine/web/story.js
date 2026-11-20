@@ -4,7 +4,7 @@
 //   frameState(f) -> { shot, beat, cam{pos,look,fov,roll,whip?,speed?}, light, actors[], fx[], emitters[], shock?, boom?,
 //                      world{cart?, van?}, flash, vign, dof{focus,cInf}, shadow{c,r}, lightning, mb, events[] }
 import { clamp, lin, smooth, smoother, easeOut, easeIn, back, lerp, lerp3, add3, camKeys, camWhipKeys, trackCam, alive, dampedShake, shockwave,
-  shellOpacity, blinkAt, idle, q, comicAt, FPS } from "./motion.js";
+  shellOpacity, blinkAt, idle, q, comicAt, microMoves, FPS } from "./motion.js";
 import { LP, lightSeq, sunDir, lightning } from "./lighting.js";
 import { groundAt, polyAt } from "./terrain.js";
 import { ROAD } from "./layout.js";
@@ -57,13 +57,13 @@ const dayCartPt = (g) => { const c = dayCart(g); return [c.pos[0], c.pos[1] + 0.
 
 // 1 HOOK (0-4 s): mid-action, frame 0 = grocer shoving a cart of 82 rockets, test fuse fizzing. Prop tracking cam (lag 0.08).
 shot("hook", "hook", 0, 120, (f) => {
-  const L = LP.crispDay;
+  const L = LP.brightDay;
   const cam = trackCam(dayCartPt, f, -40, { offset: [6.8, 1.6, 1.6], lookUp: 0.75, lag: 0.08, lookAhead: -1.7, fov: 46 });
   CAM = cam;
   const C = dayCart(f), sG = sWalk(S0, V0, 0, f) - 1.95, g = road(sG);
   const actors = [side("grocer", GROCER, g.x, g.z, [g.dx, g.dz], { mode: "walk", phase: walkPhase(sG), push: true, lean0: 9, expr: f < 60 ? "stubborn" : "strain", blink: blinkAt(f, 3), comic: comicAt(f, [{ k: "sweat", f0: 30, f1: 120 }]) }, { L })];
   const fusePt = (gg) => { const c = dayCart(gg); return [c.pos[0] - 0.3 * Math.sin(c.yaw), c.pos[1] + 1.62, c.pos[2] - 0.9 * Math.cos(c.yaw)]; };
-  return { cam, L, actors, world: { cart: C }, emitters: [{ id: "testfuse", kind: "sparks", f0: -20, f1: 120, at: fusePt, seed: 2, scale: 0.8 }],
+  return { cam, L, actors, micro: 0.6, world: { cart: C }, emitters: [{ id: "testfuse", kind: "sparks", f0: -20, f1: 120, at: fusePt, seed: 2, scale: 0.8 }],
     dof: { focus: dist(cam.pos, C.pos) + 0.4, cInf: 11 }, shadow: { c: C.pos, r: 10 }, events: [{ f: 12, kind: "word" }] };
 });
 
@@ -81,7 +81,7 @@ shot("reveal", "reveal", 120, 450, (f) => {
     { f: 450, pos: [27, 33, 126], look: [24, 10, -190], fov: 26, ease: smooth },
   ], f);
   const cam = alive(base, f, { seed: 2, amp: 1.4, push: 0 }); CAM = cam;
-  const L = lightSeq([[120, "crispDay"], [330, "crispDay"], [450, "golden"]], f);
+  const L = lightSeq([[120, "brightDay"], [330, "brightDay"], [450, "golden"]], f);
   const sG = sWalk(S0, V0, 0, f) - 1.95, g = road(sG);
   const actors = [side("grocer", GROCER, g.x, g.z, [g.dx, g.dz], { mode: "walk", phase: walkPhase(sG), push: true, lean0: 9, expr: "stubborn", blink: blinkAt(f, 3) }, { L })];
   const fx = [];
@@ -148,7 +148,7 @@ shot("runaway", "escalation", 760, 960, (f) => {
   const actors = [side("grocer", GROCER, g.x, g.z, [g.dx, g.dz], { mode: "walk", phase: walkPhase(sG * 0.8), stride: 1.3, armsUp: true, lean0: 12, expr: f >= 878 && f < 900 ? "whiteout" : "shock", blink: blinkAt(f, 3), comic: comicAt(f, [{ k: "sweat", f0: 760, f1: 878 }, { k: "lines", f0: 878, f1: 900 }, { k: "sweat", f0: 900, f1: 960 }]) }, { L })];
   const emitters = f >= 878 ? [{ id: "pothole", kind: "debris", f0: 878, at: () => [C.pos[0], C.pos[1] + 0.2, C.pos[2]], seed: 6, scale: 0.7, col: [[0.7, 0.76, 0.85], [0.4, 0.45, 0.55]] }] : [];
   if (f >= 878 && f < 884) C.pitch = 0.12 * Math.sin((f - 878) * 1.2);
-  return { cam, L, actors, world: { cart: C }, emitters, kicks: [{ f: 878, a: 0.02 }], dof: { focus: dist(cam.pos, C.pos), cInf: 6 }, shadow: { c: C.pos, r: 14 }, mb: 1.4 };
+  return { cam, L, actors, world: { cart: C }, emitters, micro: 0, kicks: [{ f: 878, a: 0.02 }], dof: { focus: dist(cam.pos, C.pos), cInf: 6 }, shadow: { c: C.pos, r: 14 }, mb: 1.4 };
 });
 
 // 6 VAN (32-38 s): stormy road, a van's headlights, brakes; the cart swerves into the fence; he dives into a puddle.
@@ -176,7 +176,7 @@ shot("van", "escalation", 960, 1140, (f) => {
 // 7 MECHANISM (38-52 s): "So what's in there?" push in, the cart's outer shell fades 1 -> 0 over 10 frames (X-ray), orbit;
 // 82 rockets on one ring fuse; the flame runs both ways, so every rocket leaves at once. Shell returns at the end.
 shot("xray", "mechanism", 1140, 1560, (f) => {
-  const L = LP.nightRain;
+  const L = lightSeq([[1140, "nightRain"], [1185, "moonCamp"]], f); // the rain breaks: clear moonlit night for the X-ray
   const C0 = cartAt(0, 0, { pos: gp(STOP[0], STOP[1]), yaw: cartAt(rollS(1000), 0.6).yaw + 0.9, wheel: 0 });
   const ctr = add3(C0.pos, [0, 1.05, 0]);
   const orb = (f - 1190) / 330 * 1.7 * Math.PI;
@@ -246,7 +246,7 @@ shot("payoff", "payoff", 1700, 1860, (f) => {
       comic: comicAt(f, [{ k: "whiteout", f0: L0, f1: 1860, ramp: 2 }, { k: "lines", f0: WORDS.last, f1: 1860, ramp: 2 }, { k: "steam", f0: WORDS.last + 2, f1: 1860 }]) }, { outfitKey: mayorGone ? "bald" : "" }),
     side("grocer", GROCER, TOP[0] - 1.2, TOP[1] + 1.0, [0.7, -0.7], { mode: "stand", armsUp: f >= 1730, expr: f >= 1730 ? "relief_open" : "shock", blink: blinkAt(f, 3) }, { L }),
   ];
-  return { cam, L, actors, world: { cart: { ...C, fuse: f < L0 ? 1 : 0 } }, emitters, boom: boomK > 0.01 ? { pos: add3(C.pos, [0, 36, -70]), k: boomK } : null,
+  return { cam, L, actors, micro: 0, world: { cart: { ...C, fuse: f < L0 ? 1 : 0 } }, emitters, boom: boomK > 0.01 ? { pos: add3(C.pos, [0, 36, -70]), k: boomK } : null,
     flash: f >= WORDS.last && f < WORDS.last + 4 ? [0.45, 0.25, 0.1, 0.03][f - WORDS.last] : 0,
     kicks: [{ f: L0, a: 0.025 }, { f: WORDS.last, a: 0.03 }], shockAt: { f: L0, pos: C.pos, maxR: 9, dur: 16 }, strikes: [1745],
     dof: { focus: 40, cInf: 0 }, shadow: { c: C.pos, r: 30 }, mb: 0.7, events: [{ f: WORDS.last, kind: "climax" }] };
@@ -257,7 +257,10 @@ export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b) || SHOTS[SHO
 
 export const frameState = (f) => {
   const s = shotAt(f), r = s.fn(f);
-  const cam = { ...r.cam, pos: [...r.cam.pos], look: [...r.cam.look], roll: r.cam.roll || 0 };
+  // reference grammar: a 6-8 frame camera accent (dolly / orbit / crane) every ~21 frames on top of every shot's move
+  // (r.micro = 0 to switch off, e.g. on tracking shots; pass r.beats = word frames to land accents on words)
+  const mc = microMoves(r.cam, f, { f0: s.a, amp: r.micro ?? 1, seed: SHOTS.indexOf(s) + 1, beats: r.beats || null });
+  const cam = { ...mc, pos: [...mc.pos], look: [...mc.look], roll: mc.roll || 0 };
   // 7-frame damped shake on heavy impacts (offsets the aim point; roll jolt)
   const [kx, ky, kr] = dampedShake(f, r.kicks || []);
   if (kx || ky) {

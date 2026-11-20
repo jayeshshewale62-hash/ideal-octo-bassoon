@@ -20,6 +20,19 @@ export const LP = {
     top: "#1a2230", mid: "#39434f", hor: "#5d6670", fogD: 0.0075, expo: 1.12, sat: 0.92, bloom: 0.8, lift: [0.01, 0.012, 0.02], gain: [0.97, 1, 1.04],
     wet: 0.2, rain: 1.6, cloud: [0.35, 0.38, 0.44], cardK: 1.0, ink: 0, practical: 1, lightning: 1,
   },
+  // measured from the reference shorts (camscan.py, 30 fps): night sky #1e263d-#363f58, firelit ground #5b3e31-#76482b,
+  // cream highlights #f0e0d0, luminance p50 40-66, saturation ~90-120/255, big bright moon that blooms
+  moonCamp: {
+    sky: "gradient", az: 200, el: 24, sun: [0.46, 0.56, 0.92], sunK: 0.32, amb: [0.2, 0.25, 0.42], gnd: [0.14, 0.09, 0.06], hemiK: 0.38,
+    top: "#121a30", mid: "#1f2840", hor: "#414559", fogD: 0.0042, expo: 1.05, envK: 0.35, sat: 1.18, bloom: 1.0, lift: [0.004, 0.008, 0.024], gain: [1.0, 0.99, 1.03],
+    wet: 0, rain: 0, cloud: [0.32, 0.36, 0.5], cardK: 1.0, ink: 0, practical: 1, disc: 1.7, discK: 7,
+  },
+  // day reference: sky #7bb1e3-#9cb1d0 over #c9cdd6 haze, grass #3d582b-#5d8728-#a0ad36, road #9f9fa3, p50 110-160, sat ~70-90
+  brightDay: {
+    sky: "gradient", az: 125, el: 52, sun: [1.3, 1.22, 1.08], sunK: 2.7, amb: [0.6, 0.72, 0.95], gnd: [0.34, 0.33, 0.24], hemiK: 0.95,
+    top: "#3f7cc8", mid: "#7bb1e3", hor: "#c9d3e0", fogD: 0.0006, expo: 1.08, sat: 1.22, bloom: 0.3, lift: [0.0, 0.004, 0.01], gain: [1, 1.01, 1],
+    wet: 0, rain: 0, cloud: [1, 1, 1], cardK: 1.0, ink: 0, disc: 0.6, discK: 3,
+  },
   golden: {
     sky: "physical", az: 165, el: 9, sun: [1.6, 1.0, 0.55], sunK: 2.2, amb: [0.48, 0.45, 0.62], gnd: [0.3, 0.22, 0.17], hemiK: 0.8,
     top: "#5c6fbf", mid: "#e6a98e", hor: "#ffcf8e", fogD: 0.0009, expo: 1.0, sat: 1.14, bloom: 0.5, lift: [0.01, 0.0, 0.02], gain: [1.04, 0.99, 0.93],

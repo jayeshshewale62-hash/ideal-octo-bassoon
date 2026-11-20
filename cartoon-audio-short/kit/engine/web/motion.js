@@ -157,3 +157,45 @@ export const comicAt = (f, list) => {
   return Object.keys(out).length ? out : null;
 };
 
+
+// ======================= v2.2: reference camera grammar (measured at 30 fps with camscan.py) =======================
+// The references almost never pan/tilt in place (2-3 % of frames). The camera physically travels through the set:
+// dolly in/out 26-34 %, orbit/truck 13-19 %, crane 6-14 %, over a constant creep (~25 %). A short 6-8 frame camera
+// accent starts every ~21 frames (roughly every spoken word pair), push-ins outnumber pull-outs (19-31 % vs 15-17 %),
+// speed median ~0.35 % of frame width per frame, p90 1.2-2.3 %, p99 3-6 % (whips). Shots run 7-20 s without a cut.
+export const REF_CAM = { accentEvery: 21, accentLen: 8, speedP50: 0.0035, speedP90: 0.018, headTop: [0.36, 0.46], headX: 0.52, horizon: 0.44 };
+const hk = (k, s) => { const x = Math.sin(k * 78.233 + s * 12.9898) * 43758.5453; return x - Math.floor(x); };
+/** micro camera accents on top of any camera: every `every` frames (from f0) a 6-8 frame easeInOutCubic nudge that
+ *  stays (the camera keeps travelling): dolly-in (dominant), orbit, crane, dolly-out, in the reference mix.
+ *  amp 1 = dolly 3 % of subject distance, orbit 1.6 deg, crane 0.05 x distance. Pass beat frames (word starts) as `beats`
+ *  to land accents on words instead of a fixed period. Pure function of the frame. */
+export const microMoves = (cam, f, { f0 = 0, every = REF_CAM.accentEvery, len = REF_CAM.accentLen, amp = 1, seed = 1, beats = null } = {}) => {
+  if (!amp) return cam;
+  const starts = beats ? beats.filter((b) => b >= f0 && b <= f) : Array.from({ length: Math.max(0, Math.floor((f - f0) / every) + 1) }, (_, k) => f0 + k * every + Math.floor(hk(k, seed) * 4));
+  const d0 = [cam.look[0] - cam.pos[0], cam.look[1] - cam.pos[1], cam.look[2] - cam.pos[2]], D = Math.hypot(...d0) || 1;
+  let dolly = 0, orbit = 0, crane = 0;
+  starts.forEach((s, k) => {
+    const e = easeInOutCubic(clamp((f - s) / len)), r = hk(k + 3, seed);
+    if (r < 0.34) dolly += 0.03 * e;                    // dolly-in (most common)
+    else if (r < 0.58) orbit += (hk(k, seed + 5) < 0.5 ? -1 : 1) * 1.6 * e;
+    else if (r < 0.78) crane += (hk(k, seed + 9) < 0.5 ? -1 : 1) * 0.05 * e;
+    else dolly -= 0.02 * e;                              // dolly-out
+  });
+  dolly = clamp(dolly * amp, -0.25, 0.35); orbit = clamp(orbit * amp, -14, 14) * Math.PI / 180; crane = clamp(crane * amp, -0.12, 0.12);
+  // orbit around the look point (yaw), dolly along the view, crane vertical (scaled by distance)
+  const c = Math.cos(orbit), s = Math.sin(orbit), vx = -d0[0], vz = -d0[2];
+  const ox = vx * c - vz * s, oz = vx * s + vz * c;
+  const k = 1 - dolly;
+  return { ...cam, pos: [cam.look[0] + ox * k, cam.pos[1] + crane * D + (cam.look[1] - cam.pos[1]) * dolly, cam.look[2] + oz * k] };
+};
+/** distance for a reference shot size: head height as a share of frame height (MCU ~0.12, MS ~0.08, FS ~0.045, WS ~0.025)
+ *  for a standard 2.25 m card (head ~0.53 m) at vertical fov (deg) */
+export const SHOT_SIZE = { ECU: 0.32, CU: 0.2, MCU: 0.12, MS: 0.08, FS: 0.045, WS: 0.025 };
+export const distFor = (size, fov = 40, headM = 0.53) => headM / ((SHOT_SIZE[size] ?? size) * 2 * Math.tan((fov * Math.PI) / 360));
+/** reference hero framing: camera at ~chest height, horizon at ~44 %, head top in the 36-46 % band, subject near centre.
+ *  target = [x, y(ground), z] of the character, yawDeg = direction the camera looks from, side = lateral offset in m */
+export const heroCam = (target, { size = "MCU", fov = 40, yawDeg = 0, side = 0.0, height = 1.45 } = {}) => {
+  const d = distFor(size, fov), a = (yawDeg * Math.PI) / 180;
+  const pos = [target[0] - Math.sin(a) * d + Math.cos(a) * side, target[1] + height, target[2] - Math.cos(a) * d - Math.sin(a) * side];
+  return { pos, look: [target[0] + Math.cos(a) * side * 0.3, target[1] + 1.55, target[2]], fov, roll: 0 };
+};

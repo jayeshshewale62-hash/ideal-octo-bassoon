@@ -275,6 +275,7 @@ const applyLight = (L, S) => {
   pu.sunPosition.value.copy(d); pu.turbidity.value = L.turbidity ?? 3; pu.rayleigh.value = L.rayleigh ?? 1.5; pu.mieCoefficient.value = 0.004; pu.mieDirectionalG.value = 0.8;
   const gu = WORLD.sky.grad.material.uniforms;
   gu.top.value.copy(lin(L.top)); gu.mid.value.copy(lin(L.mid)); gu.hor.value.copy(fogC); gu.sunDir.value.copy(d); gu.sunCol.value.setRGB(L.sun[0] * 0.5, L.sun[1] * 0.5, L.sun[2] * 0.5); gu.flash.value = flashK;
+  gu.discA.value = Math.cos(((L.disc ?? 0.35) * Math.PI) / 180); gu.discK.value = L.discK ?? 1.5;
   // IBL
   const key = [L.sky, L.top, L.mid, L.hor, q4(L.az, 15), q4(L.el, 6), q4(L.turbidity || 0, 2), flashK > 0.3 ? 1 : 0].join("|");
   scene.environment = envFor(key);

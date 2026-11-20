@@ -305,11 +305,11 @@ export const buildWorld = (scene) => {
   phys.material.customProgramCacheKey = () => "physsky";
   const grad = new THREE.Mesh(new THREE.SphereGeometry(4000, 32, 16), new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false,
-    uniforms: { top: { value: new THREE.Color() }, mid: { value: new THREE.Color() }, hor: { value: new THREE.Color() }, sunDir: { value: new THREE.Vector3() }, sunCol: { value: new THREE.Color() }, flash: { value: 0 } },
+    uniforms: { top: { value: new THREE.Color() }, mid: { value: new THREE.Color() }, hor: { value: new THREE.Color() }, sunDir: { value: new THREE.Vector3() }, sunCol: { value: new THREE.Color() }, flash: { value: 0 }, discA: { value: 0.9993 }, discK: { value: 1.5 } },
     vertexShader: "varying vec3 vD; void main(){ vD = normalize(position); vec4 p = projectionMatrix * modelViewMatrix * vec4(position,1.0); gl_Position = p.xyww; }",
-    fragmentShader: `uniform vec3 top; uniform vec3 mid; uniform vec3 hor; uniform vec3 sunDir; uniform vec3 sunCol; uniform float flash; varying vec3 vD;
+    fragmentShader: `uniform vec3 top; uniform vec3 mid; uniform vec3 hor; uniform vec3 sunDir; uniform vec3 sunCol; uniform float flash; uniform float discA; uniform float discK; varying vec3 vD;
     void main(){ float h = clamp(vD.y, 0.0, 1.0); vec3 c = mix(mix(hor, mid, smoothstep(0.0, 0.22, h)), top, smoothstep(0.18, 0.85, h));
-      float s = max(dot(normalize(vD), sunDir), 0.0); c += sunCol * (pow(s, 24.0) * 0.25 + smoothstep(0.9993, 0.9996, s) * 1.5);
+      float s = max(dot(normalize(vD), sunDir), 0.0); c += sunCol * (pow(s, 24.0) * 0.25 + pow(s, 400.0) * 0.4) + sunCol * smoothstep(discA, discA + (1.0 - discA) * 0.12, s) * discK; // sun / moon disc (blooms)
       c += vec3(0.75, 0.8, 1.0) * flash * (0.4 + 0.6 * h); gl_FragColor = vec4(c, 1.0); }`,
   }));
   grad.frustumCulled = false;

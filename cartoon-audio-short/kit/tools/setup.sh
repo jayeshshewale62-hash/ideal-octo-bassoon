@@ -6,7 +6,7 @@ KIT="$(cd "$(dirname "$0")/.." && pwd)"; DST="${1:?usage: setup.sh ~/shorts/<slu
 mkdir -p "$DST"/{web,work,stills,frames,out,audio}
 cpn() { local d="${@: -1}"; for f in "${@:1:$#-1}"; do [ -f "$f" ] && { [ -e "$d/$(basename "$f")" ] || cp "$f" "$d/"; }; done; return 0; } # copy, never overwrite
 cpn "$KIT"/engine/web/* "$DST/web"
-cpn "$KIT"/engine/{render.mjs,timing.py,sheet.py,finish.sh,captions.py,pacing.py,audit.mjs,refscan.py} "$DST"
+cpn "$KIT"/engine/{render.mjs,timing.py,sheet.py,finish.sh,captions.py,pacing.py,audit.mjs,refscan.py,camscan.py} "$DST"
 cpn "$KIT"/engine/audio/*.py "$DST/audio"
 chmod +x "$DST/finish.sh"
 cd "$DST/web"
@@ -15,8 +15,8 @@ cd "$DST/web"
 cat toonbase.js cast.js > toon.js
 cd "$DST"
 if [ ! -e node_modules ]; then G=$(npm root -g); [ -d "$G/playwright" ] && ln -s "$G" node_modules || echo "install playwright: npm i -g playwright && npx playwright install chromium"; fi
-python3 -c "import numpy, scipy, PIL" 2>/dev/null || pip install -q numpy scipy pillow || echo "install python deps: pip install numpy scipy pillow"
+python3 -c "import numpy, scipy, PIL, cv2" 2>/dev/null || pip install -q numpy scipy pillow opencv-python-headless || echo "install python deps: pip install numpy scipy pillow opencv-python-headless"
 ffmpeg -hide_banner -filters 2>/dev/null | grep -q " ass " || echo "WARN: ffmpeg lacks libass (captions cannot be burned in)"
 for f in web/*.js; do node --check "$f" >/dev/null || echo "syntax error: $f"; done
-python3 -m py_compile timing.py sheet.py captions.py pacing.py refscan.py audio/*.py && echo "python ok"
+python3 -m py_compile timing.py sheet.py captions.py pacing.py refscan.py camscan.py audio/*.py && echo "python ok"
 echo "ready: $DST (web/story.js + web/layout.js are the 'Grocer's Rocket Cart' demo: replace layout, shots and audio cues)"

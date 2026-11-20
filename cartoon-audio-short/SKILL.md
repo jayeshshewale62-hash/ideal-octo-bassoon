@@ -1,6 +1,6 @@
 ---
 name: "cartoon-audio-short"
-description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink-outlined bean characters in a realistic PBR 3D world with continuous camera moves, a 5-beat hook-to-payoff story with a 3D cutaway, pop-word captions, and music/SFX locked at -6 dB under the user's voiceover. Offers 10 idea cards, writes the script, then turns the voiceover into a finished MP4. Use for any cartoon short or animated story video request."
+description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink-outlined bean characters in a realistic PBR 3D world with continuous camera moves, a 5-beat hook-to-payoff story with a 3D cutaway, pop-word captions, and a voiceover + SFX soundtrack (no background music) with SFX locked at -6 dB under the user's voice. Offers 10 idea cards, writes the script, then turns the voiceover into a finished MP4. Use for any cartoon short or animated story video request."
 ---
 
 # Vertical cartoon short v2: idea → script → voiceover → finished MP4
@@ -10,7 +10,8 @@ description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink
 **Output and mastering spec (non-negotiable):**
 - 1080x1920 (9:16), strictly 30.00 fps CFR, 58-65 s (1,750-1,950 frames). Script ~180-210 words at ~3.2-3.5 words/s.
 - The voiceover is never edited, re-timed, EQ'd or compressed.
-- Music bed and SFX each locked at **-6.0 dB (50 % gated RMS) vs the voice**; SFX peaks capped below the voice peak (0.7x). Always use `mix.py`.
+- **No background music.** The soundtrack is the voiceover + SFX only (no music bed, no musical stings, no melodic or drum elements).
+- SFX locked at **-6.0 dB (50 % gated RMS) vs the voice**; SFX peaks capped below the voice peak (0.7x). Always use `mix.py voice sfx.wav mix.wav`.
 - Master: **-14.0 LUFS integrated, LRA 2.4-2.9 LU, -1.0 dBFS true-peak ceiling** (`finish_audio.py`, run by `finish.sh`).
 - Pop-word captions are on by default (see 4.8). Turn them off only if the user asks.
 - **Characters are never blurred.** DOF, motion blur and bloom act on the world only; character pixels stay tack-sharp and are never smeared into a blurred background (enforced in `main.js`).
@@ -38,7 +39,29 @@ Measured from the user's reference shorts with `refscan.py` (pacing and look onl
 
 **World + camera (match this):** game-engine-realistic sets (camps, tents with rugs and lanterns, highways, farms, offices, car interiors), soft shadows under every character, practical lights that glow (bloom), cinematic dusk/night grading. The mechanism beat uses an exploded / X-ray view of the object or a driver POV from inside a vehicle; the payoff is a huge explosion or crash.
 
-To analyse new references: `python3 refscan.py ref.mp4 work/ref1` (cuts, static runs, motion per second, caption cadence, colour, loudness + a 1 fps contact sheet), then look at the sheet.
+To analyse new references: `python3 refscan.py ref.mp4 work/ref1` (cuts, static runs, motion per second, caption cadence, colour, loudness + a 1 fps contact sheet) and `python3 camscan.py ref.mp4 work/cam1` (per-frame camera move classes, shot sizes, head placement, horizon, palettes → `report.md`, `timeline.png`), then look at both.
+
+### Camera grammar (camscan.py, 30 fps, both references)
+| Measure | Reference | Engine rule |
+|---|---|---|
+| Move mix (share of frames) | creep 22-26 %, dolly-in 14-23 %, dolly-out 11-12 %, orbit/truck 13-19 %, crane 6-14 %, static 6-12 %, pan 2 %, tilt 2-3 %, roll 2-3 %, whip 0-3 % | the camera travels through the set (dolly / orbit / crane, real parallax); pure pan/tilt in place is rare |
+| Accent cadence | a new 6-8 f move accent every ~21-22 frames (median segment 6-8 f) | `microMoves()` is applied to every shot in `frameState` (accent every ~21 f; `micro: 0` on tracking shots; pass `beats` = word frames to land them on words); `audit.mjs` warns if the cadence is > 45 f |
+| Big accents | smoothed speed peaks every 51-111 f | pattern interrupt every 60-90 f (whip, scale change, impact, light shift) |
+| Direction | push-ins outnumber pull-outs (19-31 % vs 15-17 % of frames) | net dolly-in bias; pull-outs reveal |
+| Speed | median ~0.35 % of frame width per frame, p90 1.2-2.3 %, p99 3-6 % | creep + accents; whips only for transitions |
+| Shot length | 7-20 s between hard cuts | one continuous camera per location |
+| Framing | heads centred (x ≈ 52 %, p25-p75 35-64 %), head top at 36-46 % of frame height; head height median 10 % (camp, MCU/MS) and 5 % (road, FS/WS) | `heroCam(target, {size, yawDeg})` and `distFor(size, fov)`: MCU 12 %, MS 8 %, FS 4.5 %, WS 2.5 % of frame height |
+| Camera height | horizon at 43-44 % of frame height (p25-p75 35-54 %): eye-level / slightly high camera looking a little down | camera ~1.3-1.6 m (character chest/eye height), aim at head height |
+
+### World + colour palette (camscan.py)
+| Look | Sky | Ground | Accents | Luminance p50 / sat | Preset |
+|---|---|---|---|---|---|
+| Moonlit camp / night | #1e263d-#363f58 (navy) | #5b3e31-#76482b (firelit earth) | cream heads #f0e0d0, fire #a5612d-#d99654, big blooming moon | 40-66 / 90-120 | `moonCamp` (+ lanterns / fires as practicals) |
+| Tent interior | warm mauve #796465-#927469 | rug red #7b302b | warm R-B +27..+35 | 80-97 / 90-100 | warm practicals, `golden`-like key |
+| Bright day / road | #7bb1e3-#9cb1d0 over #c9cdd6 haze | grass #3d582b / #5d8728 / #a0ad36, asphalt #9f9fa3 | red / yellow props, white cumulus | 110-160 / 70-90 | `brightDay` |
+| Storm / car night | #2c3035-#444f5d | #292a2f | headlight cream, red tail-lights | 45-78 / 45-60 | `stormyRoad` |
+| Payoff explosion | warm grey #8c8c99 | sunlit #8a7a68 | fireball #ecbd7a | 146 / 56 | explosion + flash + bloom |
+Every world shot has a warm/cool split: cool sky / ambience against warm practical light on the ground and the props. Midtones stay dark at night (characters still read: card floor 62 %).
 
 ## Stage 1: Intake (always first)
 If an audio file is already attached, skip to Stage 4 (use a script if given). Otherwise ask one AskUserQuestion: **"Where are you starting from?"**
@@ -106,6 +129,7 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 - Register wall AABBs in `walls` so cards near them get the bigger depth pull automatically.
 
 ### 4.4 Lighting presets (`web/lighting.js`) + VFX (`web/vfx.js`)
+- **brightDay** (reference day palette, vivid blue gradient sky) and **moonCamp** (reference night: navy sky, big blooming moon, warm practicals) were built from the camscan measurements.
 - **crispDay**: physical Sky shader, high sun, HemisphereLight sky/ground bounce, light haze, dry ground.
 - **nightRain**: moon key + warm PointLight lanterns (pool of 6 nearest the action, flicker), wet ground (roughness 0.22) with specular streaks, rain streaks, blue fog.
 - **stormyRoad**: low storm key, SpotLight headlights (+ faint volumetric cones in rain), lightning flashes (`strikes: [f...]`), heavy rain, wet asphalt.
@@ -136,8 +160,8 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 3. **Send the sheet + the audit summary to the user**, then start the full render.
 
 ### 4.8 Sound + captions
-- Rewrite the cue table at the top of `audio/audio.py` (frames at 30 fps: whooshes on whips, rain bed, thunder on strikes, splashes, rattles, fuse fizz, launch, pops, final boom); the synths stay. Music stops before the cutaway question (drone + timpani roll), returns for the payoff, and ends on the last word.
-- In `audio/`: `python3 audio.py ../voice.mp3 .` then `python3 mix.py ../voice.mp3 music.wav sfx.wav mix.wav`. It must print music **-6.00 dB** and sfx **-6.0 dB** vs voice and SFX peak ≤ 0.70x voice peak (exit code 2 otherwise: add a low bed to an all-hits SFX stem).
+- Rewrite the cue table at the top of `audio/audio.py` (frames at 30 fps: whooshes on whips and camera accents, location ambience beds, thunder on strikes, splashes, rattles, fuse fizz, launch, pops, final boom); the synths stay. **No music:** the mystery beat gets tension from SFX (a low wind swell, a fuse fizz, silence before the reveal), and the last word lands on the biggest SFX hit.
+- In `audio/`: `python3 audio.py ../voice.mp3 .` (writes `sfx.wav` only) then `python3 mix.py ../voice.mp3 sfx.wav mix.wav`. It must print sfx **-6.0 dB** vs voice and SFX peak ≤ 0.70x voice peak (exit code 2 otherwise: raise the ambience bed a little). The old 3-stem call ignores a music file with a note.
 - Captions: `finish.sh` runs `captions.py work/words.json out/captions.ass` automatically: bold white sans (Inter ExtraBold; `CAPTION_FONT=...` to change), **one word per card** (a 1-3 letter word pairs with its neighbour, as in the references), thick black outline + shadow, centred at y = 70 % (1344 px), 92 % → 100 % scale pop over 40 ms, snapped to 30 fps word timestamps, then burned in with libass.
 - Lock picture timing before sound; any timing change means re-running audio.py, mix.py and captions.
 
@@ -160,6 +184,6 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 ## Architecture (kit/engine)
 - `web/index.html` (importmap: `three`, `three/addons/`) → `main.js` (renderer, lights, IBL, cards, FX, post; `window.renderFrame(f)`).
 - `web/world.js` (PBR world builder) · `pbr.js` (texture painters + material factories) · `terrain.js` (heightmap) · `layout.js` (story set dressing, metres) · `lighting.js` (presets) · `vfx.js` (particles, rain, shock ring) · `motion.js` (easing, whips, tracking, breathing, shake, shockwave, shell fade, comicAt) · `story.js` (SHOTS, BEATS, WORDS, frameState; Node-importable) · `toonbase.js` + `cast.js` (Pen API from mromidev/claude-animated-shorts toon.ts, MIT, + cast, poses, overlays) · `castdefs.js` · `paint.js` (storybook painters, clouds) · `charsheet.html`.
-- `render.mjs` (Playwright frames / stills / test pages) · `refscan.py` (30 fps reference analysis) · `audit.mjs` (retention audit + stills list) · `pacing.py` (word count / hook lint / duration) · `timing.py` (script-to-voice alignment) · `captions.py` (.ass pop words) · `sheet.py` (contact sheets) · `finish.sh`.
-- `audio/`: `audio.py` (cue table + synths), `mix.py` (-6.0 dB lock + SFX peak cap), `finish_audio.py` (LRA fit, -14 LUFS, -1 dBTP), `dsp.py`, `instruments.py`, `sfx_gen.py` (MIT, mromidev/claude-animated-shorts).
+- `render.mjs` (Playwright frames / stills / test pages) · `refscan.py` + `camscan.py` (30 fps reference analysis: pacing, camera, framing, colour) · `audit.mjs` (retention audit + stills list) · `pacing.py` (word count / hook lint / duration) · `timing.py` (script-to-voice alignment) · `captions.py` (.ass pop words) · `sheet.py` (contact sheets) · `finish.sh`.
+- `audio/`: `audio.py` (SFX cue table + synths, no music), `mix.py` (voice + SFX, -6.0 dB lock + SFX peak cap), `finish_audio.py` (LRA fit, -14 LUFS, -1 dBTP), `dsp.py`, `instruments.py`, `sfx_gen.py` (MIT, mromidev/claude-animated-shorts).
 - `example/rocket_cart/` = the v2 demo script (the engine's `story.js` stages it); `example/mountain_man_v1/` = the original toon-world engine and story, for reference only.

@@ -1,5 +1,5 @@
 #!/bin/bash
-# finish.sh "Title": master audio (-14.0 LUFS, LRA 2.4-2.9 LU, -1.0 dBTP; music/SFX stay locked at -6.0 dB under the
+# finish.sh "Title": master audio = voiceover + SFX only, no music (-14.0 LUFS, LRA 2.4-2.9 LU, -1.0 dBTP; SFX stays locked at -6.0 dB under the
 # untouched voice), burn 30 fps pop-word captions (work/words.json -> out/captions.ass; CAPTIONS=0 to skip), encode
 # 1080x1920 H.264 CRF 17 at a strict constant 30.00 fps + AAC, then QA: format, freeze/black, loudness, qa_sheet.jpg.
 set -e

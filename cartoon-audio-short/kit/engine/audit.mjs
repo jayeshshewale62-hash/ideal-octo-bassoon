@@ -81,11 +81,18 @@ for (const sh of S.SHOTLIST) for (let f0 = sh.a; f0 + 90 <= sh.b; f0 += 15) {
   }
   if (!camMove && !expr && !prop) { issues.push(`shot ${sh.id} f${f0}-f${f0 + 90}: 3 s with no camera move, prop interaction or expression change`); break; }
 }
+// camera accent cadence (reference: a new 6-8 f move accent every ~21 frames; whole-set travel, not pan-in-place)
+const camSpd = st.map((s, f) => (f ? len(sub(s.cam.pos, st[f - 1].cam.pos)) + 0.2 * len(sub(s.cam.look, st[f - 1].cam.look)) : 0));
+const sm = camSpd.map((_, f) => camSpd.slice(Math.max(0, f - 2), f + 3).reduce((x, y) => x + y, 0) / 5);
+const acc = []; for (let f = 2; f < N - 2; f++) if (sm[f] > sm[f - 1] && sm[f] >= sm[f + 1] && sm[f] > 1.3 * Math.min(...sm.slice(Math.max(0, f - 10), f))) acc.push(f);
+const accGap = acc.length > 1 ? acc.slice(1).map((x, i) => x - acc[i]).sort((x, y) => x - y)[Math.floor((acc.length - 1) / 2)] : N;
+if (accGap > 45) warns.push(`camera accents every ${accGap} frames (reference ~21): add microMoves / beat accents`);
 // micro-gags (info)
 const gagShots = S.SHOTLIST.filter((sh) => ["escalation", "payoff"].includes(sh.beat) && st[Math.floor((sh.a + sh.b) / 2)].actors.length >= 3).map((sh) => sh.id);
 
 console.log(`story: ${path.relative(process.cwd(), storyPath)}  ${N} frames = ${(N / FPS).toFixed(2)} s @ 30 fps, ${S.SHOTLIST.length} shots`);
 console.log("beats:", Object.entries(beatsSeen).map(([b, r]) => `${b} ${(r[0] / FPS).toFixed(1)}-${((r[1] + 1) / FPS).toFixed(1)}s`).join(" | "));
+console.log(`camera accents: ${acc.length} (median gap ${accGap} f, reference ~21 f)`);
 console.log(`pattern interrupts: ${ev.length} (median gap ${ev.length > 1 ? ev.slice(1).map((e, i) => e[0] - ev[i][0]).sort((a, b) => a - b)[Math.floor((ev.length - 1) / 2)] : "-"} frames); background-gag shots: ${gagShots.join(", ") || "none"}`);
 for (const w of warns) console.log("WARN ", w);
 for (const e of issues) console.log("FLAG ", e);
