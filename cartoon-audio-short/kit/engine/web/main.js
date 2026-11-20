@@ -1,6 +1,6 @@
 // Engine v2: realistic PBR 3D world + cleanly integrated 2D ink cards. Exposes window.renderFrame(f) for render.mjs.
-// Passes: colour (PBR, PCF soft shadows, IBL from the sky) -> normal+depth -> grade (+ optional world ink) ->
-//         camera motion blur (depth reprojection) -> lens DOF -> screen. 1080 x 1920, 30 fps, every value a pure
+// Passes: colour (PBR, PCF soft shadows, IBL from the sky) -> normal+depth -> bloom (world only) -> grade (+ optional world ink) ->
+//         camera motion blur (depth reprojection) -> lens DOF -> screen. Characters are never blurred, bloomed or clipped. 1080 x 1920, 30 fps, every value a pure
 //         function of the frame (story.js frameState).
 import * as THREE from "three";
 import * as T from "./toon.js";
@@ -74,7 +74,7 @@ const ndCardMat = (map, pullU) => new THREE.ShaderMaterial({
 });
 const WRAP_LAMBERT = THREE.ShaderChunk.lights_lambert_pars_fragment.replace(
   "float dotNL = saturate( dot( geometryNormal, directLight.direction ) );",
-  "float dotNL = saturate( 0.78 + 0.22 * dot( geometryNormal, directLight.direction ) ); // wrapped: flat cards never go black");
+  "float dotNL = saturate( 0.88 + 0.12 * dot( geometryNormal, directLight.direction ) ); // wrapped: flat cards never go black");
 const getCard = (id, DW, DH) => {
   let c = cards.get(id);
   if (c && c.DW === DW && c.DH === DH) return c;
@@ -92,7 +92,7 @@ const getCard = (id, DW, DH) => {
       .replace("#include <project_vertex>", "#include <project_vertex>\n{ float d = length(mvPosition.xyz); mvPosition.xyz *= max(0.15, (d - uPull) / d); gl_Position = projectionMatrix * mvPosition; }");
     sh.fragmentShader = sh.fragmentShader.replace("#include <common>", "#include <common>\nuniform float uGain;")
       .replace("#include <lights_lambert_pars_fragment>", WRAP_LAMBERT)
-      .replace("#include <opaque_fragment>", "outgoingLight *= uGain;\n#include <opaque_fragment>");
+      .replace("#include <opaque_fragment>", "outgoingLight = min(max(outgoingLight * uGain, diffuseColor.rgb * 0.62), vec3(0.93)); // never clips or blooms: characters stay crisp\n#include <opaque_fragment>");
   };
   const mesh = new THREE.Mesh(geo, mat);
   mesh.rotation.order = "YXZ"; mesh.castShadow = true; mesh.receiveShadow = true;
@@ -138,6 +138,9 @@ const rtColor = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType, s
 const rtND = new THREE.WebGLRenderTarget(W, H, { type: THREE.FloatType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
 const rtPost = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType });
 const rtMB = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType });
+// bloom on practicals (lanterns, headlights, fire, explosions, moon): bright-pass at 1/4 res + separable gaussian
+const BW = W / 4, BH = H / 4;
+const rtB1 = new THREE.WebGLRenderTarget(BW, BH, { type: THREE.HalfFloatType }), rtB2 = new THREE.WebGLRenderTarget(BW, BH, { type: THREE.HalfFloatType });
 const ndWorld = new THREE.ShaderMaterial({
   side: THREE.DoubleSide,
   vertexShader: "varying vec3 vN; varying float vZ; void main(){ vN = normalize(normalMatrix * normal); vec4 mv = modelViewMatrix * vec4(position,1.0); vZ = -mv.z; gl_Position = projectionMatrix * mv; }",
@@ -148,21 +151,29 @@ const ndAlpha = (map) => { let m = ndAlphaCache.get(map); if (!m) { m = new THRE
   vertexShader: "varying vec3 vN; varying float vZ; varying vec2 vUv; void main(){ vUv = uv; vN = normalize(normalMatrix * normal); vec4 mv = modelViewMatrix * vec4(position,1.0); vZ = -mv.z; gl_Position = projectionMatrix * mv; }",
   fragmentShader: "uniform sampler2D map; varying vec3 vN; varying float vZ; varying vec2 vUv; void main(){ if (texture2D(map, vUv).a < 0.5) discard; gl_FragColor = vec4(normalize(vN), vZ); }" }); ndAlphaCache.set(map, m); } return m; };
 const FSV = "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }";
+const brightMat = new THREE.ShaderMaterial({ uniforms: { tColor: { value: rtColor.texture }, tND: { value: rtND.texture }, thr: { value: 1.0 }, texel: { value: new THREE.Vector2(1 / W, 1 / H) } }, vertexShader: FSV,
+  fragmentShader: `uniform sampler2D tColor; uniform sampler2D tND; uniform float thr; uniform vec2 texel; varying vec2 vUv;
+  void main(){ vec3 c = vec3(0.0); for (int i = 0; i < 4; i++) { vec2 o = vec2(float(i - (i / 2) * 2), float(i / 2)) * 2.0 - 1.0; vec2 uv = vUv + o * texel * 1.5; vec4 nd = texture2D(tND, uv);
+      if (!(nd.a > 0.0 && dot(nd.xyz, nd.xyz) < 0.25)) c += texture2D(tColor, uv).rgb; } c *= 0.25; // characters never feed the bloom
+    float l = max(c.r, max(c.g, c.b)); gl_FragColor = vec4(c * smoothstep(thr, thr * 1.6, l), 1.0); }` });
+const blurMat = new THREE.ShaderMaterial({ uniforms: { tSrc: { value: null }, dir: { value: new THREE.Vector2() } }, vertexShader: FSV,
+  fragmentShader: `uniform sampler2D tSrc; uniform vec2 dir; varying vec2 vUv;
+  void main(){ vec3 c = texture2D(tSrc, vUv).rgb * 0.1585; for (int i = 1; i < 9; i++) { float w = exp(-float(i * i) / 18.0) * 0.1585; c += (texture2D(tSrc, vUv + dir * float(i)).rgb + texture2D(tSrc, vUv - dir * float(i)).rgb) * w; } gl_FragColor = vec4(c, 1.0); }` });
 const fsScene = new THREE.Scene(), fsCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 const fsQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2)); fsQuad.frustumCulled = false; fsScene.add(fsQuad);
 // grade: exposure, optional world ink (inkK, 0 for realistic worlds), saturation, lift/gain, filmic shoulder, vignette, flash
 const gradeMat = new THREE.ShaderMaterial({
   uniforms: {
-    tColor: { value: rtColor.texture }, tND: { value: rtND.texture }, texel: { value: new THREE.Vector2(1 / W, 1 / H) }, px: { value: PX },
+    tColor: { value: rtColor.texture }, tND: { value: rtND.texture }, tBloom: { value: rtB1.texture }, bloomK: { value: 0.6 }, texel: { value: new THREE.Vector2(1 / W, 1 / H) }, px: { value: PX },
     inkCol: { value: new THREE.Color(0x0b0a0c) }, fogCol: { value: new THREE.Color() }, sat: { value: 1.05 }, expo: { value: 1 },
     lift: { value: new THREE.Vector3() }, gain: { value: new THREE.Vector3(1, 1, 1) }, vign: { value: 0.18 }, flash: { value: 0 }, inkK: { value: 0 },
   },
   vertexShader: FSV,
-  fragmentShader: `uniform sampler2D tColor; uniform sampler2D tND; uniform vec2 texel; uniform float px; uniform vec3 inkCol; uniform vec3 fogCol;
+  fragmentShader: `uniform sampler2D tColor; uniform sampler2D tND; uniform sampler2D tBloom; uniform float bloomK; uniform vec2 texel; uniform float px; uniform vec3 inkCol; uniform vec3 fogCol;
   uniform float sat; uniform float expo; uniform vec3 lift; uniform vec3 gain; uniform float vign; uniform float flash; uniform float inkK; varying vec2 vUv;
   vec3 shoulder(vec3 x){ return mix(x, 0.8 + 0.32 * (1.0 - exp(-(x - 0.8) / 0.32)), step(0.8, x)); }
   void main(){
-    vec3 c = texture2D(tColor, vUv).rgb * expo;
+    vec3 c = (texture2D(tColor, vUv).rgb + texture2D(tBloom, vUv).rgb * bloomK) * expo;
     if (inkK > 0.0) {
       vec4 nd = texture2D(tND, vUv); float zc = nd.a > 0.0 ? nd.a : 1e5; float ink = 0.0;
       if (dot(nd.xyz, nd.xyz) > 0.25 && zc < 4000.0) {
@@ -195,17 +206,19 @@ const mbMat = new THREE.ShaderMaterial({
   fragmentShader: `uniform sampler2D tColor; uniform sampler2D tND; uniform vec2 texel; uniform mat4 projInv; uniform mat4 camWorld; uniform mat4 prevVP; uniform float amt; varying vec2 vUv;
   void main(){
     vec3 c0 = texture2D(tColor, vUv).rgb;
-    if (amt <= 0.001) { gl_FragColor = vec4(c0, 1.0); return; }
-    float z = texture2D(tND, vUv).a; z = z > 0.0 ? z : 3000.0;
+    vec4 nd0 = texture2D(tND, vUv);
+    if (amt <= 0.001 || (nd0.a > 0.0 && dot(nd0.xyz, nd0.xyz) < 0.25)) { gl_FragColor = vec4(c0, 1.0); return; } // characters: no blur
+    float z = nd0.a; z = z > 0.0 ? z : 3000.0;
     vec4 v = projInv * vec4(vUv * 2.0 - 1.0, 1.0, 1.0); v.xyz /= v.w;
     vec3 vp = v.xyz / -v.z * z;
     vec4 pc = prevVP * (camWorld * vec4(vp, 1.0));
     vec2 vel = (vUv - (pc.xy / pc.w * 0.5 + 0.5)) * amt;
     float lp = length(vel / texel); if (lp > 48.0) vel *= 48.0 / lp;
     if (lp < 0.7) { gl_FragColor = vec4(c0, 1.0); return; }
-    vec3 acc = vec3(0.0);
-    for (int i = 0; i < 14; i++) { float t = float(i) / 13.0 - 0.5; acc += texture2D(tColor, vUv - vel * t).rgb; }
-    gl_FragColor = vec4(acc / 14.0, 1.0);
+    vec3 acc = c0; float ws = 1.0;
+    for (int i = 0; i < 14; i++) { float t = float(i) / 13.0 - 0.5; vec2 uv = vUv - vel * t; vec4 nds = texture2D(tND, uv);
+      if (nds.a > 0.0 && dot(nds.xyz, nds.xyz) < 0.25) continue; acc += texture2D(tColor, uv).rgb; ws += 1.0; }
+    gl_FragColor = vec4(acc / ws, 1.0);
   }`,
 });
 const dofMat = new THREE.ShaderMaterial({
@@ -213,16 +226,19 @@ const dofMat = new THREE.ShaderMaterial({
   vertexShader: FSV,
   fragmentShader: `uniform sampler2D tColor; uniform sampler2D tND; uniform vec2 texel; uniform float focus; uniform float cInf; uniform float cMax; varying vec2 vUv;
   float coc(float z){ z = z > 0.0 ? z : 1e5; return min(cMax, cInf * abs(1.0 - focus / max(z, 0.05))); }
+  bool isCard(vec4 nd){ return nd.a > 0.0 && dot(nd.xyz, nd.xyz) < 0.25; } // cards write rgb 0 + depth in the ND pass
   vec3 enc(vec3 c){ c = clamp(c, 0.0, 1.0); return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }
   void main(){
     vec3 c0 = texture2D(tColor, vUv).rgb;
-    float cc = coc(texture2D(tND, vUv).a);
-    if (cInf < 0.3 || cc < 0.6) { gl_FragColor = vec4(enc(c0), 1.0); return; }
+    vec4 nd0 = texture2D(tND, vUv);
+    float cc = coc(nd0.a);
+    if (cInf < 0.3 || cc < 0.6 || isCard(nd0)) { gl_FragColor = vec4(enc(c0), 1.0); return; } // characters stay tack-sharp
     vec3 acc = c0; float ws = 1.0;
     for (int i = 0; i < 48; i++) {
       float fi = float(i) + 0.5, r = sqrt(fi / 48.0) * cc, a = fi * 2.39996;
       vec2 uv = vUv + vec2(cos(a), sin(a)) * r * texel;
-      float w = clamp(coc(texture2D(tND, uv).a) - r + 1.0, 0.0, 1.0);
+      vec4 nds = texture2D(tND, uv);
+      float w = isCard(nds) ? 0.0 : clamp(coc(nds.a) - r + 1.0, 0.0, 1.0); // no character colour bleeds into the bokeh
       vec3 s = texture2D(tColor, uv).rgb; w *= 1.0 + 2.0 * smoothstep(0.85, 1.4, dot(s, vec3(0.333))); // bright bokeh
       acc += s * w; ws += w;
     }
@@ -355,6 +371,13 @@ window.renderFrame = (f) => {
   scene.fog = fog; scene.environment = env;
   for (const [o, m] of swapped) o.material = m;
   for (const o of hidden) o.visible = true;
+  // pass 2b: bloom
+  fsQuad.material = brightMat; renderer.setRenderTarget(rtB1); renderer.render(fsScene, fsCam);
+  for (let k = 0; k < 2; k++) {
+    blurMat.uniforms.tSrc.value = rtB1.texture; blurMat.uniforms.dir.value.set(1.6 / BW, 0); fsQuad.material = blurMat; renderer.setRenderTarget(rtB2); renderer.render(fsScene, fsCam);
+    blurMat.uniforms.tSrc.value = rtB2.texture; blurMat.uniforms.dir.value.set(0, 1.6 / BH); renderer.setRenderTarget(rtB1); renderer.render(fsScene, fsCam);
+  }
+  gradeMat.uniforms.bloomK.value = S.bloom ?? S.light.bloom ?? 0.6;
   // pass 3: grade
   gradeMat.uniforms.flash.value = Math.min(0.9, S.flash || 0); gradeMat.uniforms.vign.value = S.vign ?? 0.18;
   fsQuad.material = gradeMat; renderer.setRenderTarget(rtPost); renderer.render(fsScene, fsCam);

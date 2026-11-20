@@ -7,6 +7,6 @@ realistic PBR 3D world. Demo story: "The Grocer's Rocket Cart" (62 s, 9 shots, a
   painters), `terrain.js`, `layout.js`, `lighting.js` (crispDay, nightRain, stormyRoad, golden, memory), `vfx.js` (sparks, debris, sawdust,
   smoke, explosion, firework, dust, rain, shock ring), `motion.js` (whip-glides, tracking cam, breathing, damped shake, shockwave, shell fade,
   comic overlay timing), `story.js` (demo staging), `toonbase.js` + `cast.js` (Pen API, MIT, + poses and comic overlays), `castdefs.js`, `paint.js`.
-- `engine/`: `render.mjs`, `audit.mjs` (retention audit + stills list), `pacing.py`, `timing.py`, `captions.py` (.ass pop words), `sheet.py`, `finish.sh`.
+- `engine/`: `render.mjs`, `refscan.py` (30 fps reference analysis), `audit.mjs` (retention audit + stills list), `pacing.py`, `timing.py`, `captions.py` (.ass pop words), `sheet.py`, `finish.sh`.
 - `engine/audio/`: `audio.py` (cue table), `mix.py` (-6.0 dB lock), `finish_audio.py` (-14 LUFS, LRA 2.4-2.9, -1 dBTP), synth modules (MIT).
 - `example/rocket_cart/script.txt` (demo narration), `example/mountain_man_v1/` (original toon engine + story, reference only).

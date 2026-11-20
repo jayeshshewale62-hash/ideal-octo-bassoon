@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """captions.py work/words.json out/captions.ass [--font "Inter ExtraBold"] [--max-words 2]
-30 fps pop-word captions: bold white sans, 1-2 words per card, thick black outline + drop shadow, centred in the lower
-third (y = 72 % of 1920 = 1382 px), each card pops 92 % -> 100 % scale over 40 ms. Timings come from the word timestamps
+30 fps pop-word captions: bold white sans, ONE word per card (a short word like "a", "by", "it" pairs with its neighbour; the
+reference shorts change cards every ~11 frames / 0.37 s), thick black outline + drop shadow, centred in the lower
+third (y = 70 % of 1920 = 1344 px), each card pops 92 % -> 100 % scale over 40 ms. Timings come from the word timestamps
 (timing.py or ASR) snapped to 30 fps frame boundaries; cards never overlap and hold until the next card (or 0.5 s max
 over a pause). Grouping: a card is 1 word, or 2 short words (<= 14 chars together) with no punctuation break between.
 Burn in with finish.sh (ffmpeg -vf ass=...)."""
@@ -12,8 +13,8 @@ ap = argparse.ArgumentParser()
 ap.add_argument("words"); ap.add_argument("out")
 ap.add_argument("--font", default="Inter ExtraBold")
 ap.add_argument("--size", type=int, default=96)
-ap.add_argument("--max-words", type=int, default=2)
-ap.add_argument("--y", type=float, default=0.72)
+ap.add_argument("--max-words", type=int, default=2, help="cap; a 2nd word is only added after a short word (a, by, it...)")
+ap.add_argument("--y", type=float, default=0.70)
 ap.add_argument("--upper", action="store_true", help="UPPERCASE cards")
 a = ap.parse_args()
 
@@ -27,7 +28,8 @@ cards, i = [], 0
 while i < len(W):
     grp = [W[i]]
     while (len(grp) < a.max_words and i + len(grp) < len(W) and not re.search(r"[.,!?;:—-]$", grp[-1]["word"])
-           and len(" ".join(g["word"] for g in grp) + W[i + len(grp)]["word"]) <= 14
+           and (len(grp[-1]["word"].strip(".,!?")) <= 3 or len(W[i + len(grp)]["word"].strip(".,!?")) <= 2)
+           and len(" ".join(g["word"] for g in grp) + W[i + len(grp)]["word"]) <= 11
            and W[i + len(grp)]["start"] - grp[-1]["end"] < 0.12):
         grp.append(W[i + len(grp)])
     text = " ".join(re.sub(r"[\"“”]", "", g["word"]) for g in grp).rstrip(",;:")

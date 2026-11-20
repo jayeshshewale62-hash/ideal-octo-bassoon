@@ -5,7 +5,7 @@ description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink
 
 # Vertical cartoon short v2: idea → script → voiceover → finished MP4
 
-**The look:** flat 2D bean-torso / round-head characters with stick limbs and bold black ink outlines, drawn on high-res canvas cards, standing in a **realistic PBR 3D world** (MeshStandardMaterial with procedural albedo + normal + roughness maps, physical sky, fog to the horizon, soft shadows, IBL reflections). The camera never stops moving and never hard-cuts inside a location. Comic overlays (rage eyes, sweat, white-out eyes, impact lines) land on frame-exact beats.
+**The look:** flat 2D characters in the reference style: white round heads, bean torsos in patterned fabric, thin solid-black stick limbs, bold black ink outlines and bold hats, drawn on high-res canvas cards, standing in a **realistic PBR 3D world** (MeshStandardMaterial with procedural albedo + normal + roughness maps, physical sky, fog to the horizon, soft shadows, IBL reflections). The camera never stops moving and never hard-cuts inside a location. Comic overlays (rage eyes, sweat, white-out eyes, impact lines) land on frame-exact beats.
 
 **Output and mastering spec (non-negotiable):**
 - 1080x1920 (9:16), strictly 30.00 fps CFR, 58-65 s (1,750-1,950 frames). Script ~180-210 words at ~3.2-3.5 words/s.
@@ -13,6 +13,7 @@ description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink
 - Music bed and SFX each locked at **-6.0 dB (50 % gated RMS) vs the voice**; SFX peaks capped below the voice peak (0.7x). Always use `mix.py`.
 - Master: **-14.0 LUFS integrated, LRA 2.4-2.9 LU, -1.0 dBFS true-peak ceiling** (`finish_audio.py`, run by `finish.sh`).
 - Pop-word captions are on by default (see 4.8). Turn them off only if the user asks.
+- **Characters are never blurred.** DOF, motion blur and bloom act on the world only; character pixels stay tack-sharp and are never smeared into a blurred background (enforced in `main.js`).
 
 ## Rules
 - Stories, characters and shots are always original. Never recreate another creator's video shot for shot; offer an original take instead.
@@ -20,6 +21,24 @@ description: "Make a 58-65 s vertical (1080x1920, 30 fps) animated short: 2D ink
 - The picture is timed to the voice; every visual reaction lands 0-3 frames before its word.
 - Keep the user informed with a task list. **Always send a stills contact sheet and the audit result before the long render.**
 - Validate before rendering: `node --check` every `web/*.js`, `python3 -m py_compile` every script, `node audit.mjs` clean.
+
+## Reference style (analysed at 30 fps)
+Measured from the user's reference shorts with `refscan.py` (pacing and look only: never copy their stories, shots, characters or text):
+| Metric | Reference | Our rule |
+|---|---|---|
+| Format | 30/1 fps, 59.1-59.5 s, vertical 9:16 | 1080x1920, 30.00 fps CFR, 58-65 s |
+| Hard cuts | 2 and 6 per minute (avg shot 8.5-20 s) | continuous camera; whip-glides inside a location, cuts only for place/time jumps |
+| Static camera | 1.9 % of frames, longest hold 9-13 f | never static 4+ frames (`alive()`), audit flags it |
+| Motion | always moving; spikes on whips and impacts | slow push / orbit / tracking + bursts on beats |
+| Captions | ~1 word per card, a new card every ~11 f (0.37 s), centre, ~70 % height | `captions.py`: one word per card (short words pair up), y = 70 % |
+| Colour | vivid: night = moonlit blue + warm practicals, day = saturated green / blue | presets with sat 1.08-1.16, bloom on practicals |
+| Loudness | -14.0 LUFS, LRA 2.4-2.5 LU, peak ≈ -2 dBFS | -14.0 LUFS, LRA 2.4-2.9 LU, ≤ -1.0 dBTP |
+
+**Character design (match this):** pure white round head (slightly flattened circle) with a thick black outline; minimal face (dot / half-lid eyes, thin arched brows, small mouth, bold black moustache when needed); black hair cap, topknot or a bold hat (wide brim, cap, flat conical kasa); a tall bean torso in **patterned** cloth (stripes, ikat diamonds, check, dots); thin **solid-black** stick arms and legs with tiny black hands and oval feet. Characters are large in frame (MCUs: head in the upper third, torso filling the middle) and always readable: flat-ish lighting with a floor of 62 % of the painted colour, never clipped to white, never bloomed, never blurred. They hold or touch real 3D props (bombs, trays, signs, steering wheels).
+
+**World + camera (match this):** game-engine-realistic sets (camps, tents with rugs and lanterns, highways, farms, offices, car interiors), soft shadows under every character, practical lights that glow (bloom), cinematic dusk/night grading. The mechanism beat uses an exploded / X-ray view of the object or a driver POV from inside a vehicle; the payoff is a huge explosion or crash.
+
+To analyse new references: `python3 refscan.py ref.mp4 work/ref1` (cuts, static runs, motion per second, caption cadence, colour, loudness + a 1 fps contact sheet), then look at the sheet.
 
 ## Stage 1: Intake (always first)
 If an audio file is already attached, skip to Stage 4 (use a script if given). Otherwise ask one AskUserQuestion: **"Where are you starting from?"**
@@ -96,7 +115,7 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 
 ### 4.5 Cast: 2D characters that sit IN the world (`cast.js`, `castdefs.js` → `toon.js`)
 - `bodyFrontX` / `bodySideX` draw on a 600x1000 design canvas (soles at y=975, card 2.25 m tall) at 2.4 px per unit; ink is near-black `#0e0c10`. Wide action poses use a 1000x1150 card (`wide: true`).
-- Outfits are plain objects (top, kurta, pants, shorts, dhoti, sari, pagri, hair, beard, moustache, gamchha, boots, build). Side modes: walk, stand, hammer; `push: true` (both arms forward on a handle), `armsUp: true` (panic / cheer). Front arm poses: hang, point, up, wave, hip, belly, temple, shoulder, chin, knee, pot...
+- Outfits are plain objects (top, kurta, pants, shorts, dhoti, sari, pagri, hair, beard, moustache, gamchha, boots, build). **Reference-style fields:** `skin: "#ffffff"`, `stick: true` (solid-black stick limbs, black hands/feet), `pattern: "stripes" | "ikat" | "check" | "dots"` (+ `patCol`, `patCol2`), `hat: "brim" | "cap" | "kasa" | "topknot"` (+ `hatCol`, `band`). The demo cast in `castdefs.js` uses them. Side modes: walk, stand, hammer; `push: true` (both arms forward on a handle), `armsUp: true` (panic / cheer). Front arm poses: hang, point, up, wave, hip, belly, temple, shoulder, chin, knee, pot...
 - Expressions: toon FACE set + sad, stubborn, strain, soft, squint, mock, worried, calm, **rage, whiteout, smug**.
 - **Comic overlays** (drawn in head space, follow head tilt): `opts.comic = comicAt(f, [{k: "rage" | "sweat" | "whiteout" | "lines" | "steam", f0, f1, ramp}])`: glowing red rage eyes + vein, falling sweat drops, shocked white-out eyes, radiating impact lines, steam puffs.
 - **No "pasted sticker" look** (all automatic in `main.js`): wrapped-Lambert card lighting so cards take the scene light colour (sun, hemisphere, lanterns, headlights) and are normalised so they read at their painted colour; alpha-tested shadow caster (directional shadows on the ground) and shadow receiving; soft contact blob; view-space depth pull 0.3 m default, **0.8 m within 1.5 m of a registered wall** (override with `pull`).
@@ -107,7 +126,8 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 - **Prop / vehicle tracking:** `trackCam(targetAt, f, f0, {offset, lag: 0.08, lookAhead})` for rolling, flying or driving objects; set `mb` 1.2-1.5 for speed.
 - **Never static for 4+ frames:** wrap every camera in `alive(cam, f, {push, amp})` (slow push-in + handheld breathing float), or orbit.
 - **Heavy impacts:** `kicks: [{f, a}]` → 7-frame damped shake (`dampedShake`) + `shockAt: {f, pos, maxR, dur}` expanding ground ring + debris/dust emitter.
-- **Lens:** DOF on close-ups and mediums (`dof: {focus, cInf 8-14}`, bright bokeh), wides sharp; camera motion blur (180° shutter, depth reprojection) on whips and tracking shots.
+- **Lens:** DOF on close-ups and mediums blurs the background only (`dof: {focus, cInf 8-14}`, bright bokeh); wides sharp; camera motion blur (180° shutter, depth reprojection) on whips and tracking shots, background only. Characters are excluded from DOF, motion blur and bloom. Keep impact shakes ≤ 0.03 so the frame never smears.
+- Hit a beat every ~11 frames: something changes on most caption words (an expression, a gesture, a prop move, a camera accent).
 - Characters never freeze: `idle`, `blinkAt`, head bobs on stressed words; actions use anticipation → `back` overshoot → `spring` settle.
 
 ### 4.7 Look check + retention audit (before ANY full render)
@@ -118,7 +138,7 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 ### 4.8 Sound + captions
 - Rewrite the cue table at the top of `audio/audio.py` (frames at 30 fps: whooshes on whips, rain bed, thunder on strikes, splashes, rattles, fuse fizz, launch, pops, final boom); the synths stay. Music stops before the cutaway question (drone + timpani roll), returns for the payoff, and ends on the last word.
 - In `audio/`: `python3 audio.py ../voice.mp3 .` then `python3 mix.py ../voice.mp3 music.wav sfx.wav mix.wav`. It must print music **-6.00 dB** and sfx **-6.0 dB** vs voice and SFX peak ≤ 0.70x voice peak (exit code 2 otherwise: add a low bed to an all-hits SFX stem).
-- Captions: `finish.sh` runs `captions.py work/words.json out/captions.ass` automatically: bold white sans (Inter ExtraBold; `CAPTION_FONT=...` to change), 1-2 words per card, thick black outline + shadow, centred at y = 72 % (1382 px), 92 % → 100 % scale pop over 40 ms, snapped to 30 fps word timestamps, then burned in with libass.
+- Captions: `finish.sh` runs `captions.py work/words.json out/captions.ass` automatically: bold white sans (Inter ExtraBold; `CAPTION_FONT=...` to change), **one word per card** (a 1-3 letter word pairs with its neighbour, as in the references), thick black outline + shadow, centred at y = 70 % (1344 px), 92 % → 100 % scale pop over 40 ms, snapped to 30 fps word timestamps, then burned in with libass.
 - Lock picture timing before sound; any timing change means re-running audio.py, mix.py and captions.
 
 ### 4.9 Render + finish
@@ -127,6 +147,7 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 - Deliver the MP4 with SendUserFile and a few lines per beat. Offer tweaks or the next idea.
 
 ## Engine gotchas (keep them if rebuilding)
+- No-blur contract: cards write rgb 0 + depth into the normal/depth target; DOF and motion blur return the sharp pixel for card pixels and give card samples zero weight when blurring the background; the bloom bright-pass skips card pixels; the card shader clamps output to ≤ 0.93 (never clips) with a 62 % readability floor.
 - Render targets are linear HalfFloat; the DOF pass encodes sRGB at the end. Grade = exposure, optional world ink (`ink`, 0 for realism), saturation, lift/gain, filmic shoulder, vignette, flash.
 - Normal+depth target is FloatType RGBA cleared to alpha 0 (read as far). In that pass: world → normals/depth (alpha-tested materials use a map-aware variant), cards → alpha-tested depth with the same pull, instanced grass / particles / rain / sky / clouds / blobs / beams hidden, fog and shadows off.
 - Card material is MeshLambertMaterial with `lights_lambert_pars_fragment` inlined and its `dotNL` wrapped (0.78 + 0.22·N·L), output multiplied by `uGain` = preset-normalised; shadow lookups use the un-pulled world position so a card never shadows itself.
@@ -139,6 +160,6 @@ Never use MeshToonMaterial or flat colours on world geometry. Build with `PB.pbr
 ## Architecture (kit/engine)
 - `web/index.html` (importmap: `three`, `three/addons/`) → `main.js` (renderer, lights, IBL, cards, FX, post; `window.renderFrame(f)`).
 - `web/world.js` (PBR world builder) · `pbr.js` (texture painters + material factories) · `terrain.js` (heightmap) · `layout.js` (story set dressing, metres) · `lighting.js` (presets) · `vfx.js` (particles, rain, shock ring) · `motion.js` (easing, whips, tracking, breathing, shake, shockwave, shell fade, comicAt) · `story.js` (SHOTS, BEATS, WORDS, frameState; Node-importable) · `toonbase.js` + `cast.js` (Pen API from mromidev/claude-animated-shorts toon.ts, MIT, + cast, poses, overlays) · `castdefs.js` · `paint.js` (storybook painters, clouds) · `charsheet.html`.
-- `render.mjs` (Playwright frames / stills / test pages) · `audit.mjs` (retention audit + stills list) · `pacing.py` (word count / hook lint / duration) · `timing.py` (script-to-voice alignment) · `captions.py` (.ass pop words) · `sheet.py` (contact sheets) · `finish.sh`.
+- `render.mjs` (Playwright frames / stills / test pages) · `refscan.py` (30 fps reference analysis) · `audit.mjs` (retention audit + stills list) · `pacing.py` (word count / hook lint / duration) · `timing.py` (script-to-voice alignment) · `captions.py` (.ass pop words) · `sheet.py` (contact sheets) · `finish.sh`.
 - `audio/`: `audio.py` (cue table + synths), `mix.py` (-6.0 dB lock + SFX peak cap), `finish_audio.py` (LRA fit, -14 LUFS, -1 dBTP), `dsp.py`, `instruments.py`, `sfx_gen.py` (MIT, mromidev/claude-animated-shorts).
 - `example/rocket_cart/` = the v2 demo script (the engine's `story.js` stages it); `example/mountain_man_v1/` = the original toon-world engine and story, for reference only.

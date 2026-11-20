@@ -10,9 +10,10 @@ export const KID = { build: "kid", top: "#f08a2c", short: true, shorts: "#3b5b9a
 export const VIL_4 = { top: "#7b5ac9", kurta: true, dhoti: "#efe8d8", hair: "#231a17", skin: "#b0744a", moustache: "#231a17", barefoot: true };
 export const VIL_5 = { sari: "#c03a5a", border: "#f1c94a", top: "#3f6fb5", skin: "#c99062", hairCol: "#1e1614", barefoot: true };
 
-// ---- v2 demo cast ("The Grocer's Rocket Cart"): generic hill-town, no real people ----
-export const GROCER = { top: "#e8a33a", short: false, pants: "#3c4a6b", boots: "#3a2a20", hair: "#2a1d18", skin: "#d7a06e", moustache: "#2a1d18", gamchha: "#c9452f", build: "stout" };
-export const MAYOR = { top: "#5b3f8f", kurta: true, pants: "#2c2b33", boots: "#16131a", pagri: "#e8c34a", skin: "#c58c5e", moustache: "#1d1514", build: "stout" };
-export const TOWN_1 = { top: "#3f7fb5", pants: "#4b4038", boots: "#2a1f18", hair: "#1f1715", skin: "#b8794c" };
-export const TOWN_2 = { sari: "#2f8f6a", border: "#f1c94a", top: "#c03a5a", skin: "#c99062", hairCol: "#1e1614" };
-export const TOWN_KID = { build: "kid", top: "#e2453c", short: true, shorts: "#2f4f8a", hair: "#1f1715", skin: "#c08454", boots: "#f4f1ea" };
+// ---- v2.1 reference style: white round heads, solid-black stick limbs, patterned torsos, bold hats ----
+const REF = { skin: "#ffffff", stick: true };
+export const GROCER = { ...REF, top: "#3fae9a", pattern: "stripes", patCol: "#2a7d6f", patCol2: "#bfeee2", hair: "#0e0c10", hat: "topknot", moustache: null, build: "stout" };
+export const MAYOR = { ...REF, top: "#7a2f6e", pattern: "ikat", patCol: "#c0353a", patCol2: "#f1c94a", moustache: "#0e0c10", hat: "kasa", hatCol: "#c0353a", band: "#e8c34a", build: "stout" };
+export const TOWN_1 = { ...REF, top: "#c8482f", pattern: "ikat", patCol: "#2a2340", patCol2: "#f4ead8", hat: "brim", hatCol: "#7a5233", band: "#3a2a20" };
+export const TOWN_2 = { ...REF, top: "#e0b84a", pattern: "check", patCol: "#a8452f", hair: "#0e0c10" };
+export const TOWN_KID = { ...REF, build: "kid", top: "#3f7fb5", pattern: "dots", patCol2: "#f4ead8", hat: "cap", hatCol: "#c0353a" };

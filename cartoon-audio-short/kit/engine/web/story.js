@@ -128,10 +128,10 @@ shot("slip", "escalation", 640, 760, (f) => {
   const cam = alive(cam0, f, { seed: 4, push: 0.2, from: 640 }); CAM = cam;
   const fall = easeIn(lin(700, 711, f));
   const actors = [side("grocer", GROCER, g.x, g.z, [g.dx, g.dz], { mode: f < 700 ? "walk" : "stand", phase: walkPhase(sG), push: f < 700, lean0: 8, expr: f < 700 ? "stubborn" : "whiteout", blink: blinkAt(f, 3),
-    comic: comicAt(f, [{ k: "whiteout", f0: 700, f1: 760, ramp: 2 }, { k: "lines", f0: 700, f1: 722, ramp: 2 }]) }, { L, roll: -82 * fall * mirrorOf(cam, [g.dx, g.dz]), lift: -0.7 * fall + (f >= 711 ? 0.06 * Math.exp(-(f - 711) / 3) * Math.sin((f - 711) * 1.8) : 0) })];
+    comic: comicAt(f, [{ k: "whiteout", f0: 700, f1: 760, ramp: 2 }, { k: "lines", f0: 700, f1: 722, ramp: 2 }]) }, { L, roll: -82 * fall * mirrorOf(cam, [g.dx, g.dz]), lift: 0.14 * fall + (f >= 711 ? 0.06 * Math.exp(-(f - 711) / 3) * Math.sin((f - 711) * 1.8) : 0) })];
   const flash = f < 646 ? [0.6, 0.4, 0.22, 0.1, 0.04, 0.01][f - 640] : 0;
   const emitters = f >= 711 ? [{ id: "splash1", kind: "debris", f0: 711, at: () => gp(g.x, g.z, 0.1), seed: 5, scale: 0.6, col: [[0.75, 0.82, 0.9], [0.5, 0.58, 0.68]] }] : [];
-  return { cam, L, actors, world: { cart: C }, emitters, flash, cut: f === 640, kicks: [{ f: 711, a: 0.03 }], shockAt: { f: 711, pos: gp(g.x, g.z), maxR: 2.2, dur: 12 },
+  return { cam, L, actors, world: { cart: C }, emitters, flash, cut: f === 640, kicks: [{ f: 711, a: 0.022 }], shockAt: { f: 711, pos: gp(g.x, g.z), maxR: 2.2, dur: 12 },
     dof: { focus: dist(cam.pos, gp(g.x, g.z, 1)), cInf: 9 }, shadow: { c: gp(g.x, g.z), r: 10 } };
 });
 
@@ -167,9 +167,9 @@ shot("van", "escalation", 960, 1140, (f) => {
   const cam = alive(base, f, { seed: 6, amp: 1.8, push: 0.15, from: 1062 }); CAM = cam;
   const dive = smoother(lin(1060, 1076, f)), gx = lerp(3.4, 5.8, dive), gz = lerp(-9 - 6 * lin(960, 1060, f), -21, dive);
   const actors = [side("grocer", GROCER, gx, gz, [0.15, -1], { mode: f < 1060 ? "walk" : "stand", phase: walkPhase(-gz), armsUp: true, stride: 1.2, lean0: 10, expr: f < 1076 ? "shock" : "whiteout", blink: blinkAt(f, 3),
-    comic: comicAt(f, [{ k: "lines", f0: 1076, f1: 1096 }, { k: "whiteout", f0: 1076, f1: 1140 }]) }, { L, roll: -75 * dive * mirrorOf(cam, [0.15, -1]), lift: 0.6 * Math.sin(dive * Math.PI) - 0.68 * (f >= 1076 ? 1 : 0) })];
+    comic: comicAt(f, [{ k: "lines", f0: 1076, f1: 1096 }, { k: "whiteout", f0: 1076, f1: 1140 }]) }, { L, roll: -75 * dive * mirrorOf(cam, [0.15, -1]), lift: 0.6 * Math.sin(dive * Math.PI) + 0.14 * dive })];
   const emitters = f >= 1076 ? [{ id: "puddle", kind: "debris", f0: 1076, at: () => gp(5.8, -21, 0.1), seed: 8, scale: 0.9, col: [[0.8, 0.86, 0.94], [0.45, 0.52, 0.62]] }] : [];
-  return { cam, L, actors, world: { cart: C, van }, emitters, kicks: [{ f: 1046, a: 0.025 }, { f: 1076, a: 0.035 }], shockAt: { f: 1076, pos: gp(5.8, -21), maxR: 3.5, dur: 14 }, strikes: [990, 1101],
+  return { cam, L, actors, world: { cart: C, van }, emitters, kicks: [{ f: 1046, a: 0.02 }, { f: 1076, a: 0.025 }], shockAt: { f: 1076, pos: gp(5.8, -21), maxR: 3.5, dur: 14 }, strikes: [990, 1101],
     dof: { focus: dist(cam.pos, C.pos), cInf: 7 }, shadow: { c: [6, 0, -24], r: 18 }, mb: 1.2 };
 });
 
