@@ -60,17 +60,39 @@ uv run studio modules
 uv run studio doctor
 uv run studio config validate | show
 uv run studio schema export [name]
+
+# Milestone 3: characters and rigs (full reference: docs/CHARACTERS.md, docs/RIGGING.md)
+uv run studio character templates
+uv run studio character create projects/demo "Mira Vale" [--template biped-minimal] [--from chr_x]
+uv run studio character list|validate projects/demo [CHARACTER] [--json]
+uv run studio character info projects/demo chr_mira-vale [--json]
+uv run studio character set-part-asset projects/demo chr_mira-vale head ast_… [--view side]
+uv run studio character set-view-artwork projects/demo chr_mira-vale side ast_…
+uv run studio character compare projects/demo chr_mira-vale (--version 1 | --with chr_other)
+uv run studio character rig validate|fk|ik projects/demo chr_mira-vale …
+uv run studio character turnaround validate projects/demo chr_mira-vale
+uv run studio character preview projects/demo chr_mira-vale [--view side] [--rot B=DEG] [--ik CHAIN X Y]
 ```
+
+Exit codes for `character`: `0` ok, `1` invalid or error, `2` usage, `3` IK target not
+reached or joint limits applied (`rig ik`).
 
 Global options: `--config-dir DIR` (default: auto-detect `config/`, or `$STUDIO_CONFIG_DIR`)
 and `-v` for debug logging. Exit codes: `0` ok, `1` validation failure or error, `2` usage.
 
 ## Testing rules
 
+Test files by area: `tests/unit/test_rig_math_fk.py` (affine maths, FK, constraints),
+`test_ik.py` (two-bone IK), `test_rig_validation.py`, `test_characters.py` (creation,
+versions, parts, assets), `test_turnaround_consistency.py` (views, identity, previews),
+`test_examples.py` (docs/examples stay valid), `tests/integration/test_character_cli.py`
+(every `character` command).
+
 - Tests never touch the network: `tests/conftest.py` blocks sockets for every test.
 - Providers in tests are `none` or `mock`. No model weights, no API keys.
 - Fixtures are generated at runtime (`samples` fixture); binary fixtures are not committed.
-- `tests/golden/` will hold reference frames from Milestone 3 onwards.
+- `tests/golden/` will hold reference frames once raster rendering exists (M7/M8). Milestone 3
+  tests rig maths numerically and checks diagnostic SVG structure instead.
 - New code needs tests. A bug fix needs a test that fails before the fix.
 
 ## CI (`.github/workflows/ci.yml`)

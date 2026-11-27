@@ -6,7 +6,7 @@ later milestones can find it without merging whole branches. The full assessment
 
 | Branch | Pinned commit | Path | Status |
 |---|---|---|---|
-| `ccr-f3c28d1b-6ialqh` | `c312cfd16b72dd3f84228cd05aa45206a3bc666b` | `reachmora-2d-longform/` | Reference only: no licence file (see open question) |
+| `ccr-f3c28d1b-6ialqh` | `c312cfd16b72dd3f84228cd05aa45206a3bc666b` | `reachmora-2d-longform/` | **Third-party, no permission: must not be reused** (owner confirmation, M3) |
 | `ccr-5cb67ed4-c3se5u` | `431161b44c11e644e14ee5901d9a9111f245b83d` | `cartoon-audio-short/kit/` | Partly reusable (session-authored tools, MIT third-party parts) |
 
 Read a legacy file without checking the branch out:

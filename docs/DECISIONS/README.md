@@ -13,3 +13,4 @@ the old one.
 | [0005](0005-legacy-reuse-policy.md) | Legacy branches are sources, not architecture | Accepted (M2) |
 | [0006](0006-binary-assets-out-of-git.md) | Binary media stays out of ordinary commits; no LFS yet | Accepted (M2) |
 | [0007](0007-structure-adjustments.md) | Small changes to the requested folder structure | Accepted (M2) |
+| [0008](0008-character-storage-and-rig-conventions.md) | Character storage, versioning, rig/IK conventions, turnaround enum | Accepted (M3) |

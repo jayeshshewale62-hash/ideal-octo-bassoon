@@ -8,9 +8,9 @@ document in sync with it.
 | # | Module | Package | Milestone | Status after M2 |
 |---|---|---|---|---|
 | 1 | Story Development Engine | `studio.story` | M9 | planned |
-| 2 | Character Creation Engine | `studio.characters` | M3 | planned (identity schema exists) |
-| 3 | Character Consistency Manager | `studio.characters` | M8 | planned |
-| 4 | Character Rigging Engine | `studio.rig` | M3 (FK), M5 (IK, deform) | planned |
+| 2 | Character Creation Engine | `studio.characters` | **M3** | **implemented** |
+| 3 | Character Consistency Manager | `studio.characters` | **M3** (metadata), M8 (images) | **partial**: metadata comparison |
+| 4 | Character Rigging Engine | `studio.rig` | **M3** (bones, FK, 2-bone IK, limits), M5 (deformers) | **partial**: deformers deferred |
 | 5 | Facial Expression Engine | `studio.rig` | M4 | planned |
 | 6 | Animation Engine | `studio.animation` | M5 | planned |
 | 7 | Environment Creation Engine | `studio.environments` | M6 | planned (metadata schema exists) |
@@ -22,7 +22,7 @@ document in sync with it.
 | 13 | Video Composition Engine | `studio.compose` | M7 | planned |
 | 14 | Rendering Engine | `studio.render` | M7, M10 | planned (profiles defined) |
 | 15 | Quality Control Engine | `studio.qc` | M8 | planned (project validation exists) |
-| 16 | Asset and Project Manager | `studio.core` | **M2** | **implemented (foundation)** |
+| 16 | Asset and Project Manager | `studio.core` | **M2** | **implemented (foundation)**; validates characters since M3 |
 
 **Architectural rule.** The animation system creates *actual animated character
 movement*: rigs posed frame by frame from editable curves. It is never built on static
@@ -41,6 +41,9 @@ uneditable poses.
 
 ## 2. Character Creation Engine
 
+> **Milestone 3: implemented.** See [CHARACTERS.md](CHARACTERS.md): templates, part hierarchy,
+> turnaround views, versioning, artwork assignment through the Asset Manager, and validation.
+
 - **Purpose:** define **original** characters: layered SVG parts, canonical palette, proportions in head-heights, personality, voice mapping, model sheets.
 - **Technology:** SVG part templates, Python. Optional concept art from module 10 (always redrawn as rig parts, never used as frames).
 - **Inputs → outputs:** character brief + artwork → `assets/characters/<id>/character.yaml` (`CharacterIdentity` schema), `parts.svg`, model sheet.
@@ -49,6 +52,10 @@ uneditable poses.
 
 ## 3. Character Consistency Manager
 
+> **Milestone 3: partial.** Structured identity comparison across views, versions and variants
+> with required / optional / view-specific / variation roles (`studio character compare`).
+> Image-based (golden) checks remain planned for M8. No visual recognition is claimed.
+
 - **Purpose:** lock each character's canonical design and detect drift (identity and version control).
 - **Technology:** golden-image comparison of fixed poses, palette delta-E checks, proportion tolerance from `CharacterProportions.tolerance`. Reference images for AI concept work.
 - **Inputs → outputs:** renders + `character.yaml` → consistency report.
@@ -56,6 +63,10 @@ uneditable poses.
 - **Testing:** golden frames in `tests/golden/`; deliberate off-model fixtures must fail.
 
 ## 4. Character Rigging Engine
+
+> **Milestone 3: partial.** See [RIGGING.md](RIGGING.md): bones, FK, joint limits and analytic
+> two-bone IK are implemented and tested. Mesh/warp deformers, draw-order switches and
+> replacement-part swaps are data fields only until M5.
 
 - **Purpose:** hierarchical bone rigs that pose SVG parts.
 - **Technology:** Python + NumPy transforms. Versioned `rig.json` (data contract in `studio/rig/__init__.py`).

@@ -20,7 +20,9 @@ lip-sync). AI is an optional helper behind replaceable providers.
   anything incomplete), then **stop and wait for the owner's explicit approval** before
   starting the next milestone.
 - Never claim success from an untested assumption. Show the commands and their output.
-- Current milestone: **2 (Foundation)**, complete pending approval. Next: 3 (character core: creation + FK rig).
+- Milestone 2 (Foundation) approved. Current milestone: **3 (characters, consistency, rigging)**,
+  complete pending approval. Next: 4 (facial expressions, voice, alignment). Do not start it
+  without approval.
 
 ## Commands
 ```bash
@@ -51,6 +53,7 @@ uv run studio project validate projects/demo
 ## Git rules
 - Never force-push, rewrite published history, or delete branches.
 - Preserve the legacy branches `ccr-f3c28d1b-6ialqh` and `ccr-5cb67ed4-c3se5u`. Never merge
-  them wholesale. Follow `docs/LEGACY_REUSE.md` and ADR 0005 when adapting a component.
+  them wholesale. **Branch A (ReachMora) is third-party: never copy, adapt or import it.**
+  Follow `docs/LEGACY_REUSE.md` and ADR 0005 when adapting a Branch B component.
 - Focused commits with clear messages. Push only to the assigned working branch.
 - Do not open pull requests unless the owner asks.

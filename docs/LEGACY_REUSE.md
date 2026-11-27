@@ -77,7 +77,23 @@ reason.
 | `web/*.js` (three.js PBR world, toon cards), `render.mjs`, `audit.mjs` | B | Not reused | 3D/PBR WebGL is not the approved direction | Not planned |
 | Fonts | A | Not copied | Not needed yet | M7 (titles) |
 
-## Open question for the repository owner
+## Milestone 3 update: Branch A is third-party and must not be reused
+
+The repository owner confirmed that **"ReachMora 2D Long-Form" (Branch A) is third-party
+code we do not own and have no permission to reuse.** Branch A is therefore strictly
+reference-only: its code, modules, dependencies and internal architecture are not copied,
+adapted, ported, translated or imported. Earlier "revisit" entries for Branch A in the
+table above are cancelled. Those capabilities will only ever be implemented from scratch.
+
+Milestone 3 (characters, rigging, FK/IK, turnarounds, consistency, previews) is **entirely
+original code**:
+- no Branch A or Branch B source was opened while writing it, beyond the Milestone 2
+  inspection recorded above;
+- no Branch B code was reused in Milestone 3;
+- the only legacy-derived code in the repository remains `studio/core/timecode.py` (from
+  Branch B's session-authored `captions.py`, Milestone 2).
+
+## Open question for the repository owner (resolved in Milestone 3)
 
 Branch A's engine has **no licence**, and part of it is adapted from another author's
 skill. Before any Branch A code is adapted, please confirm one of:

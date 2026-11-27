@@ -22,15 +22,17 @@ rendering backends** ([docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)):
 - Optional specialist backends later: Blender Grease Pencil, browser/HyperFrames (titles only).
 - Sixteen modules, from Story Development to the Asset & Project Manager ([docs/MODULES.md](docs/MODULES.md)).
 
-## Status: Milestone 2 (Foundation & Core Infrastructure)
+## Status: Milestone 3 (Characters, Consistency & 2D Rigging)
 
-| Done | Not yet (later milestones) |
-|---|---|
-| Project foundation, `uv` environment, CI | Character artwork, rigs, IK, faces, lip-sync |
-| Config files + validated, versioned schemas | Walk/run cycles and the animation timeline |
-| Asset & Project Manager (module 16) | Scene rendering, composition, storyboards |
-| Provider interfaces with `none`/`mock` | Real AI image/voice generation |
-| `studio` CLI, demo project, tests | Blender, cloud storage, GPU rendering |
+| Implemented | Partial | Not yet (later milestones) |
+|---|---|---|
+| M2 foundation: config, schemas, Asset & Project Manager, providers (`none`/`mock`), CLI, CI | Consistency checks are **metadata only** (no image analysis) | Facial expressions, visemes, lip-sync (M4) |
+| Character definitions, templates (`biped`, `biped-minimal`), versions | Deformers (mesh/warp), part swaps, line boil: **data fields only** | Walk/run cycles, animation timeline (M5) |
+| Part hierarchy, transforms, pivots, visibility, opacity, draw order | | Scenes, camera, storyboards, rendering (M6–M7) |
+| Rig: bones, FK, joint limits, analytic two-bone IK | | Real AI image/voice generation, Blender, GPU |
+| Turnarounds (5 views) under one identity; diagnostic SVG previews | | Any character artwork: none is generated |
+
+Details: [docs/CHARACTERS.md](docs/CHARACTERS.md) and [docs/RIGGING.md](docs/RIGGING.md).
 
 ## Install
 
@@ -52,6 +54,13 @@ uv run studio asset register projects/my-film ~/art/head.svg \
     --name "Hero head" --category character --license proprietary
 uv run studio asset list projects/my-film
 uv run studio providers list
+
+# characters and rigs (Milestone 3)
+uv run studio character create projects/my-film "Mira Vale"
+uv run studio character validate projects/my-film
+uv run studio character rig fk projects/my-film chr_mira-vale --rot upper_arm_l=120
+uv run studio character rig ik projects/my-film chr_mira-vale arm_l --target 150 400
+uv run studio character preview projects/my-film chr_mira-vale --view side --ik arm_l 150 400
 ```
 
 ## CLI overview
@@ -63,6 +72,12 @@ uv run studio providers list
 | `studio asset register PATH FILE` / `add-version` | register files (copied in, never overwritten) and new versions |
 | `studio asset list PATH` / `validate PATH` | list assets / verify files, hashes, references |
 | `studio providers list` | selected providers and the provider catalogue |
+| `studio character templates` / `create` / `list` / `info` / `validate` | create and inspect characters (structure + rig; no artwork) |
+| `studio character set-part-asset` / `set-view-artwork` | attach registered artwork (new character version) |
+| `studio character compare --version N` / `--with ID` | identity-metadata comparison |
+| `studio character rig validate` / `fk` / `ik` | rig checks, forward kinematics, two-bone IK |
+| `studio character turnaround validate` | turnaround views and identity overrides |
+| `studio character preview` | diagnostic SVG (structure only, not artwork or animation) |
 | `studio modules` | the sixteen modules and their status |
 | `studio doctor` | check this machine (Python, FFmpeg, optional skia) |
 | `studio config validate` / `show` | validate / print configuration |
@@ -87,7 +102,10 @@ render-nodes/  future external render workers
 
 ## Current limitations
 
-- No animation, rendering or AI generation exists yet. This milestone is the foundation.
+- No animation over time, video rendering or AI generation exists yet. Characters can be
+  posed (FK/IK) and inspected, but not animated.
+- No character artwork is generated: parts reference artwork you register.
+- Consistency checks compare metadata, not images. Deformers are not evaluated yet.
 - The rendering extra (`uv sync --extra render`) needs the system library `libegl1` on Linux.
 - Binary media (PNG, WAV, …) is git-ignored by default. Object storage arrives in a later milestone.
 - Two reference files from the planning phase (a short video and a PDF guide) are not in the

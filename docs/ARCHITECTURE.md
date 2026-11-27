@@ -18,9 +18,12 @@ providers and rendering backends (Milestone 1, approved for Milestone 2).
 ## Core engine (`studio/`)
 
 One Python package. Its subpackages map onto the sixteen modules (docs/MODULES.md).
-Milestone 2 implements `studio.core` (module 16), the provider contracts and the CLI.
-Every other module package is an explicitly documented placeholder whose docstring states
-its boundary and data contract.
+Milestone 2 implemented `studio.core` (module 16), the provider contracts and the CLI.
+Milestone 3 added `studio.characters` (modules 2 and 3) and `studio.rig` (module 4): character
+definitions, part hierarchies, turnarounds, identity checks, bones, FK, two-bone IK and
+diagnostic SVG previews ([CHARACTERS.md](CHARACTERS.md), [RIGGING.md](RIGGING.md)). The rig
+maths is pure Python and independent of rendering. Every other module package is still an
+explicitly documented placeholder.
 
 Characters will be animated by **deterministic rigs**: SVG parts bound to bones, posed
 from editable curves and rendered by skia on the CPU. The same inputs and engine version
@@ -77,7 +80,8 @@ unregistered files. Problems are reported as coded `ValidationReport` issues (`P
 
 | Later module | Plugs into |
 |---|---|
-| Character creation / rig (2, 4, 5) | `CharacterIdentity` schema; `character` and `data` asset categories; asset dependencies (rig → parts → model sheet) |
+| Face rig (5) | `studio.rig` (bones, constraints), `PartDefinition` swaps/attachments; part bindings to head bones |
+| Animation (6) | `studio.rig.fk.solve_fk(rig, pose)`, `solve_ik_chain`; `BonePose` is the per-frame pose unit |
 | Animation / scene (6, 9) | `scenes/` folder; `studio.core.timecode`; render profile frame rates |
 | Environments (7) | `EnvironmentMetadata` schema; `environment` and `texture` categories |
 | Voice / alignment (11) | `get_provider(ProviderKind.TTS / ASR, …)`; `voice` category |

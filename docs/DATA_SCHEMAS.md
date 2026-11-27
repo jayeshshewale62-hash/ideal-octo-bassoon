@@ -17,8 +17,15 @@ studio schema export character  # one
 | `project` | `ProjectMetadata` | `projects/<slug>/project.yaml` |
 | `project_settings` | `ProjectSettings` | `projects/<slug>/settings.yaml` |
 | `asset_registry` | `AssetRegistryFile` (+ `AssetRecord`, `AssetVersion`) | `projects/<slug>/assets/registry.json` |
-| `character` | `CharacterIdentity` | `assets/characters/<id>/character.yaml` (from M3) |
+| `character` | `CharacterIdentity` | M2 standalone identity model, kept unchanged for compatibility (superseded by `character_definition`) |
 | `environment` | `EnvironmentMetadata` | `assets/environments/<id>/environment.yaml` (from M6) |
+| `character_definition` | `CharacterDefinition` | `projects/<slug>/characters/<id>/character.yaml` (M3) |
+| `character_identity_profile` | `IdentityProfile` | `identity:` block of a character |
+| `character_part` | `PartDefinition` | entries of `parts:` |
+| `turnaround` / `turnaround_view` | `TurnaroundSet` / `ViewDefinition` | `turnaround:` block |
+| `rig` | `RigDefinition` | `projects/<slug>/characters/<id>/rig.yaml` (M3) |
+| `bone` / `joint_constraint` / `ik_chain` | `BoneDefinition` / `JointConstraint` / `IKChain` | entries of `rig.yaml` |
+| `transform_2d` | `Transform2D` | part and bone transforms |
 
 ## Identifiers
 
@@ -114,6 +121,27 @@ default front, three_quarter, side, back), `model_sheet_asset`, `rig_asset`, `vo
 | AST016 | error | file format does not match the registry |
 | AST017 | warning | large binary not approved for git (use object storage) |
 | AST018 | warning | file in `assets/` is not registered |
+
+## Milestone 3: characters and rigs
+
+Full field reference: [CHARACTERS.md](CHARACTERS.md) and [RIGGING.md](RIGGING.md).
+Character and rig models also reject NaN and infinity in every number, and zero scale.
+
+| Identifier | Format | Example |
+|---|---|---|
+| Character | `chr_` + slug (letters, digits, `-`, `_`) | `chr_mira-vale` |
+| Rig | `rig_` + slug (letters, digits, `_`) | `rig_mira_vale` |
+| Part / bone / IK chain / control | lower-case, starts with a letter, `[a-z0-9_]` | `upper_arm_l` |
+
+**Compatibility:** the Milestone 2 schemas are unchanged, apart from one *additive* enum
+value: `TurnaroundView.three_quarter_back`. Existing values keep their meaning
+(`three_quarter` = three-quarter front), so no Milestone 2 file becomes invalid and no
+migration is needed. `CharacterIdentity` (M2) is kept as-is and still exported as
+`character`; new work uses `CharacterDefinition`.
+
+Validation codes for Milestone 3 (CHR, PRT, TRN, RIG, IK) are listed in
+[CHARACTERS.md](CHARACTERS.md#validation-codes-characters-parts-turnarounds) and
+[RIGGING.md](RIGGING.md#validation-codes).
 
 ## Schema evolution
 

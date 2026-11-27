@@ -1,0 +1,341 @@
+schema_version: 1
+id: rig_mira_vale
+version: 1
+character_id: chr_mira-vale
+root: root
+bones:
+- id: root
+  parent: null
+  length: 0.0
+  rest:
+    x: 0.0
+    y: 600.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: true
+  label: ''
+- id: spine
+  parent: root
+  length: 350.0
+  rest:
+    x: 0.0
+    y: 0.0
+    rotation: -90.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -135.0
+    max_rotation: -45.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: neck
+  parent: spine
+  length: 50.0
+  rest:
+    x: 350.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -40.0
+    max_rotation: 40.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: head
+  parent: neck
+  length: 200.0
+  rest:
+    x: 50.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -45.0
+    max_rotation: 45.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: upper_arm_l
+  parent: spine
+  length: 151.2
+  rest:
+    x: 350.0
+    y: 110.0
+    rotation: 180.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: 20.0
+    max_rotation: 340.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: forearm_l
+  parent: upper_arm_l
+  length: 136.8
+  rest:
+    x: 151.2
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: 0.0
+    max_rotation: 150.0
+    locked: false
+    preferred_bend: positive
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: hand_l
+  parent: forearm_l
+  length: 72.0
+  rest:
+    x: 136.8
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -60.0
+    max_rotation: 60.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: upper_arm_r
+  parent: spine
+  length: 151.2
+  rest:
+    x: 350.0
+    y: -110.0
+    rotation: 180.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: 20.0
+    max_rotation: 340.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: forearm_r
+  parent: upper_arm_r
+  length: 136.8
+  rest:
+    x: 151.2
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -150.0
+    max_rotation: 0.0
+    locked: false
+    preferred_bend: negative
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: hand_r
+  parent: forearm_r
+  length: 72.0
+  rest:
+    x: 136.8
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -60.0
+    max_rotation: 60.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: thigh_l
+  parent: root
+  length: 192.0
+  rest:
+    x: 60.5
+    y: 0.0
+    rotation: 90.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: 30.0
+    max_rotation: 150.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: shin_l
+  parent: thigh_l
+  length: 176.0
+  rest:
+    x: 192.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -150.0
+    max_rotation: 0.0
+    locked: false
+    preferred_bend: negative
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: foot_l
+  parent: shin_l
+  length: 32.0
+  rest:
+    x: 176.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -45.0
+    max_rotation: 45.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: thigh_r
+  parent: root
+  length: 192.0
+  rest:
+    x: -60.5
+    y: 0.0
+    rotation: 90.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: 30.0
+    max_rotation: 150.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: shin_r
+  parent: thigh_r
+  length: 176.0
+  rest:
+    x: 192.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -150.0
+    max_rotation: 0.0
+    locked: false
+    preferred_bend: negative
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+- id: foot_r
+  parent: shin_r
+  length: 32.0
+  rest:
+    x: 176.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  constraint:
+    min_rotation: -45.0
+    max_rotation: 45.0
+    locked: false
+    preferred_bend: null
+  inherit_rotation: true
+  inherit_scale: true
+  control: false
+  label: ''
+ik_chains:
+- id: arm_l
+  upper: upper_arm_l
+  lower: forearm_l
+  bend: positive
+  target_control: hand_l_target
+  pole_control: null
+- id: arm_r
+  upper: upper_arm_r
+  lower: forearm_r
+  bend: negative
+  target_control: hand_r_target
+  pole_control: null
+- id: leg_l
+  upper: thigh_l
+  lower: shin_l
+  bend: negative
+  target_control: foot_l_target
+  pole_control: null
+- id: leg_r
+  upper: thigh_r
+  lower: shin_r
+  bend: negative
+  target_control: foot_r_target
+  pole_control: null
+controls:
+- id: hand_l_target
+  kind: ik_target
+  bone: forearm_l
+  position:
+    x: 110.0
+    y: 538.0
+- id: hand_r_target
+  kind: ik_target
+  bone: forearm_r
+  position:
+    x: -110.0
+    y: 538.0
+- id: foot_l_target
+  kind: ik_target
+  bone: shin_l
+  position:
+    x: 60.5
+    y: 968.0
+- id: foot_r_target
+  kind: ik_target
+  bone: shin_r
+  position:
+    x: -60.5
+    y: 968.0
+notes: Generated from the biped template; edit freely.
