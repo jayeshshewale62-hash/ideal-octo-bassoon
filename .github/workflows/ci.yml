@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# No GPU, no paid APIs, no model downloads, no Docker. Packages come from PyPI only.
+jobs:
+  test:
+    name: lint, types, tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies (locked)
+        run: uv sync --locked
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+      - name: Ruff format check
+        run: uv run ruff format --check .
+
+      - name: Type check (mypy strict)
+        run: uv run mypy
+
+      - name: Tests
+        run: uv run pytest
+
+      - name: CLI smoke test
+        run: |
+          uv run studio version
+          uv run studio config validate
+          uv run studio new ci-demo --projects-dir "$RUNNER_TEMP/projects"
+          uv run studio project validate "$RUNNER_TEMP/projects/ci-demo"
+          uv run studio project validate projects/demo
+          uv run studio asset list projects/demo
+          uv run studio providers list
+
+      - name: Build package
+        run: uv build
+
+      - name: Check built wheel installs and runs
+        run: |
+          uv venv "$RUNNER_TEMP/wheel-env"
+          uv pip install --python "$RUNNER_TEMP/wheel-env/bin/python" dist/*.whl
+          "$RUNNER_TEMP/wheel-env/bin/studio" version
+
+  render-extra:
+    name: optional render backend (skia-python, CPU only)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system library needed by skia-python wheels
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libegl1
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install with the render extra (locked)
+        run: uv sync --locked --extra render
+
+      - name: Render backend smoke tests
+        run: uv run pytest -m render -v
+
+      - name: Doctor
+        run: uv run studio doctor
