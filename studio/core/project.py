@@ -255,6 +255,9 @@ def validate_project(root: Path, settings: Settings) -> ValidationReport:
                 PROJECT_FILE,
             )
         validate_assets(root, metadata.id, report)
+        from studio.characters.validation import validate_characters
+
+        validate_characters(root, metadata.id, report)
     return report
 
 

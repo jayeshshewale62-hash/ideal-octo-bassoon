@@ -92,7 +92,7 @@ class StrictModel(BaseModel):
 
 class StudioInfo(StrictModel):
     name: NonEmpty = "Motion Animation Studio"
-    version: NonEmpty = "0.2.0"
+    version: NonEmpty = "0.3.0"
 
 
 class StudioPaths(StrictModel):
@@ -412,9 +412,13 @@ class AssetRegistryFile(StrictModel):
 
 
 class TurnaroundView(StrEnum):
+    """Turnaround views. ``three_quarter`` means three-quarter *front* (Milestone 2 name,
+    kept for compatibility). ``three_quarter_back`` was added in Milestone 3."""
+
     FRONT = "front"
     THREE_QUARTER = "three_quarter"
     SIDE = "side"
+    THREE_QUARTER_BACK = "three_quarter_back"
     BACK = "back"
 
 
