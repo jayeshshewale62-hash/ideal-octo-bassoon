@@ -1,0 +1,81 @@
+# --- Python / tooling -------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Secrets: never commit credentials ---------------------------------------
+.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials*.json
+.claude/settings.local.json
+
+# --- Generated output, caches and model weights ------------------------------
+renders/
+cache/
+.cache/
+/models/
+*.safetensors
+*.ckpt
+*.onnx
+*.gguf
+*.bin
+*.pt
+*.pth
+
+# Per-project generated folders
+projects/*/renders/
+projects/*/cache/
+projects/*/tmp/
+
+# --- Binary media stays out of ordinary commits (docs/DECISIONS/0006) ---------
+# Registries (JSON/YAML) and SVG/text assets are tracked. To commit an approved
+# binary asset, use `git add -f <path>` and record the approval in its registry entry.
+projects/**/*.png
+projects/**/*.jpg
+projects/**/*.jpeg
+projects/**/*.webp
+projects/**/*.psd
+projects/**/*.ora
+projects/**/*.kra
+projects/**/*.wav
+projects/**/*.mp3
+projects/**/*.flac
+projects/**/*.ogg
+assets/**/*.png
+assets/**/*.jpg
+assets/**/*.jpeg
+assets/**/*.webp
+assets/**/*.psd
+assets/**/*.ora
+assets/**/*.kra
+assets/**/*.wav
+assets/**/*.mp3
+assets/**/*.flac
+assets/**/*.ogg
+
+# Video files are never committed (third-party references, renders)
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
+*.prores
+
+# --- OS / editors -------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
