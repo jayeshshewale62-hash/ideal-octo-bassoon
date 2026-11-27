@@ -1,21 +1,24 @@
-"""Module 4 - Character Rigging Engine and 5 - Facial Expression Engine.
+"""Module 4 - Character Rigging Engine (Milestone 3). Module 5 (face) is still planned.
 
-Status: PLANNED for Milestones 3 (FK), 4 (face), 5 (IK/deform). This package is an
-explicit placeholder that marks the module boundary. It contains no implementation
-yet. See docs/MODULES.md.
+Implemented in Milestone 3:
 
-Planned rig data contract (rig.json, versioned):
-    bones        hierarchy with pivots, rest transforms, rotation/scale limits
-    parts        SVG part IDs bound to bones (rigid) or to meshes (deforming)
-    ik_chains    two-bone IK with pole targets and per-chain FK/IK blend
-    deformers    mesh/warp lattices for organic squash and bends
-    draw_order   per-view orders plus keyed draw-order switches
-    swaps        replacement-part sets (hands, mouth shapes, smears, line-boil variants)
-    views        turnaround variants (front / three_quarter / side / back)
+* ``studio.rig.schemas``    versioned rig data contract (bones, rest transforms, joint
+  constraints, two-bone IK chains, control handles) stored as ``rig.yaml``;
+* ``studio.rig.math2d``     pure-Python 2D affine maths and angle helpers;
+* ``studio.rig.fk``         forward kinematics with constraint enforcement;
+* ``studio.rig.ik``         analytic two-bone IK (reach checks, bend/pole, joint limits,
+  degenerate targets);
+* ``studio.rig.validation`` coded rig checks (RIG0xx, IK0xx).
 
-Face rig (module 5): independent eye controls (gaze, pupils, lids, blinks), brows,
-phoneme->viseme mouth sets, cheek deformation, expression presets with smooth blends.
+Deferred (later milestones): mesh/warp deformers, keyed draw-order switches,
+replacement-part swaps, FK/IK blending over time, multi-bone/full-body IK, and the face
+rig (eyes, lids, brows, visemes) of module 5 (Milestone 4).
 
 Rule: animation comes from posing rigs frame by frame. It never comes from static
 images panned by a camera or from per-frame AI images.
+
+Conventions: screen space (+y down), degrees, positive = clockwise on screen. A bone's
+head is its local origin and it points along local +x. See docs/RIGGING.md.
 """
+
+from __future__ import annotations

@@ -94,3 +94,18 @@ class ProviderUnavailableError(ProviderError):
 
 class MissingCredentialsError(ProviderError):
     """The provider needs credentials (environment variables) that are not set."""
+
+
+# --- characters and rigs (Milestone 3) ---------------------------------------------------
+
+
+class CharacterError(StudioError):
+    """A character definition is missing, invalid, or an operation on it is refused."""
+
+
+class CharacterExistsError(CharacterError):
+    """Refusing to create a character whose ID is already used in the project."""
+
+
+class RigError(StudioError):
+    """A rig cannot be evaluated (structural problem) or a rig operation is invalid."""
