@@ -7,12 +7,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
 from studio import MILESTONE, __version__
+from studio.characters.schemas import CHARACTER_SCHEMAS
+from studio.cli_character import register as register_character_commands
 from studio.core.assets import AssetManager
 from studio.core.config import Settings, configure_logging, load_settings
 from studio.core.environment import run_checks
@@ -32,6 +35,7 @@ from studio.modules import MODULES
 from studio.providers import list_providers, provider_status, resolve_selection
 
 Handler = Callable[[argparse.Namespace, Settings], int]
+ALL_SCHEMAS = {**SCHEMAS, **CHARACTER_SCHEMAS}
 
 
 # --- output helpers --------------------------------------------------------------------------
@@ -281,11 +285,13 @@ def cmd_providers_list(args: argparse.Namespace, settings: Settings) -> int:
 
 
 def cmd_schema_export(args: argparse.Namespace, settings: Settings) -> int:
-    names = [args.name] if args.name else sorted(SCHEMAS)
-    unknown = [n for n in names if n not in SCHEMAS]
+    names = [args.name] if args.name else sorted(ALL_SCHEMAS)
+    unknown = [n for n in names if n not in ALL_SCHEMAS]
     if unknown:
-        raise StudioError(f"unknown schema {unknown[0]!r} (known: {', '.join(sorted(SCHEMAS))})")
-    _print_json({n: SCHEMAS[n].model_json_schema() for n in names})
+        raise StudioError(
+            f"unknown schema {unknown[0]!r} (known: {', '.join(sorted(ALL_SCHEMAS))})"
+        )
+    _print_json({n: ALL_SCHEMAS[n].model_json_schema() for n in names})
     return 0
 
 
@@ -295,9 +301,7 @@ def cmd_schema_export(args: argparse.Namespace, settings: Settings) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="studio",
-        description=(
-            "Motion Animation Studio: rig-first 2D animation production (milestone 2 foundation)."
-        ),
+        description=("Motion Animation Studio: rig-first 2D animation production (milestone 3)."),
     )
     parser.add_argument(
         "--config-dir", help="configuration directory (default: auto-detect ./config)"
@@ -392,7 +396,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_schema = add(sub, "schema", lambda a, s: _missing(p_schema), "data schema commands")
     schema = p_schema.add_subparsers(dest="schema_command", metavar="ACTION")
     p = add(schema, "export", cmd_schema_export, "print JSON Schema for the data documents")
-    p.add_argument("name", nargs="?", help=f"one of: {', '.join(sorted(SCHEMAS))}")
+    p.add_argument("name", nargs="?", help=f"one of: {', '.join(sorted(ALL_SCHEMAS))}")
+
+    register_character_commands(sub, add, json_flag, _missing)
     return parser
 
 
@@ -415,6 +421,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     except StudioError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
+    except BrokenPipeError:
+        # Output was piped into a program that stopped reading (e.g. `| head`).
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        return 0
 
 
 if __name__ == "__main__":
