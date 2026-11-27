@@ -1,0 +1,31 @@
+# AI provider selection. Schema: studio.core.schemas.ProvidersConfig (schema_version 1).
+#
+#   provider: none   -> disabled (the default for every kind)
+#   provider: mock   -> deterministic offline stand-in (tests, dry runs)
+#   other names      -> see `studio providers list` (most are planned for later milestones)
+#
+# NEVER put API keys, tokens or passwords in this file. A provider that needs a key reads it
+# from the environment variable(s) named in `credentials_env`. Validation rejects
+# secret-looking option names.
+schema_version: 1
+
+# Providers that need the internet stay unavailable until this is set to true.
+# Changing it needs the repository owner's approval (see CLAUDE.md).
+allow_network: false
+
+image:
+  provider: none
+  options: {}
+  credentials_env: []
+tts:
+  provider: none
+  options: {}
+  credentials_env: []
+asr:
+  provider: none
+  options: {}
+  credentials_env: []
+llm:
+  provider: none
+  options: {}
+  credentials_env: []

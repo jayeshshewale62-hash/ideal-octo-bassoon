@@ -1,0 +1,24 @@
+# Motion Animation Studio: studio-wide configuration.
+# Schema: studio.core.schemas.StudioConfig (schema_version 1). Validate with: studio config validate
+schema_version: 1
+
+studio:
+  name: Motion Animation Studio
+  version: 0.2.0
+
+# Paths are relative to the repository root (the parent of this config/ folder).
+paths:
+  projects_dir: projects
+  assets_dir: assets          # shared studio asset library
+  cache_dir: .cache/studio    # git-ignored
+  output_dir: renders         # git-ignored
+
+project_defaults:
+  render_profile: hd1080p24
+  preview_profile: preview540p12
+  kind: short                 # short | episode | feature
+  language: en
+
+logging:
+  level: INFO                 # DEBUG | INFO | WARNING | ERROR
+  format: "%(levelname)s %(name)s: %(message)s"
