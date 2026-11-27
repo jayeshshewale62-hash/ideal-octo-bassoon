@@ -12,6 +12,8 @@ from enum import StrEnum
 
 class ModuleStatus(StrEnum):
     FOUNDATION = "foundation"  # implemented in Milestone 2
+    IMPLEMENTED = "implemented"  # implemented for its current scope
+    PARTIAL = "partial"  # core implemented; documented parts deferred to a later milestone
     INTERFACES = "interfaces"  # contracts + mocks exist; real implementation later
     PLANNED = "planned"  # documented boundary only
 
@@ -40,24 +42,24 @@ MODULES: tuple[ModuleSpec, ...] = (
         "Character Creation Engine",
         "studio.characters",
         3,
-        ModuleStatus.PLANNED,
+        ModuleStatus.IMPLEMENTED,
         "Original characters: SVG parts, palettes, turnarounds, model sheets",
     ),
     ModuleSpec(
         3,
         "Character Consistency Manager",
         "studio.characters",
-        8,
-        ModuleStatus.PLANNED,
-        "Canonical model sheets, palette and proportion checks, drift detection",
+        3,
+        ModuleStatus.PARTIAL,
+        "Identity metadata comparison (M3); image-based golden checks deferred to M8",
     ),
     ModuleSpec(
         4,
         "Character Rigging Engine",
         "studio.rig",
         3,
-        ModuleStatus.PLANNED,
-        "Bone hierarchy, FK/IK, pivots, limits, draw order, mesh/warp deform",
+        ModuleStatus.PARTIAL,
+        "Bones, FK, two-bone IK, joint limits (M3); mesh/warp deformers deferred to M5",
     ),
     ModuleSpec(
         5,

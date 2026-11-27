@@ -54,6 +54,13 @@ jobs:
           uv run studio project validate projects/demo
           uv run studio asset list projects/demo
           uv run studio providers list
+          P="$RUNNER_TEMP/projects/ci-demo"
+          uv run studio character create "$P" "CI Hero"
+          uv run studio character validate "$P"
+          uv run studio character rig fk "$P" chr_ci-hero --rot upper_arm_l=120
+          uv run studio character rig ik "$P" chr_ci-hero arm_l --target 150 400
+          uv run studio character preview "$P" chr_ci-hero --view side --ik arm_l 150 400
+          uv run studio project validate "$P"
 
       - name: Build package
         run: uv build

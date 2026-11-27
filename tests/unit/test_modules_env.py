@@ -18,10 +18,16 @@ def test_module_packages_exist_and_are_documented() -> None:
         assert package.__doc__ and len(package.__doc__) > 80, m.package
 
 
-def test_only_module_16_is_implemented_in_milestone_2() -> None:
+def test_implemented_modules_match_milestone_3_scope() -> None:
     foundation = [m.number for m in MODULES if m.status is ModuleStatus.FOUNDATION]
     assert foundation == [16]
-    assert all(m.milestone >= 3 for m in MODULES if m.number != 16)
+    started = sorted(
+        m.number for m in MODULES if m.status in (ModuleStatus.IMPLEMENTED, ModuleStatus.PARTIAL)
+    )
+    assert started == [2, 3, 4]  # Milestone 3: characters, consistency, rigging
+    later = [m for m in MODULES if m.number not in (2, 3, 4, 16)]
+    assert all(m.status in (ModuleStatus.PLANNED, ModuleStatus.INTERFACES) for m in later)
+    assert all(m.milestone >= 4 for m in later)
 
 
 def test_modules_doc_mentions_every_module() -> None:
@@ -31,11 +37,9 @@ def test_modules_doc_mentions_every_module() -> None:
 
 
 def test_placeholder_packages_have_no_code() -> None:
-    """Milestone 2 must not implement future modules: placeholders hold only a docstring."""
+    """Future modules stay placeholders: only a docstring (characters/rig are Milestone 3)."""
     for name in (
         "story",
-        "characters",
-        "rig",
         "animation",
         "environments",
         "storyboard",
