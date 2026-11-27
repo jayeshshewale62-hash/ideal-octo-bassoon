@@ -1,0 +1,5 @@
+schema_version: 1
+render_profile: hd1080p24
+preview_profile: preview540p12
+fps_override: null
+providers: {}

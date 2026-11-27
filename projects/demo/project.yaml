@@ -1,0 +1,12 @@
+schema_version: 1
+id: prj_d5e80bb76e6c4232ba836173b764ca67
+slug: demo
+title: Demo Project
+kind: short
+description: 'Milestone 2 demo created with ''studio new demo''. Placeholder only:
+  no artwork or animation yet.'
+language: en
+target_duration_s: null
+created_at: '2026-11-27T17:29:20Z'
+updated_at: '2026-11-27T17:29:20Z'
+studio_version: 0.2.0
