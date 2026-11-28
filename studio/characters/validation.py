@@ -373,6 +373,11 @@ def validate_character_dir(
     elif unassigned:
         report.warning("PRT018", "parts without artwork: " + ", ".join(unassigned), loc)
 
+    from studio.face.validation import validate_character_face  # face rigs (Milestone 4)
+
+    validate_character_face(
+        char_dir, char, report, loc, registry=registry, project_root=project_root
+    )
     _validate_history(char_dir, char, report, rel)
     return char
 

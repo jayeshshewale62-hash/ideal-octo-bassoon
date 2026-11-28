@@ -229,6 +229,7 @@ class CharacterDefinition(GeometryModel):
     parts: list[PartDefinition] = Field(default_factory=list)
     turnaround: TurnaroundSet = Field(default_factory=TurnaroundSet)
     rig: Annotated[str, Field(pattern=r"^rig_[a-z0-9][a-z0-9_]{1,47}$")] | None = None
+    face: Annotated[str, Field(pattern=r"^face_[a-z0-9][a-z0-9_]{1,47}$")] | None = None  # M4
     model_sheet_asset: AssetId | None = None
     provenance: CharacterProvenance
     metadata: dict[Annotated[str, Field(min_length=1, max_length=60)], str | int | float | bool] = (

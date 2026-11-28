@@ -109,3 +109,19 @@ class CharacterExistsError(CharacterError):
 
 class RigError(StudioError):
     """A rig cannot be evaluated (structural problem) or a rig operation is invalid."""
+
+
+# --- faces and lip-sync (Milestone 4) ----------------------------------------------------
+
+
+class FaceError(StudioError):
+    """A facial rig, expression, viseme or lip-sync operation is invalid."""
+
+
+class LipSyncError(FaceError):
+    """Phoneme/viseme events or a lip-sync track are invalid. ``problems`` lists them."""
+
+    def __init__(self, message: str, problems: list[str] | None = None) -> None:
+        self.problems = problems or []
+        detail = "".join(f"\n  - {p}" for p in self.problems)
+        super().__init__(message + detail)

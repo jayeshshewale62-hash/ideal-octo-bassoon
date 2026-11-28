@@ -208,6 +208,7 @@ class CharacterStore:
                 "parts": parts,
                 "turnaround": src.character.turnaround.model_copy(update={"views": views}),
                 "rig": rig.id,
+                "face": None,  # facial rigs are per character; create one with 'studio face create'
                 "model_sheet_asset": None,
                 "provenance": provenance,
             },
