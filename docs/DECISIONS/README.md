@@ -15,3 +15,4 @@ the old one.
 | [0007](0007-structure-adjustments.md) | Small changes to the requested folder structure | Accepted (M2) |
 | [0008](0008-character-storage-and-rig-conventions.md) | Character storage, versioning, rig/IK conventions, turnaround enum | Accepted (M3) |
 | [0009](0009-face-package-and-lipsync-model.md) | Face package, control model, data-driven visemes/maps, lip-sync timing | Accepted (M4) |
+| [0010](0010-animation-engine-design.md) | Animation engine: reuse of rig/face, channels, curves, baked cycles, layers, springs, LBS | Accepted (M5) |

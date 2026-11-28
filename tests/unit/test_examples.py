@@ -65,3 +65,45 @@ def test_example_face_alignment_and_lipsync_are_valid() -> None:
     for svg in ("face-expressions.svg", "face-lipsync-hello.svg"):
         title = ET.fromstring((EXAMPLE / svg).read_text()).find("{http://www.w3.org/2000/svg}title")
         assert title is not None and "DIAGNOSTIC" in title.text
+
+
+def test_example_animations_evaluate() -> None:
+    from studio.animation.evaluator import AnimationContext, CharacterAnimator
+    from studio.animation.mesh import check_mesh
+    from studio.animation.schemas import AnimationClip, AnimationSet, DeformMesh
+    from studio.animation.validation import check_clip_references
+    from studio.face.library import builtin_expression, load_viseme_set
+    from studio.face.schemas import FacialRig, LipSyncTrack
+
+    char = load_model(CharacterDefinition, EXAMPLE / "character.yaml")
+    rig = load_model(RigDefinition, EXAMPLE / "rig.yaml")
+    face = load_model(FacialRig, EXAMPLE / "face.yaml")
+    anim = EXAMPLE / "animations"
+    clips = {p.stem: load_model(AnimationClip, p) for p in sorted((anim / "clips").glob("*.yaml"))}
+    meshes = {p.stem: load_model(DeformMesh, p) for p in sorted((anim / "meshes").glob("*.yaml"))}
+    assert set(clips) == {"greet", "idle", "run", "walk", "wave"}
+    for clip in clips.values():
+        issues = check_clip_references(clip, char, rig, face, None, set(meshes))
+        assert [i for i in issues if i[1] == "error"] == [], clip.id
+    for mesh in meshes.values():
+        assert [i for i in check_mesh(mesh, char, rig) if i[1] == "error"] == []
+    aset = load_model(AnimationSet, anim / "sets" / "performance.yaml")
+    ctx = AnimationContext(
+        character=char,
+        rig=rig,
+        clips=clips,
+        face=face,
+        expressions=builtin_expression,
+        meshes=meshes,
+        lipsync=load_model(LipSyncTrack, EXAMPLE / "hello.lipsync.yaml"),
+        visemes=load_viseme_set(),
+    )
+    animator = CharacterAnimator(ctx, aset)
+    for t in (0.0, 0.3, 0.77, 1.5):
+        state = animator.evaluate(t)
+        assert all(ik["status"] == "reached" and ik["error"] < 1e-6 for ik in state.ik)
+        assert [d for d in state.diagnostics if d.severity == "warning"] == []
+    assert animator.evaluate(0.3).lips is not None
+    for svg in ("anim-walk.svg", "anim-run.svg", "anim-performance.svg"):
+        title = ET.fromstring((EXAMPLE / svg).read_text()).find("{http://www.w3.org/2000/svg}title")
+        assert title is not None and "not animation" in title.text

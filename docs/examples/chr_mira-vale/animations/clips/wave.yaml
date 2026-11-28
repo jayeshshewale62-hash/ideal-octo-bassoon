@@ -1,0 +1,211 @@
+schema_version: 1
+id: wave
+name: Wave
+version: 1
+character_id: chr_mira-vale
+duration: 2.4
+fps: 24.0
+loop:
+  mode: once
+playback:
+  speed: 1.0
+  offset: 0.0
+tracks:
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: upper_arm_l
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.5
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 30.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.9
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 30.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 2.4
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: forearm_l
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.6
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 15.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.8
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 60.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.0
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 15.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.2
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 60.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.4
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 15.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.6
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 60.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.8
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 15.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 2.4
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+events:
+- time: 0.0
+  frame: null
+  kind: gesture_start
+  name: wave_start
+  data: {}
+- time: 1.2
+  frame: null
+  kind: marker
+  name: wave_peak
+  data: {}
+- time: 2.4
+  frame: null
+  kind: gesture_end
+  name: wave_end
+  data: {}
+cycle:
+  kind: wave
+  parameters:
+    side: l
+    waves: 3
+  facing: none
+  speed: 0.0
+  distance_per_cycle: 0.0
+  samples: 0
+tags:
+- gesture
+- wave
+- generated
+metadata: {}

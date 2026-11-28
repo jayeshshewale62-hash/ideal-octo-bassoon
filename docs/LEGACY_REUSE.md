@@ -96,6 +96,9 @@ original code**:
 Milestone 4 (faces, expressions, visemes, phoneme maps, lip-sync, alignment interface) is
 also **entirely original code**. No Branch A or Branch B source was used.
 
+Milestone 5 (animation engine, cycles, springs, meshes, evaluator) is **entirely original
+code**. No Branch A or Branch B source was used.
+
 ## Open question for the repository owner (resolved in Milestone 3)
 
 Branch A's engine has **no licence**, and part of it is adapted from another author's

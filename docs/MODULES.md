@@ -12,7 +12,7 @@ document in sync with it.
 | 3 | Character Consistency Manager | `studio.characters` | **M3** (metadata), M8 (images) | **partial**: metadata comparison |
 | 4 | Character Rigging Engine | `studio.rig` | **M3** (bones, FK, 2-bone IK, limits), M5 (deformers) | **partial**: deformers deferred |
 | 5 | Facial Expression Engine | `studio.face` | **M4** | **implemented**: rigs, expressions, visemes, lip-sync evaluation |
-| 6 | Animation Engine | `studio.animation` | M5 | planned |
+| 6 | Animation Engine | `studio.animation` | **M5** | **implemented**: keyframes, curves, layers, cycles, springs, LBS meshes, unified evaluator |
 | 7 | Environment Creation Engine | `studio.environments` | M6 | planned (metadata schema exists) |
 | 8 | Storyboard Engine | `studio.storyboard` | M6 | planned |
 | 9 | Camera and Scene Engine | `studio.scene` | M6 | planned |
@@ -92,6 +92,13 @@ uneditable poses.
 - **Testing:** viseme coverage for every phoneme class; blink cadence; lip-sync offset ≤ 1 frame on a fixture clip.
 
 ## 6. Animation Engine
+
+
+> **Milestone 5: implemented.** See [ANIMATION.md](ANIMATION.md): typed keyframe tracks, curves,
+> loop/pingpong/once mapping, FK and animated IK through the M3 rig, walk/run/idle/gesture
+> generators, deterministic springs, 2D linear blend skinning, facial and lip-sync integration,
+> layered unified evaluation and diagnostic contact sheets. Timeline editor, physics, motion
+> capture and rendering are not part of it.
 
 - **Purpose:** turn keyed, editable curves into per-frame rig poses.
 - **Capabilities to support:** walk, run and idle cycles; jumping; sitting and standing; turning; reaching; lifting and carrying; secondary motion; overlapping action; follow-through; squash and stretch; holds on ones and twos.

@@ -1,0 +1,82 @@
+schema_version: 1
+id: performance
+name: performance
+version: 1
+character_id: chr_mira-vale
+layers:
+- id: l0_walk
+  clip: walk
+  weight: 1.0
+  mode: override
+  mask:
+  - full
+  order: 0
+  time_offset: 0.0
+  speed: 1.0
+- id: l1_idle
+  clip: idle
+  weight: 0.5
+  mode: additive
+  mask:
+  - upper_body
+  order: 1
+  time_offset: 0.0
+  speed: 1.0
+- id: l2_greet
+  clip: greet
+  weight: 1.0
+  mode: override
+  mask:
+  - face
+  order: 2
+  time_offset: 0.0
+  speed: 1.0
+blend:
+  normalize: false
+lipsync:
+  asset: null
+  path: audio/hello.lipsync.yaml
+  start: 0.0
+  visemes: default
+  enabled: true
+secondary:
+  enabled: true
+  step: 0.008333333333333333
+  window: 2.0
+  springs:
+  - id: hair_lag
+    target_kind: part
+    target: hair
+    driver:
+      bone: head
+      signal: x
+    stiffness: 120.0
+    damping: 12.0
+    mass: 1.0
+    gain: 0.35
+    max_displacement: 20.0
+  - id: ear_l_lag
+    target_kind: part
+    target: ear_l
+    driver:
+      bone: head
+      signal: x
+    stiffness: 120.0
+    damping: 12.0
+    mass: 1.0
+    gain: 0.25
+    max_displacement: 20.0
+  - id: ear_r_lag
+    target_kind: part
+    target: ear_r
+    driver:
+      bone: head
+      signal: x
+    stiffness: 120.0
+    damping: 12.0
+    mass: 1.0
+    gain: 0.25
+    max_displacement: 20.0
+meshes:
+- torso
+view: null

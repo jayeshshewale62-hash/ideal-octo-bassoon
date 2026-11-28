@@ -22,17 +22,17 @@ rendering backends** ([docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)):
 - Optional specialist backends later: Blender Grease Pencil, browser/HyperFrames (titles only).
 - Sixteen modules, from Story Development to the Asset & Project Manager ([docs/MODULES.md](docs/MODULES.md)).
 
-## Status: Milestone 4 (Facial Expressions, Visemes & Lip-Sync Foundation)
+## Status: Milestone 5 (Animation Engine, Motion Systems & Unified Evaluator)
 
 | Implemented | Partial / interface only | Not yet (later milestones) |
 |---|---|---|
-| M2 foundation: config, schemas, Asset & Project Manager, providers, CLI, CI | Consistency checks are **metadata only** | Body animation cycles, timelines (M5) |
-| M3 characters: templates, parts, rig, FK, two-bone IK, turnarounds | Deformers and part swaps: **data fields only** | Scenes, camera, storyboards, rendering (M6–M7) |
-| M4 faces: facial rigs, eye/brow/mouth/jaw controls, 12 + custom expressions, blending | Audio alignment: **provider interface only** (`none`/`mock`); no ASR or forced alignment | Speech recognition, TTS, real AI generation |
-| M4 visemes, phoneme maps, timestamp lip-sync with transitions and coarticulation | Facial artwork is referenced, not deformed or rendered yet | Any generated artwork: none is created |
+| M2 foundation, M3 characters/rig/FK/IK, M4 faces/expressions/visemes/lip-sync | Consistency checks are metadata only | Environments, scenes, camera, storyboards (M6+) |
+| M5 keyframe clips (bone, IK, part, root, face, expression, deform tracks), 8 curve types | Secondary motion: single-axis spring lag | Video composition and rendering |
+| M5 walk, run, idle (breathing, blinks), wave/point/nod, all through the real rig | Mesh deformation: linear blend skinning + blend shapes only | Timeline editor, physics, motion capture |
+| M5 layers (override/additive, masks), unified evaluator, events, contact sheets | Alignment: provider interface only (no ASR) | Speech recognition, TTS, AI generation |
 
 Details: [docs/CHARACTERS.md](docs/CHARACTERS.md), [docs/RIGGING.md](docs/RIGGING.md),
-[docs/FACE.md](docs/FACE.md).
+[docs/FACE.md](docs/FACE.md), [docs/ANIMATION.md](docs/ANIMATION.md).
 
 ## Install
 
@@ -68,6 +68,11 @@ uv run studio face expressions blend projects/my-film chr_mira-vale neutral happ
 uv run studio face phonemes map docs/examples/chr_mira-vale/hello.alignment.json --out hello.lipsync.yaml
 uv run studio face lipsync evaluate hello.lipsync.yaml --time 0.3
 uv run studio face lipsync preview projects/my-film chr_mira-vale hello.lipsync.yaml --sample 0.1
+
+# animation (Milestone 5)
+uv run studio animation cycles generate projects/my-film chr_mira-vale walk
+uv run studio animation evaluate projects/my-film chr_mira-vale --clip walk --time 0.3
+uv run studio animation preview projects/my-film chr_mira-vale --clip walk --sample 0.1
 ```
 
 ## CLI overview
@@ -90,6 +95,10 @@ uv run studio face lipsync preview projects/my-film chr_mira-vale hello.lipsync.
 | `studio face visemes list`, `studio face phonemes maps` / `map` | viseme set, phoneme maps, phoneme → viseme tracks |
 | `studio face lipsync validate` / `evaluate` / `preview` | timestamp lip-sync evaluation and sampled diagnostics |
 | `studio face alignment inspect` / `run` | alignment files; provider-based alignment (disabled by default) |
+| `studio animation create` / `key set` / `key remove` / `events` / `info` / `list` / `validate` | keyframe clips, versioned |
+| `studio animation cycles generate` | walk, run, idle, wave, point, nod (editable clips driving the rig) |
+| `studio animation set create`, `evaluate`, `blend`, `preview` | layered evaluation (body, face, lip-sync, springs, meshes) and contact sheets |
+| `studio animation mesh create` / `validate` / `show` | skinned deformation meshes |
 | `studio modules` | the sixteen modules and their status |
 | `studio doctor` | check this machine (Python, FFmpeg, optional skia) |
 | `studio config validate` / `show` | validate / print configuration |
@@ -114,9 +123,9 @@ render-nodes/  future external render workers
 
 ## Current limitations
 
-- No animation timeline, video rendering or AI generation exists yet. Characters can be
-  posed (FK/IK) and faces evaluated at any time (expressions, lip-sync), but nothing is
-  rendered as video.
+- Characters animate (keyframes, cycles, layers, faces, lip-sync) and can be evaluated at
+  any time, but nothing is rendered as video yet, and there is no graphical timeline editor.
+- Motion cycles are in place and stylized; root travel is recorded for later scene work.
 - Lip-sync needs phoneme timestamps from an alignment file. No speech recognition or
   forced alignment is included, and the `mock` aligner gives word timings only.
 - No character artwork is generated: parts reference artwork you register.

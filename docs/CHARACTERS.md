@@ -33,6 +33,7 @@ projects/<slug>/characters/<character-id>/
     history/character.v1.yaml   earlier versions, written on every change; never overwritten
     history/rig.v1.yaml
     face.yaml, expressions/     facial rig and custom expressions (Milestone 4, see FACE.md)
+    animations/                 clips, sets, meshes (Milestone 5, see ANIMATION.md)
 ```
 
 The `characters/` folder is created on demand, so Milestone 2 projects stay valid without

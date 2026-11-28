@@ -85,6 +85,15 @@ uv run studio face lipsync validate|evaluate TRACK.yaml [--time T | --sample STE
 uv run studio face lipsync preview projects/demo chr_mira-vale TRACK.yaml --sample 0.1
 uv run studio face alignment inspect FILE | run WAV --text "…" [--project P]
 
+# Milestone 5: animation (full reference: docs/ANIMATION.md)
+uv run studio animation cycles generate projects/demo chr_mira-vale walk|run|idle|wave|point|nod
+uv run studio animation create|info|list|validate projects/demo chr_mira-vale …
+uv run studio animation key set|remove projects/demo chr_mira-vale CLIP TARGET --time T …
+uv run studio animation set create projects/demo chr_mira-vale SET --layer CLIP[:W[:MODE[:MASK]]] …
+uv run studio animation evaluate|preview projects/demo chr_mira-vale (--clip C|--set S) --sample 0.1
+uv run studio animation blend projects/demo chr_mira-vale walk run --weight 0.3 --time 0.2
+uv run studio animation mesh create|validate|show projects/demo chr_mira-vale …
+
 Exit codes for `character`: `0` ok, `1` invalid or error, `2` usage, `3` IK target not
 reached or joint limits applied (`rig ik`).
 
@@ -99,7 +108,9 @@ versions, parts, assets), `test_turnaround_consistency.py` (views, identity, pre
 `test_examples.py` (docs/examples stay valid), `tests/integration/test_character_cli.py`
 (every `character` command). Milestone 4: `test_face_rig_expressions.py` (rig, controls,
 expressions, blending), `test_visemes_lipsync.py` (visemes, maps, timing, evaluation,
-alignment providers), `tests/integration/test_face_cli.py` (every `face` command).
+alignment providers), `tests/integration/test_face_cli.py` (every `face` command). Milestone 5: `test_animation_curves_clip.py`,
+`test_animation_evaluator.py`, `test_animation_cycles.py` (gait phases, continuity, measured
+through IK/FK), `tests/integration/test_animation_cli.py` (every `animation` command).
 
 - Tests never touch the network: `tests/conftest.py` blocks sockets for every test.
 - Providers in tests are `none` or `mock`. No model weights, no API keys.

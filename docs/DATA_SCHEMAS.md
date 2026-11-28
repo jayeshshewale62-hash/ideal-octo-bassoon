@@ -162,6 +162,23 @@ Every Milestone 2 and 3 file stays valid, and no migration is needed. The `asr` 
 `AlignmentResult` gains an optional `phonemes` list (default empty). Codes FAC, EXP, BLD
 and LIP are listed in [FACE.md](FACE.md#validation-codes).
 
+## Milestone 5: animation
+
+| Schema name(s) | Model | File |
+|---|---|---|
+| `animation_clip` | `AnimationClip` | `characters/<id>/animations/clips/<clip>.yaml` |
+| `animation_track_{bone,ik,part,root,face,expression,deform}` | typed tracks | entries of `tracks:` |
+| `keyframe`, `transform_keyframe`, `bone_keyframe`, `ik_keyframe`, `control_keyframe`, `expression_keyframe`, `deformation_keyframe` | keyframes | entries of `keys:` |
+| `curve_definition` | `CurveDefinition` | `curve:` of a key |
+| `animation_channel` | `AnimationChannel` | compiled form (inspection) |
+| `animation_event`, `loop_settings`, `playback_settings`, `motion_cycle` | | clip fields |
+| `animation_set`, `animation_layer`, `blend_settings`, `spring_definition` | | `animations/sets/<set>.yaml` |
+| `deform_mesh` | `DeformMesh` | `animations/meshes/<mesh>.yaml` |
+
+**Compatibility:** no Milestone 2-4 schema changed. Validation codes ANM, SET, MSH and EVL
+are documented in [ANIMATION.md](ANIMATION.md). `studio project validate` now also checks
+animations.
+
 ## Schema evolution
 
 Bump `schema_version` when a change is not backwards compatible, and add a migration

@@ -28,6 +28,9 @@ Milestone 4 added `studio.face` (module 5): facial rigs, expressions and blendin
 phoneme mapping and timestamp lip-sync, plus a phoneme-timestamp extension of the `asr`
 provider interface ([FACE.md](FACE.md)). Reference data lives in `studio/face/data/` so it
 can be replaced without code changes.
+Milestone 5 added `studio.animation` (module 6): versioned clips and sets, curves, motion
+cycles, springs, mesh skinning and the unified evaluator `CharacterAnimator`, which calls
+the M3 rig and M4 face code instead of re-implementing it ([ANIMATION.md](ANIMATION.md)).
 
 Characters will be animated by **deterministic rigs**: SVG parts bound to bones, posed
 from editable curves and rendered by skia on the CPU. The same inputs and engine version
@@ -85,7 +88,7 @@ unregistered files. Problems are reported as coded `ValidationReport` issues (`P
 | Later module | Plugs into |
 |---|---|
 | Face (5, M4) | `FacialRig.anchor` on the head part; `FaceState` per moment; `ExpressionTransition`, `LipSyncEvaluator.evaluate(t)` for the animation milestone |
-| Animation (6) | `studio.rig.fk.solve_fk(rig, pose)`, `solve_ik_chain`; `BonePose` is the per-frame pose unit |
+| Scenes, camera, render (7-9, 13-14) | `CharacterAnimator.evaluate(t)` -> `CharacterState` (FK, parts, meshes, face); `MotionCycle.speed` for root travel |
 | Animation / scene (6, 9) | `scenes/` folder; `studio.core.timecode`; render profile frame rates |
 | Environments (7) | `EnvironmentMetadata` schema; `environment` and `texture` categories |
 | Voice / alignment (11) | `get_provider(ProviderKind.TTS / ASR, …)`; `voice` category |
