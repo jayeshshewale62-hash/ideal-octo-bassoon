@@ -3,8 +3,8 @@ id: chr_mira-vale
 name: Mira Vale
 description: 'Example original character: a lighthouse keeper''s apprentice. Structure
   only, no artwork.'
-version: 1
-project_id: prj_d9f129b3f6e8433e9d2dfc84ca25a12f
+version: 2
+project_id: prj_f45e521abf434801b9641fe38fa2592c
 status: concept
 template: biped
 identity:
@@ -714,6 +714,7 @@ turnaround:
     identity_overrides: {}
     notes: ''
 rig: rig_mira_vale
+face: face_mira_vale
 model_sheet_asset: null
 provenance:
   source:
@@ -726,7 +727,7 @@ provenance:
     attribution: ''
     url: ''
     commit_approved: false
-  created_at: '2026-11-27T17:59:36Z'
-  updated_at: '2026-11-27T17:59:36Z'
-  studio_version: 0.2.0
+  created_at: '2026-11-28T02:41:44Z'
+  updated_at: '2026-11-28T02:41:44Z'
+  studio_version: 0.4.0
 metadata: {}

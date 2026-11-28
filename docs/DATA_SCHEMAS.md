@@ -143,6 +143,25 @@ Validation codes for Milestone 3 (CHR, PRT, TRN, RIG, IK) are listed in
 [CHARACTERS.md](CHARACTERS.md#validation-codes-characters-parts-turnarounds) and
 [RIGGING.md](RIGGING.md#validation-codes).
 
+## Milestone 4: faces and lip-sync
+
+| Schema name | Model | File |
+|---|---|---|
+| `facial_rig` | `FacialRig` | `characters/<id>/face.yaml` |
+| `facial_component` / `facial_control` | `FacialComponent` / `FacialChannel` | entries of `face.yaml` |
+| `facial_expression` | `FacialExpression` | `characters/<id>/expressions/<id>.yaml`, built-ins in `studio/face/data/expressions.yaml` |
+| `expression_blend` | `ExpressionBlend` | blend request (a, b, weight, ease) |
+| `viseme` / `viseme_set` | `Viseme` / `VisemeSet` | `studio/face/data/visemes.yaml` or a replacement file |
+| `phoneme_map` | `PhonemeMap` | `studio/face/data/phoneme_maps/*.yaml` or a replacement file |
+| `phoneme_event` / `viseme_event` | `PhonemeEvent` / `VisemeEvent` | entries of alignment documents and tracks |
+| `lipsync_track` | `LipSyncTrack` | `*.lipsync.yaml` |
+| `alignment_result` | `AlignmentDocument` | `*.alignment.json` / `.yaml` |
+
+**Compatibility:** `CharacterDefinition` gains an optional `face` field (default `null`).
+Every Milestone 2 and 3 file stays valid, and no migration is needed. The `asr` provider's
+`AlignmentResult` gains an optional `phonemes` list (default empty). Codes FAC, EXP, BLD
+and LIP are listed in [FACE.md](FACE.md#validation-codes).
+
 ## Schema evolution
 
 Bump `schema_version` when a change is not backwards compatible, and add a migration

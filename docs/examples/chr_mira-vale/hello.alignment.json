@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source": {"provider": "manual", "model": "hand-timed example (not measured from audio)"},
+  "language": "en",
+  "duration": 1.0,
+  "transcript": "hello",
+  "words": [{"word": "hello", "start": 0.1, "end": 0.6}],
+  "phonemes": [
+    {"phoneme": "HH", "start": 0.1, "end": 0.18},
+    {"phoneme": "AH0", "start": 0.18, "end": 0.3},
+    {"phoneme": "L", "start": 0.3, "end": 0.38},
+    {"phoneme": "OW1", "start": 0.38, "end": 0.6}
+  ]
+}

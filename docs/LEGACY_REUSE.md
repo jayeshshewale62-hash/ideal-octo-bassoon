@@ -93,6 +93,9 @@ original code**:
 - the only legacy-derived code in the repository remains `studio/core/timecode.py` (from
   Branch B's session-authored `captions.py`, Milestone 2).
 
+Milestone 4 (faces, expressions, visemes, phoneme maps, lip-sync, alignment interface) is
+also **entirely original code**. No Branch A or Branch B source was used.
+
 ## Open question for the repository owner (resolved in Milestone 3)
 
 Branch A's engine has **no licence**, and part of it is adapted from another author's

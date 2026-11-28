@@ -74,6 +74,17 @@ uv run studio character turnaround validate projects/demo chr_mira-vale
 uv run studio character preview projects/demo chr_mira-vale [--view side] [--rot B=DEG] [--ik CHAIN X Y]
 ```
 
+# Milestone 4: faces and lip-sync (full reference: docs/FACE.md)
+uv run studio face create|info|validate projects/demo chr_mira-vale
+uv run studio face set-asset projects/demo chr_mira-vale mouth ast_… [--shape ai]
+uv run studio face expressions list|create|set|preview|blend projects/demo chr_mira-vale …
+uv run studio face visemes list [--set FILE]
+uv run studio face phonemes maps
+uv run studio face phonemes map ALIGNMENT.json [--map en_arpabet|FILE] [--out TRACK.yaml]
+uv run studio face lipsync validate|evaluate TRACK.yaml [--time T | --sample STEP]
+uv run studio face lipsync preview projects/demo chr_mira-vale TRACK.yaml --sample 0.1
+uv run studio face alignment inspect FILE | run WAV --text "…" [--project P]
+
 Exit codes for `character`: `0` ok, `1` invalid or error, `2` usage, `3` IK target not
 reached or joint limits applied (`rig ik`).
 
@@ -86,7 +97,9 @@ Test files by area: `tests/unit/test_rig_math_fk.py` (affine maths, FK, constrai
 `test_ik.py` (two-bone IK), `test_rig_validation.py`, `test_characters.py` (creation,
 versions, parts, assets), `test_turnaround_consistency.py` (views, identity, previews),
 `test_examples.py` (docs/examples stay valid), `tests/integration/test_character_cli.py`
-(every `character` command).
+(every `character` command). Milestone 4: `test_face_rig_expressions.py` (rig, controls,
+expressions, blending), `test_visemes_lipsync.py` (visemes, maps, timing, evaluation,
+alignment providers), `tests/integration/test_face_cli.py` (every `face` command).
 
 - Tests never touch the network: `tests/conftest.py` blocks sockets for every test.
 - Providers in tests are `none` or `mock`. No model weights, no API keys.

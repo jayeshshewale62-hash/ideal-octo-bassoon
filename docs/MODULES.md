@@ -11,13 +11,13 @@ document in sync with it.
 | 2 | Character Creation Engine | `studio.characters` | **M3** | **implemented** |
 | 3 | Character Consistency Manager | `studio.characters` | **M3** (metadata), M8 (images) | **partial**: metadata comparison |
 | 4 | Character Rigging Engine | `studio.rig` | **M3** (bones, FK, 2-bone IK, limits), M5 (deformers) | **partial**: deformers deferred |
-| 5 | Facial Expression Engine | `studio.rig` | M4 | planned |
+| 5 | Facial Expression Engine | `studio.face` | **M4** | **implemented**: rigs, expressions, visemes, lip-sync evaluation |
 | 6 | Animation Engine | `studio.animation` | M5 | planned |
 | 7 | Environment Creation Engine | `studio.environments` | M6 | planned (metadata schema exists) |
 | 8 | Storyboard Engine | `studio.storyboard` | M6 | planned |
 | 9 | Camera and Scene Engine | `studio.scene` | M6 | planned |
 | 10 | AI Image Generation Engine | `studio.providers.image` | M9 | interfaces + mock |
-| 11 | Voice Generation Engine | `studio.providers.tts` (+ `studio.audio`) | M4 | interfaces + mock |
+| 11 | Voice Generation Engine | `studio.providers.tts` (+ `studio.audio`) | M9+ (TTS); alignment interface M4 | interfaces + mock; phoneme-alignment interface added in M4 |
 | 12 | Audio and Sound Effects Engine | `studio.audio` | M7 | planned |
 | 13 | Video Composition Engine | `studio.compose` | M7 | planned |
 | 14 | Rendering Engine | `studio.render` | M7, M10 | planned (profiles defined) |
@@ -76,6 +76,13 @@ uneditable poses.
 - **Testing:** FK/IK maths unit tests; joint-limit enforcement; pose fuzzing (no detached parts at extreme poses); save/load round trip; golden frames.
 
 ## 5. Facial Expression Engine
+
+
+> **Milestone 4: implemented** in `studio.face`. See [FACE.md](FACE.md): facial rig schema and
+> templates, eye/brow/mouth/jaw/cheek/nose controls, 12 built-in and custom expressions,
+> deterministic blending, an editable viseme set, replaceable phoneme maps, timestamp lip-sync
+> with transitions and coarticulation, and an alignment provider interface. Speech recognition,
+> forced alignment, TTS and artwork rendering are not part of it.
 
 - **Purpose:** expressive faces driven by parameters.
 - **Capabilities to support:** independent eye controls; pupil and gaze direction; eyelids; blinking (with cadence); eyebrows; phoneme→viseme mouth shapes; cheek deformation; expression presets; smooth blends between expressions.

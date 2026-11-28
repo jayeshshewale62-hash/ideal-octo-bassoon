@@ -37,3 +37,31 @@ def test_example_diagnostic_is_labelled() -> None:
     root = ET.fromstring((EXAMPLE / "diagnostic-side.svg").read_text())
     title = root.find("{http://www.w3.org/2000/svg}title")
     assert title is not None and "not artwork, not animation" in title.text
+
+
+def test_example_face_alignment_and_lipsync_are_valid() -> None:
+    from studio.face.alignment import phoneme_events
+    from studio.face.expressions import evaluate_expression
+    from studio.face.library import builtin_expressions, load_phoneme_map, load_viseme_set
+    from studio.face.lipsync import LipSyncEvaluator
+    from studio.face.phonemes import map_phonemes
+    from studio.face.schemas import AlignmentDocument, FacialRig, LipSyncTrack
+    from studio.face.validation import validate_face
+
+    char = load_model(CharacterDefinition, EXAMPLE / "character.yaml")
+    face = load_model(FacialRig, EXAMPLE / "face.yaml")
+    assert char.face == face.id
+    report = ValidationReport("example face")
+    validate_face(face, char, report, "face.yaml")
+    assert report.ok, [str(i) for i in report.errors]
+    for expr in builtin_expressions():
+        assert evaluate_expression(face, expr).issues == []
+    doc = load_model(AlignmentDocument, EXAMPLE / "hello.alignment.json")
+    track = load_model(LipSyncTrack, EXAMPLE / "hello.lipsync.yaml")
+    mapped = map_phonemes(phoneme_events(doc), load_phoneme_map(), load_viseme_set())
+    assert [e.viseme for e in mapped.events] == [e.viseme for e in track.events]
+    state = LipSyncEvaluator(track, load_viseme_set(), face).evaluate(0.5)
+    assert state.viseme == "o"
+    for svg in ("face-expressions.svg", "face-lipsync-hello.svg"):
+        title = ET.fromstring((EXAMPLE / svg).read_text()).find("{http://www.w3.org/2000/svg}title")
+        assert title is not None and "DIAGNOSTIC" in title.text

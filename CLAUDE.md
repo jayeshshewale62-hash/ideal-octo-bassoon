@@ -20,9 +20,9 @@ lip-sync). AI is an optional helper behind replaceable providers.
   anything incomplete), then **stop and wait for the owner's explicit approval** before
   starting the next milestone.
 - Never claim success from an untested assumption. Show the commands and their output.
-- Milestone 2 (Foundation) approved. Current milestone: **3 (characters, consistency, rigging)**,
-  complete pending approval. Next: 4 (facial expressions, voice, alignment). Do not start it
-  without approval.
+- Milestones 2 and 3 approved. Current milestone: **4 (facial rigs, expressions, visemes,
+  lip-sync foundation)**, complete pending approval. Next: 5 (body animation). Do not start
+  it without approval.
 
 ## Commands
 ```bash

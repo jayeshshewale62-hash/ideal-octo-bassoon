@@ -22,17 +22,17 @@ rendering backends** ([docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)):
 - Optional specialist backends later: Blender Grease Pencil, browser/HyperFrames (titles only).
 - Sixteen modules, from Story Development to the Asset & Project Manager ([docs/MODULES.md](docs/MODULES.md)).
 
-## Status: Milestone 3 (Characters, Consistency & 2D Rigging)
+## Status: Milestone 4 (Facial Expressions, Visemes & Lip-Sync Foundation)
 
-| Implemented | Partial | Not yet (later milestones) |
+| Implemented | Partial / interface only | Not yet (later milestones) |
 |---|---|---|
-| M2 foundation: config, schemas, Asset & Project Manager, providers (`none`/`mock`), CLI, CI | Consistency checks are **metadata only** (no image analysis) | Facial expressions, visemes, lip-sync (M4) |
-| Character definitions, templates (`biped`, `biped-minimal`), versions | Deformers (mesh/warp), part swaps, line boil: **data fields only** | Walk/run cycles, animation timeline (M5) |
-| Part hierarchy, transforms, pivots, visibility, opacity, draw order | | Scenes, camera, storyboards, rendering (M6–M7) |
-| Rig: bones, FK, joint limits, analytic two-bone IK | | Real AI image/voice generation, Blender, GPU |
-| Turnarounds (5 views) under one identity; diagnostic SVG previews | | Any character artwork: none is generated |
+| M2 foundation: config, schemas, Asset & Project Manager, providers, CLI, CI | Consistency checks are **metadata only** | Body animation cycles, timelines (M5) |
+| M3 characters: templates, parts, rig, FK, two-bone IK, turnarounds | Deformers and part swaps: **data fields only** | Scenes, camera, storyboards, rendering (M6–M7) |
+| M4 faces: facial rigs, eye/brow/mouth/jaw controls, 12 + custom expressions, blending | Audio alignment: **provider interface only** (`none`/`mock`); no ASR or forced alignment | Speech recognition, TTS, real AI generation |
+| M4 visemes, phoneme maps, timestamp lip-sync with transitions and coarticulation | Facial artwork is referenced, not deformed or rendered yet | Any generated artwork: none is created |
 
-Details: [docs/CHARACTERS.md](docs/CHARACTERS.md) and [docs/RIGGING.md](docs/RIGGING.md).
+Details: [docs/CHARACTERS.md](docs/CHARACTERS.md), [docs/RIGGING.md](docs/RIGGING.md),
+[docs/FACE.md](docs/FACE.md).
 
 ## Install
 
@@ -61,6 +61,13 @@ uv run studio character validate projects/my-film
 uv run studio character rig fk projects/my-film chr_mira-vale --rot upper_arm_l=120
 uv run studio character rig ik projects/my-film chr_mira-vale arm_l --target 150 400
 uv run studio character preview projects/my-film chr_mira-vale --view side --ik arm_l 150 400
+
+# faces and lip-sync (Milestone 4)
+uv run studio face create projects/my-film chr_mira-vale
+uv run studio face expressions blend projects/my-film chr_mira-vale neutral happy --weight 0.5
+uv run studio face phonemes map docs/examples/chr_mira-vale/hello.alignment.json --out hello.lipsync.yaml
+uv run studio face lipsync evaluate hello.lipsync.yaml --time 0.3
+uv run studio face lipsync preview projects/my-film chr_mira-vale hello.lipsync.yaml --sample 0.1
 ```
 
 ## CLI overview
@@ -78,6 +85,11 @@ uv run studio character preview projects/my-film chr_mira-vale --view side --ik 
 | `studio character rig validate` / `fk` / `ik` | rig checks, forward kinematics, two-bone IK |
 | `studio character turnaround validate` | turnaround views and identity overrides |
 | `studio character preview` | diagnostic SVG (structure only, not artwork or animation) |
+| `studio face create` / `info` / `validate` / `set-asset` | facial rig for a character (controls; no artwork generated) |
+| `studio face expressions list` / `create` / `set` / `preview` / `blend` | built-in and custom expressions, deterministic blending |
+| `studio face visemes list`, `studio face phonemes maps` / `map` | viseme set, phoneme maps, phoneme → viseme tracks |
+| `studio face lipsync validate` / `evaluate` / `preview` | timestamp lip-sync evaluation and sampled diagnostics |
+| `studio face alignment inspect` / `run` | alignment files; provider-based alignment (disabled by default) |
 | `studio modules` | the sixteen modules and their status |
 | `studio doctor` | check this machine (Python, FFmpeg, optional skia) |
 | `studio config validate` / `show` | validate / print configuration |
@@ -102,8 +114,11 @@ render-nodes/  future external render workers
 
 ## Current limitations
 
-- No animation over time, video rendering or AI generation exists yet. Characters can be
-  posed (FK/IK) and inspected, but not animated.
+- No animation timeline, video rendering or AI generation exists yet. Characters can be
+  posed (FK/IK) and faces evaluated at any time (expressions, lip-sync), but nothing is
+  rendered as video.
+- Lip-sync needs phoneme timestamps from an alignment file. No speech recognition or
+  forced alignment is included, and the `mock` aligner gives word timings only.
 - No character artwork is generated: parts reference artwork you register.
 - Consistency checks compare metadata, not images. Deformers are not evaluated yet.
 - The rendering extra (`uv sync --extra render`) needs the system library `libegl1` on Linux.

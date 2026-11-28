@@ -24,6 +24,10 @@ definitions, part hierarchies, turnarounds, identity checks, bones, FK, two-bone
 diagnostic SVG previews ([CHARACTERS.md](CHARACTERS.md), [RIGGING.md](RIGGING.md)). The rig
 maths is pure Python and independent of rendering. Every other module package is still an
 explicitly documented placeholder.
+Milestone 4 added `studio.face` (module 5): facial rigs, expressions and blending, visemes,
+phoneme mapping and timestamp lip-sync, plus a phoneme-timestamp extension of the `asr`
+provider interface ([FACE.md](FACE.md)). Reference data lives in `studio/face/data/` so it
+can be replaced without code changes.
 
 Characters will be animated by **deterministic rigs**: SVG parts bound to bones, posed
 from editable curves and rendered by skia on the CPU. The same inputs and engine version
@@ -80,7 +84,7 @@ unregistered files. Problems are reported as coded `ValidationReport` issues (`P
 
 | Later module | Plugs into |
 |---|---|
-| Face rig (5) | `studio.rig` (bones, constraints), `PartDefinition` swaps/attachments; part bindings to head bones |
+| Face (5, M4) | `FacialRig.anchor` on the head part; `FaceState` per moment; `ExpressionTransition`, `LipSyncEvaluator.evaluate(t)` for the animation milestone |
 | Animation (6) | `studio.rig.fk.solve_fk(rig, pose)`, `solve_ik_chain`; `BonePose` is the per-frame pose unit |
 | Animation / scene (6, 9) | `scenes/` folder; `studio.core.timecode`; render profile frame rates |
 | Environments (7) | `EnvironmentMetadata` schema; `environment` and `texture` categories |
