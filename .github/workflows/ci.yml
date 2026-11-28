@@ -61,6 +61,14 @@ jobs:
           uv run studio character rig ik "$P" chr_ci-hero arm_l --target 150 400
           uv run studio character preview "$P" chr_ci-hero --view side --ik arm_l 150 400
           uv run studio project validate "$P"
+          uv run studio face create "$P" chr_ci-hero
+          uv run studio face expressions list "$P" chr_ci-hero
+          uv run studio face expressions blend "$P" chr_ci-hero neutral happy --weight 0.5
+          uv run studio face phonemes map docs/examples/chr_mira-vale/hello.alignment.json --out "$RUNNER_TEMP/hello.lipsync.yaml"
+          uv run studio face lipsync validate "$RUNNER_TEMP/hello.lipsync.yaml"
+          uv run studio face lipsync evaluate "$RUNNER_TEMP/hello.lipsync.yaml" --sample 0.1
+          uv run studio face lipsync preview "$P" chr_ci-hero "$RUNNER_TEMP/hello.lipsync.yaml" --sample 0.2
+          uv run studio project validate "$P"
 
       - name: Build package
         run: uv build

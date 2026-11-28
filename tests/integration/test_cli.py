@@ -42,7 +42,7 @@ def test_group_without_action(capsys) -> None:
 
 def test_version(capsys) -> None:
     code, out, _ = run(capsys, "version")
-    assert code == 0 and __version__ in out and "milestone 3" in out
+    assert code == 0 and __version__ in out and "milestone 4" in out
     code, out, _ = run(capsys, "version", "--json")
     assert json.loads(out)["version"] == __version__
 

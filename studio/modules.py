@@ -64,10 +64,10 @@ MODULES: tuple[ModuleSpec, ...] = (
     ModuleSpec(
         5,
         "Facial Expression Engine",
-        "studio.rig",
+        "studio.face",
         4,
-        ModuleStatus.PLANNED,
-        "Eyes, lids, brows, visemes, cheeks, expression presets and blends",
+        ModuleStatus.IMPLEMENTED,
+        "Facial rigs, expressions and blends, visemes, phoneme mapping, lip-sync evaluation",
     ),
     ModuleSpec(
         6,

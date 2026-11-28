@@ -1,4 +1,4 @@
-"""Module 4 - Character Rigging Engine (Milestone 3). Module 5 (face) is still planned.
+"""Module 4 - Character Rigging Engine (Milestone 3). The face rig is ``studio.face`` (M4).
 
 Implemented in Milestone 3:
 
@@ -11,8 +11,8 @@ Implemented in Milestone 3:
 * ``studio.rig.validation`` coded rig checks (RIG0xx, IK0xx).
 
 Deferred (later milestones): mesh/warp deformers, keyed draw-order switches,
-replacement-part swaps, FK/IK blending over time, multi-bone/full-body IK, and the face
-rig (eyes, lids, brows, visemes) of module 5 (Milestone 4).
+replacement-part swaps, FK/IK blending over time and multi-bone/full-body IK. The face rig
+(module 5) lives in ``studio.face`` (Milestone 4).
 
 Rule: animation comes from posing rigs frame by frame. It never comes from static
 images panned by a camera or from per-frame AI images.

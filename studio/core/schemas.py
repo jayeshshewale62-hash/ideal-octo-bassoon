@@ -92,7 +92,7 @@ class StrictModel(BaseModel):
 
 class StudioInfo(StrictModel):
     name: NonEmpty = "Motion Animation Studio"
-    version: NonEmpty = "0.3.0"
+    version: NonEmpty = "0.4.0"
 
 
 class StudioPaths(StrictModel):

@@ -4,7 +4,7 @@ schema_version: 1
 
 studio:
   name: Motion Animation Studio
-  version: 0.3.0
+  version: 0.4.0
 
 # Paths are relative to the repository root (the parent of this config/ folder).
 paths:
