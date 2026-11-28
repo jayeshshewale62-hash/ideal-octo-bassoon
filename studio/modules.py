@@ -74,8 +74,8 @@ MODULES: tuple[ModuleSpec, ...] = (
         "Animation Engine",
         "studio.animation",
         5,
-        ModuleStatus.PLANNED,
-        "Curves, cycles, acting library, secondary motion, squash/stretch, line boil",
+        ModuleStatus.IMPLEMENTED,
+        "Keyframes, curves, layers, walk/run/idle/gestures, springs, LBS meshes, unified evaluator",
     ),
     ModuleSpec(
         7,

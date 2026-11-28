@@ -125,3 +125,15 @@ class LipSyncError(FaceError):
         self.problems = problems or []
         detail = "".join(f"\n  - {p}" for p in self.problems)
         super().__init__(message + detail)
+
+
+# --- animation (Milestone 5) -----------------------------------------------------------
+
+
+class AnimationError(StudioError):
+    """An animation clip, set, mesh or evaluation request is invalid."""
+
+    def __init__(self, message: str, problems: list[str] | None = None) -> None:
+        self.problems = problems or []
+        detail = "".join(f"\n  - {p}" for p in self.problems)
+        super().__init__(message + detail)

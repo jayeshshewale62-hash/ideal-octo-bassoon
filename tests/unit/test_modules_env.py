@@ -18,14 +18,14 @@ def test_module_packages_exist_and_are_documented() -> None:
         assert package.__doc__ and len(package.__doc__) > 80, m.package
 
 
-def test_implemented_modules_match_milestone_4_scope() -> None:
+def test_implemented_modules_match_milestone_5_scope() -> None:
     foundation = [m.number for m in MODULES if m.status is ModuleStatus.FOUNDATION]
     assert foundation == [16]
     started = sorted(
         m.number for m in MODULES if m.status in (ModuleStatus.IMPLEMENTED, ModuleStatus.PARTIAL)
     )
-    assert started == [2, 3, 4, 5]  # M3: characters, consistency, rigging; M4: face
-    later = [m for m in MODULES if m.number not in (2, 3, 4, 5, 16)]
+    assert started == [2, 3, 4, 5, 6]  # M3 characters/consistency/rig, M4 face, M5 animation
+    later = [m for m in MODULES if m.number not in (2, 3, 4, 5, 6, 16)]
     assert all(m.status in (ModuleStatus.PLANNED, ModuleStatus.INTERFACES) for m in later)
     assert all(m.milestone >= 4 for m in later)
 
@@ -37,10 +37,9 @@ def test_modules_doc_mentions_every_module() -> None:
 
 
 def test_placeholder_packages_have_no_code() -> None:
-    """Future modules stay placeholders: only a docstring (characters/rig are Milestone 3)."""
+    """Future modules stay placeholders: only a docstring (characters/rig M3, animation M5)."""
     for name in (
         "story",
-        "animation",
         "environments",
         "storyboard",
         "scene",
