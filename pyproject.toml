@@ -1,6 +1,6 @@
 [project]
 name = "motion-animation-studio"
-version = "0.4.0"
+version = "0.5.0"
 description = "Motion Animation Studio: a rig-first, data-driven 2D animation production system with replaceable AI providers."
 readme = "README.md"
 requires-python = ">=3.12"

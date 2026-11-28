@@ -68,6 +68,13 @@ jobs:
           uv run studio face lipsync validate "$RUNNER_TEMP/hello.lipsync.yaml"
           uv run studio face lipsync evaluate "$RUNNER_TEMP/hello.lipsync.yaml" --sample 0.1
           uv run studio face lipsync preview "$P" chr_ci-hero "$RUNNER_TEMP/hello.lipsync.yaml" --sample 0.2
+          mkdir -p "$P/audio" && cp "$RUNNER_TEMP/hello.lipsync.yaml" "$P/audio/"
+          for k in walk run idle wave point nod; do uv run studio animation cycles generate "$P" chr_ci-hero $k; done
+          uv run studio animation mesh create "$P" chr_ci-hero torso --part upper_torso --grid 3x2 --bones spine,upper_arm_l
+          uv run studio animation set create "$P" chr_ci-hero perf --layer walk --layer idle:0.5:additive:upper_body --lipsync-path audio/hello.lipsync.yaml --springs --mesh torso
+          uv run studio animation evaluate "$P" chr_ci-hero --set perf --time 0.3
+          uv run studio animation preview "$P" chr_ci-hero --clip walk --sample 0.1
+          uv run studio animation validate "$P" chr_ci-hero
           uv run studio project validate "$P"
 
       - name: Build package
