@@ -13,8 +13,12 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
+from pydantic import ValidationError
+
 from studio import MILESTONE, __version__
+from studio.animation.schemas import ANIMATION_SCHEMAS
 from studio.characters.schemas import CHARACTER_SCHEMAS
+from studio.cli_animation import register as register_animation_commands
 from studio.cli_character import register as register_character_commands
 from studio.cli_face import register as register_face_commands
 from studio.core.assets import AssetManager
@@ -31,13 +35,13 @@ from studio.core.schemas import (
     ProviderKind,
     SourceKind,
 )
-from studio.core.validation import ValidationReport
+from studio.core.validation import ValidationReport, format_errors
 from studio.face.schemas import FACE_SCHEMAS
 from studio.modules import MODULES
 from studio.providers import list_providers, provider_status, resolve_selection
 
 Handler = Callable[[argparse.Namespace, Settings], int]
-ALL_SCHEMAS = {**SCHEMAS, **CHARACTER_SCHEMAS, **FACE_SCHEMAS}
+ALL_SCHEMAS = {**SCHEMAS, **CHARACTER_SCHEMAS, **FACE_SCHEMAS, **ANIMATION_SCHEMAS}
 
 
 # --- output helpers --------------------------------------------------------------------------
@@ -303,7 +307,7 @@ def cmd_schema_export(args: argparse.Namespace, settings: Settings) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="studio",
-        description=("Motion Animation Studio: rig-first 2D animation production (milestone 4)."),
+        description=("Motion Animation Studio: rig-first 2D animation production (milestone 5)."),
     )
     parser.add_argument(
         "--config-dir", help="configuration directory (default: auto-detect ./config)"
@@ -402,6 +406,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     register_character_commands(sub, add, json_flag, _missing)
     register_face_commands(sub, add, json_flag, _missing)
+    register_animation_commands(sub, add, json_flag, _missing)
     return parser
 
 
@@ -423,6 +428,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return result
     except StudioError as exc:
         print(f"error: {exc}", file=sys.stderr)
+        return 1
+    except ValidationError as exc:  # invalid values typed on the command line
+        lines = "\n".join(f"  - {line}" for line in format_errors(exc))
+        print(f"error: invalid input:\n{lines}", file=sys.stderr)
         return 1
     except BrokenPipeError:
         # Output was piped into a program that stopped reading (e.g. `| head`).
