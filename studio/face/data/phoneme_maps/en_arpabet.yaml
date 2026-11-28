@@ -1,0 +1,51 @@
+# English (US) ARPAbet -> default visemes. Replaceable: pass another map file with --map.
+# This is a practical animation mapping, not a phonetic analysis.
+schema_version: 1
+id: en_arpabet
+language: en
+alphabet: ARPAbet (CMUdict, 39 phonemes)
+viseme_set: default
+case_sensitive: false
+strip_stress: true
+silence: ["sil", "sp", "spn", "pau", ""]
+unknown: rest
+map:
+  AA: ai
+  AE: e
+  AH: ai
+  AO: o
+  AW: ai
+  AY: ai
+  B: mbp
+  CH: ch
+  D: st
+  DH: th
+  EH: e
+  ER: r
+  EY: e
+  F: fv
+  G: k
+  HH: k
+  IH: ee
+  IY: ee
+  JH: ch
+  K: k
+  L: l
+  M: mbp
+  N: st
+  NG: k
+  OW: o
+  OY: o
+  P: mbp
+  R: r
+  S: st
+  SH: ch
+  T: st
+  TH: th
+  UH: u
+  UW: u
+  V: fv
+  W: u
+  Y: ee
+  Z: st
+  ZH: ch

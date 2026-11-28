@@ -1,8 +1,11 @@
 """Speech recognition / forced-alignment providers (used by modules 5, 11 and captions).
 
-Planned local options: Whisper (faster-whisper / whisper.cpp) and Parakeet via sherpa-onnx
-(the approach used by legacy branch ``ccr-f3c28d1b-6ialqh``). Both need model weights,
-which are not downloaded in this milestone.
+Capabilities: ``forced_alignment``, ``transcription``, ``word_timestamps`` and (Milestone 4)
+``phoneme_timestamps``. The lip-sync engine needs phoneme timestamps. The ``mock`` provider
+only produces word timings and does not claim phoneme support.
+
+Planned local options: Whisper (faster-whisper / whisper.cpp) and Parakeet via sherpa-onnx.
+Both need model weights, which are not downloaded.
 """
 
 from __future__ import annotations
@@ -26,6 +29,18 @@ class WordTiming:
 
 
 @dataclass(frozen=True)
+class PhonemeTiming:
+    """Phoneme-level timestamp (Milestone 4). Only providers that declare the
+    ``phoneme_timestamps`` capability fill these in."""
+
+    phoneme: str
+    start: float
+    end: float
+    confidence: float | None = None
+    word_index: int | None = None
+
+
+@dataclass(frozen=True)
 class AlignmentRequest:
     wav: bytes
     transcript: str
@@ -37,6 +52,7 @@ class AlignmentResult:
     words: list[WordTiming]
     duration_s: float
     provenance: dict[str, Any] = field(default_factory=dict)
+    phonemes: list[PhonemeTiming] = field(default_factory=list)  # empty unless supported
 
 
 class ASRProvider(Provider):
@@ -100,6 +116,7 @@ __all__ = [
     "AlignmentResult",
     "DisabledASRProvider",
     "MockASRProvider",
+    "PhonemeTiming",
     "WordTiming",
     "wav_duration",
 ]

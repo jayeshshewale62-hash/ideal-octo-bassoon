@@ -1,0 +1,89 @@
+# Default viseme set: editable mouth shapes for speech.
+# Values drive the standard face template's mouth and jaw controls. "shape" names the
+# mouth replacement drawing a rig may provide (component mouth, shapes: {...}).
+# Articulation notes describe the intended mouth posture; they are not phonetic claims.
+schema_version: 1
+id: default
+rest: rest
+visemes:
+  - id: rest
+    name: Rest / neutral
+    articulation: Lips relaxed and closed or barely parted; jaw at rest. Used for silence.
+    shape: rest
+    values: {mouth.open: 0.0, mouth.width: 1.0, mouth.height: 1.0, jaw.open: 0.0}
+  - id: mbp
+    name: Closed lips
+    articulation: Lips pressed together (M, B, P); slight compression.
+    shape: mbp
+    values: {mouth.open: 0.0, mouth.width: 0.95, mouth.upper_lip: -0.3, mouth.lower_lip: -0.3, jaw.open: 0.0}
+  - id: ai
+    name: Open jaw
+    articulation: Jaw dropped, mouth open and relaxed (A, AH, AY).
+    shape: ai
+    teeth_visible: true
+    values: {mouth.open: 0.8, mouth.width: 1.05, mouth.height: 1.2, jaw.open: 0.7}
+  - id: e
+    name: Wide mouth
+    articulation: Mouth spread wide, medium opening (EH, AE, EY).
+    shape: e
+    teeth_visible: true
+    values: {mouth.open: 0.4, mouth.width: 1.3, jaw.open: 0.3}
+  - id: ee
+    name: Wide, narrow opening
+    articulation: Lips spread wide, small opening, corners slightly up (IY, IH, Y).
+    shape: ee
+    teeth_visible: true
+    values: {mouth.open: 0.25, mouth.width: 1.4, mouth.corner_l: 0.2, mouth.corner_r: 0.2, jaw.open: 0.15}
+  - id: o
+    name: Rounded mouth
+    articulation: Lips rounded into an open oval (OW, AO, OY).
+    shape: o
+    values: {mouth.open: 0.55, mouth.width: 0.75, mouth.height: 1.2, mouth.pucker: 0.5, jaw.open: 0.45}
+  - id: u
+    name: Narrow rounded (pucker)
+    articulation: Lips pushed forward into a small round opening (UW, UH, W).
+    shape: u
+    values: {mouth.open: 0.2, mouth.width: 0.6, mouth.pucker: 0.9, jaw.open: 0.15}
+  - id: ch
+    name: Narrow mouth, teeth together
+    articulation: Lips slightly forward, teeth close together (CH, JH, SH, ZH).
+    shape: ch
+    teeth_visible: true
+    values: {mouth.open: 0.2, mouth.width: 0.8, mouth.pucker: 0.4, mouth.upper_lip: 0.3, mouth.lower_lip: 0.3, jaw.open: 0.1}
+  - id: st
+    name: Teeth / lip contact
+    articulation: Teeth together or nearly, lips parted showing teeth (D, T, N, S, Z).
+    shape: st
+    teeth_visible: true
+    values: {mouth.open: 0.15, mouth.width: 1.15, mouth.upper_lip: 0.3, mouth.lower_lip: 0.3, jaw.open: 0.1}
+  - id: fv
+    name: Lower-lip contact
+    articulation: Lower lip tucked against the upper teeth (F, V).
+    shape: fv
+    teeth_visible: true
+    values: {mouth.open: 0.1, mouth.upper_lip: 0.4, mouth.lower_lip: -0.4, jaw.open: 0.1}
+  - id: th
+    name: Tongue between teeth
+    articulation: Tongue tip visible between the teeth (TH, DH).
+    shape: th
+    teeth_visible: true
+    tongue_visible: true
+    values: {mouth.open: 0.25, mouth.width: 1.05, jaw.open: 0.2}
+  - id: l
+    name: Tongue tip up
+    articulation: Mouth open with the tongue tip raised behind the upper teeth (L).
+    shape: l
+    teeth_visible: true
+    tongue_visible: true
+    values: {mouth.open: 0.4, mouth.width: 1.0, jaw.open: 0.35}
+  - id: k
+    name: Back consonant
+    articulation: Slightly open mouth, jaw part-way down (K, G, NG, HH).
+    shape: k
+    teeth_visible: true
+    values: {mouth.open: 0.35, mouth.width: 1.05, jaw.open: 0.3}
+  - id: r
+    name: R-coloured
+    articulation: Lips slightly rounded and narrow, small opening (R, ER).
+    shape: r
+    values: {mouth.open: 0.3, mouth.width: 0.85, mouth.pucker: 0.3, jaw.open: 0.25}
