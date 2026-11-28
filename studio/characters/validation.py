@@ -378,6 +378,9 @@ def validate_character_dir(
     validate_character_face(
         char_dir, char, report, loc, registry=registry, project_root=project_root
     )
+    from studio.animation.validation import validate_character_animations  # Milestone 5
+
+    validate_character_animations(char_dir, char, report, loc, project_root=project_root)
     _validate_history(char_dir, char, report, rel)
     return char
 
