@@ -16,6 +16,7 @@ from typing import Any
 from studio import MILESTONE, __version__
 from studio.characters.schemas import CHARACTER_SCHEMAS
 from studio.cli_character import register as register_character_commands
+from studio.cli_face import register as register_face_commands
 from studio.core.assets import AssetManager
 from studio.core.config import Settings, configure_logging, load_settings
 from studio.core.environment import run_checks
@@ -31,11 +32,12 @@ from studio.core.schemas import (
     SourceKind,
 )
 from studio.core.validation import ValidationReport
+from studio.face.schemas import FACE_SCHEMAS
 from studio.modules import MODULES
 from studio.providers import list_providers, provider_status, resolve_selection
 
 Handler = Callable[[argparse.Namespace, Settings], int]
-ALL_SCHEMAS = {**SCHEMAS, **CHARACTER_SCHEMAS}
+ALL_SCHEMAS = {**SCHEMAS, **CHARACTER_SCHEMAS, **FACE_SCHEMAS}
 
 
 # --- output helpers --------------------------------------------------------------------------
@@ -301,7 +303,7 @@ def cmd_schema_export(args: argparse.Namespace, settings: Settings) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="studio",
-        description=("Motion Animation Studio: rig-first 2D animation production (milestone 3)."),
+        description=("Motion Animation Studio: rig-first 2D animation production (milestone 4)."),
     )
     parser.add_argument(
         "--config-dir", help="configuration directory (default: auto-detect ./config)"
@@ -399,6 +401,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("name", nargs="?", help=f"one of: {', '.join(sorted(ALL_SCHEMAS))}")
 
     register_character_commands(sub, add, json_flag, _missing)
+    register_face_commands(sub, add, json_flag, _missing)
     return parser
 
 
