@@ -1,0 +1,51 @@
+# Small language-neutral IPA map (multiple languages, "mul"). An example of a replaceable,
+# language-specific table; extend or copy it for a particular language.
+schema_version: 1
+id: ipa_basic
+language: mul
+alphabet: IPA (subset)
+viseme_set: default
+case_sensitive: true
+strip_stress: false
+silence: ["", "_", "sil"]
+unknown: rest
+map:
+  a: ai
+  ɑ: ai
+  ʌ: ai
+  e: e
+  ɛ: e
+  æ: e
+  i: ee
+  ɪ: ee
+  j: ee
+  o: o
+  ɔ: o
+  u: u
+  ʊ: u
+  w: u
+  p: mbp
+  b: mbp
+  m: mbp
+  f: fv
+  v: fv
+  θ: th
+  ð: th
+  t: st
+  d: st
+  n: st
+  s: st
+  z: st
+  l: l
+  r: r
+  ɾ: r
+  ɹ: r
+  k: k
+  g: k
+  ŋ: k
+  x: k
+  h: k
+  tʃ: ch
+  dʒ: ch
+  ʃ: ch
+  ʒ: ch

@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2419.2 586.48" width="2419.2" height="586.48">
+<title>DIAGNOSTIC: sampled facial states (stills, not continuous animation): track hello, expression happy</title>
+<rect width="2419.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: sampled facial states (stills, not continuous animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333">track hello, expression happy</text>
+<g class="panel" data-caption="t=0.000s rest-&gt;rest" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.000s rest-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+<g class="panel" data-caption="t=0.100s k-&gt;rest" transform="translate(340.8 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27.27,34.83 Q0,43.11 27.27,34.83 Q0,46.71 -27.27,34.83 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.87" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.87" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.74 Q0,79.74 36,61.74" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.74" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.100s k-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.060</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.070</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.width=1.010</text>
+</g>
+<g class="panel" data-caption="t=0.200s ai-&gt;k" transform="translate(558 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-28.35,36.643 Q0,31.835 28.35,36.643 Q0,61.612 -28.35,36.643 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<rect x="-17.01" y="34.239" width="34.02" height="3.722" fill="#FFF"/>
+<text x="0" y="70.572" font-size="9" text-anchor="middle" fill="#555">shape k</text>
+<circle cx="0" cy="41.683" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,65.367 Q0,83.367 36,65.367" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="65.367" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.200s ai-&gt;k</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.463</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.081</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.533</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.width=1.050</text>
+</g>
+<g class="panel" data-caption="t=0.300s l-&gt;ai" transform="translate(775.2 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-28.08,37.395 Q0,25.864 28.08,37.395 Q0,69.086 -28.08,37.395 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<rect x="-16.848" y="31.63" width="33.696" height="5.403" fill="#FFF"/>
+<text x="0" y="78.046" font-size="9" text-anchor="middle" fill="#555">shape ai</text>
+<circle cx="0" cy="42.435" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,66.87 Q0,84.87 36,66.87" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="66.87" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.300s l-&gt;ai</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.630</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.160</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.720</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.width=1.040</text>
+</g>
+<g class="panel" data-caption="t=0.400s o-&gt;l" transform="translate(992.4 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-22.521,36.318 Q0,33.619 22.521,36.318 Q0,59.178 -22.521,36.318 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<rect x="-13.513" y="34.969" width="27.025" height="3.195" fill="#FFF"/>
+<ellipse cx="0" cy="43.914" rx="9.008" ry="2.556" fill="#E57373"/>
+<text x="0" y="68.138" font-size="9" text-anchor="middle" fill="#555">shape l</text>
+<circle cx="0" cy="41.358" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,64.717 Q0,82.717 36,64.717" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="64.717" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.400s o-&gt;l</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.391</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.081</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.461</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.pucker=0.204</text>
+<text x="-93.6" y="300.8" font-family="monospace" font-size="9" fill="#444">mouth.width=0.898</text>
+</g>
+<g class="panel" data-caption="t=0.500s o-&gt;o" transform="translate(1209.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-16.872,36.548 Q0,30.242 16.872,36.548 Q0,63.014 -16.872,36.548 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="71.974" font-size="9" text-anchor="middle" fill="#555">shape o</text>
+<circle cx="0" cy="41.588" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,65.176 Q0,83.176 36,65.176" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="65.176" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.500s o-&gt;o</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.442</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.196</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.540</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.pucker=0.491</text>
+<text x="-93.6" y="300.8" font-family="monospace" font-size="9" fill="#444">mouth.width=0.755</text>
+</g>
+<g class="panel" data-caption="t=0.600s rest-&gt;o" transform="translate(1426.8 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-18.576,36.18 Q0,33.314 18.576,36.18 Q0,59.206 -18.576,36.18 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="68.166" font-size="9" text-anchor="middle" fill="#555">shape o</text>
+<circle cx="0" cy="41.22" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,64.44 Q0,82.44 36,64.44" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="64.44" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.600s rest-&gt;o</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.360</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.160</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.440</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.pucker=0.400</text>
+<text x="-93.6" y="300.8" font-family="monospace" font-size="9" fill="#444">mouth.width=0.800</text>
+</g>
+<g class="panel" data-caption="t=0.700s rest-&gt;rest" transform="translate(1644 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.700s rest-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+<g class="panel" data-caption="t=0.800s rest-&gt;rest" transform="translate(1861.2 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.800s rest-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+<g class="panel" data-caption="t=0.900s rest-&gt;rest" transform="translate(2078.4 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=0.900s rest-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+<g class="panel" data-caption="t=1.000s rest-&gt;rest" transform="translate(2295.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">t=1.000s rest-&gt;rest</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+</svg>

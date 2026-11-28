@@ -1,0 +1,733 @@
+schema_version: 1
+id: chr_mira-vale
+name: Mira Vale
+description: 'Example original character: a lighthouse keeper''s apprentice. Structure
+  only, no artwork.'
+version: 2
+project_id: prj_a738b5e692e647b5b5ca84e9794f1e35
+status: concept
+template: biped
+identity:
+  height_units: 1000.0
+  proportions:
+    height_heads: 5.0
+    shoulder_width_heads: null
+    arm_length_heads: null
+    leg_length_heads: null
+    tolerance: 0.03
+  head:
+    shape: round
+    width_ratio: 0.9
+  palette: {}
+  clothing: []
+  hair: ''
+  distinctive_features: []
+  personality: []
+  voice:
+    provider: none
+    voice_id: ''
+  policy: {}
+  original_design: true
+style:
+  line_color: '#1A1A1A'
+  line_width: 4.0
+  line_taper: 0.6
+  line_irregularity: 0.15
+  line_boil_variants: 0
+  fill: flat
+parts:
+- id: thigh_r
+  label: thigh r
+  kind: thigh
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: thigh_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 32.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 192.0
+    height: 64.0
+  visible: true
+  opacity: 1.0
+  z_order: 10
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: lower_leg_r
+  label: lower leg r
+  kind: lower_leg
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: shin_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 28.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 176.0
+    height: 56.0
+  visible: true
+  opacity: 1.0
+  z_order: 11
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: foot_r
+  label: foot r
+  kind: foot
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: foot_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 30.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 32.0
+    height: 60.0
+  visible: true
+  opacity: 1.0
+  z_order: 12
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: thigh_l
+  label: thigh l
+  kind: thigh
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: thigh_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 32.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 192.0
+    height: 64.0
+  visible: true
+  opacity: 1.0
+  z_order: 13
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: lower_leg_l
+  label: lower leg l
+  kind: lower_leg
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: shin_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 28.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 176.0
+    height: 56.0
+  visible: true
+  opacity: 1.0
+  z_order: 14
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: foot_l
+  label: foot l
+  kind: foot
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: foot_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 30.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 32.0
+    height: 60.0
+  visible: true
+  opacity: 1.0
+  z_order: 15
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: pelvis
+  label: pelvis
+  kind: pelvis
+  side: center
+  parent: null
+  parent_attachment: null
+  bone: root
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 108.9
+    y: 40.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 217.8
+    height: 80.0
+  visible: true
+  opacity: 1.0
+  z_order: 20
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: upper_torso
+  label: upper torso
+  kind: upper_torso
+  side: center
+  parent: null
+  parent_attachment: null
+  bone: spine
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 110.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 350.0
+    height: 220.0
+  visible: true
+  opacity: 1.0
+  z_order: 22
+  asset: null
+  attachment_points:
+  - name: chest_center
+    position:
+      x: 245.0
+      y: 110.0
+  deformation: null
+  optional: false
+- id: waist
+  label: waist
+  kind: waist
+  side: center
+  parent: null
+  parent_attachment: null
+  bone: spine
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 88.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 122.5
+    height: 176.0
+  visible: true
+  opacity: 1.0
+  z_order: 21
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: chest
+  label: chest
+  kind: chest
+  side: center
+  parent: upper_torso
+  parent_attachment: chest_center
+  bone: null
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 40.0
+    y: 77.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 80.0
+    height: 154.0
+  visible: true
+  opacity: 1.0
+  z_order: 23
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: upper_arm_r
+  label: upper arm r
+  kind: upper_arm
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: upper_arm_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 28.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 151.2
+    height: 56.0
+  visible: true
+  opacity: 1.0
+  z_order: 30
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: forearm_r
+  label: forearm r
+  kind: forearm
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: forearm_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 24.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 136.8
+    height: 48.0
+  visible: true
+  opacity: 1.0
+  z_order: 31
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: hand_r
+  label: hand r
+  kind: hand
+  side: right
+  parent: null
+  parent_attachment: null
+  bone: hand_r
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 30.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 72.0
+    height: 60.0
+  visible: true
+  opacity: 1.0
+  z_order: 32
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: upper_arm_l
+  label: upper arm l
+  kind: upper_arm
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: upper_arm_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 28.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 151.2
+    height: 56.0
+  visible: true
+  opacity: 1.0
+  z_order: 33
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: forearm_l
+  label: forearm l
+  kind: forearm
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: forearm_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 24.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 136.8
+    height: 48.0
+  visible: true
+  opacity: 1.0
+  z_order: 34
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: hand_l
+  label: hand l
+  kind: hand
+  side: left
+  parent: null
+  parent_attachment: null
+  bone: hand_l
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 30.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 72.0
+    height: 60.0
+  visible: true
+  opacity: 1.0
+  z_order: 35
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: neck
+  label: neck
+  kind: neck
+  side: center
+  parent: null
+  parent_attachment: null
+  bone: neck
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 35.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 50.0
+    height: 70.0
+  visible: true
+  opacity: 1.0
+  z_order: 40
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: false
+- id: head
+  label: head
+  kind: head
+  side: center
+  parent: null
+  parent_attachment: null
+  bone: head
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 0.0
+    y: 90.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 200.0
+    height: 180.0
+  visible: true
+  opacity: 1.0
+  z_order: 43
+  asset: null
+  attachment_points:
+  - name: ear_l
+    position:
+      x: 100.0
+      y: 180.0
+  - name: ear_r
+    position:
+      x: 100.0
+      y: 0.0
+  - name: crown
+    position:
+      x: 170.0
+      y: 90.0
+  deformation: null
+  optional: false
+- id: ear_l
+  label: ear l
+  kind: ear
+  side: left
+  parent: head
+  parent_attachment: ear_l
+  bone: null
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 20.0
+    y: 20.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 40.0
+    height: 40.0
+  visible: true
+  opacity: 1.0
+  z_order: 41
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: true
+- id: ear_r
+  label: ear r
+  kind: ear
+  side: right
+  parent: head
+  parent_attachment: ear_r
+  bone: null
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 20.0
+    y: 20.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 40.0
+    height: 40.0
+  visible: true
+  opacity: 1.0
+  z_order: 42
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: true
+- id: hair
+  label: hair
+  kind: hair
+  side: center
+  parent: head
+  parent_attachment: crown
+  bone: null
+  transform:
+    x: 0.0
+    y: 0.0
+    rotation: 0.0
+    scale_x: 1.0
+    scale_y: 1.0
+  pivot:
+    x: 60.0
+    y: 99.0
+  bounds:
+    x: 0.0
+    y: 0.0
+    width: 120.0
+    height: 198.0
+  visible: true
+  opacity: 1.0
+  z_order: 44
+  asset: null
+  attachment_points: []
+  deformation: null
+  optional: true
+turnaround:
+  required_views:
+  - front
+  - three_quarter
+  - side
+  - three_quarter_back
+  - back
+  views:
+  - view: front
+    artwork: null
+    part_assets: {}
+    hidden_parts: []
+    z_order: {}
+    part_transforms: {}
+    identity_overrides: {}
+    notes: ''
+  - view: three_quarter
+    artwork: null
+    part_assets: {}
+    hidden_parts: []
+    z_order:
+      upper_arm_r: -5
+      forearm_r: -6
+      hand_r: -7
+      thigh_r: -8
+      lower_leg_r: -9
+      foot_r: -10
+    part_transforms: {}
+    identity_overrides: {}
+    notes: ''
+  - view: side
+    artwork: null
+    part_assets: {}
+    hidden_parts: []
+    z_order:
+      upper_arm_r: -5
+      forearm_r: -6
+      hand_r: -7
+      thigh_r: -8
+      lower_leg_r: -9
+      foot_r: -10
+    part_transforms: {}
+    identity_overrides:
+      head.width_ratio: 0.99
+    notes: ''
+  - view: three_quarter_back
+    artwork: null
+    part_assets: {}
+    hidden_parts: []
+    z_order:
+      upper_arm_l: -15
+      forearm_l: -16
+      hand_l: -17
+      upper_arm_r: -18
+      forearm_r: -19
+      hand_r: -20
+    part_transforms: {}
+    identity_overrides: {}
+    notes: ''
+  - view: back
+    artwork: null
+    part_assets: {}
+    hidden_parts: []
+    z_order:
+      upper_arm_l: -15
+      forearm_l: -16
+      hand_l: -17
+      upper_arm_r: -18
+      forearm_r: -19
+      hand_r: -20
+    part_transforms: {}
+    identity_overrides: {}
+    notes: ''
+rig: rig_mira_vale
+face: face_mira_vale
+model_sheet_asset: null
+provenance:
+  source:
+    kind: original
+    author: ''
+    url: ''
+    notes: ''
+  license:
+    spdx: proprietary
+    attribution: ''
+    url: ''
+    commit_approved: false
+  created_at: '2026-11-28T03:14:40Z'
+  updated_at: '2026-11-28T03:14:40Z'
+  studio_version: 0.5.0
+metadata: {}

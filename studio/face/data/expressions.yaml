@@ -1,0 +1,194 @@
+# Built-in facial expression presets (generic: they apply to any rig made from the
+# "standard" face template; controls a rig lacks are skipped and reported).
+# Values are control keys "<component>.<channel>"; unlisted controls stay neutral.
+# Rotation sign: positive = clockwise on screen. brow_l is drawn on screen right in the
+# front view, so "inner end up" is +degrees for brow_l and -degrees for brow_r.
+schema_version: 1
+expressions:
+  - id: neutral
+    name: Neutral
+    description: Every control at its rig default.
+    builtin: true
+    values: {}
+  - id: happy
+    name: Happy
+    builtin: true
+    description: Corners up, slightly open mouth, squinted eyes, raised cheeks.
+    values:
+      mouth.corner_l: 0.8
+      mouth.corner_r: 0.8
+      mouth.width: 1.15
+      mouth.open: 0.15
+      eye_l.squint: 0.35
+      eye_r.squint: 0.35
+      cheek_l.raise: 0.6
+      cheek_r.raise: 0.6
+      brow_l.raise: 0.15
+      brow_r.raise: 0.15
+      brow_l.shape: 0.3
+      brow_r.shape: 0.3
+  - id: sad
+    name: Sad
+    builtin: true
+    description: Inner brows up, corners down, heavy lids, gaze down.
+    values:
+      brow_l.rotation: 12
+      brow_r.rotation: -12
+      brow_l.raise: 0.1
+      brow_r.raise: 0.1
+      brow_l.shape: -0.3
+      brow_r.shape: -0.3
+      eye_l.blink: 0.25
+      eye_r.blink: 0.25
+      eye_l.pupil_y: 0.35
+      eye_r.pupil_y: 0.35
+      mouth.corner_l: -0.7
+      mouth.corner_r: -0.6
+      mouth.width: 0.9
+  - id: angry
+    name: Angry
+    builtin: true
+    description: Brows down and pulled in, squint, tight downturned mouth, nose wrinkle.
+    values:
+      brow_l.rotation: -15
+      brow_r.rotation: 15
+      brow_l.raise: -0.5
+      brow_r.raise: -0.5
+      brow_l.shape: -0.4
+      brow_r.shape: -0.4
+      eye_l.squint: 0.4
+      eye_r.squint: 0.4
+      mouth.corner_l: -0.5
+      mouth.corner_r: -0.5
+      mouth.width: 0.95
+      mouth.upper_lip: 0.3
+      nose.wrinkle: 0.4
+  - id: surprised
+    name: Surprised
+    builtin: true
+    description: Brows high, eyes wide, small pupils, dropped jaw.
+    values:
+      brow_l.raise: 0.9
+      brow_r.raise: 0.9
+      brow_l.shape: 0.6
+      brow_r.shape: 0.6
+      eye_l.scale: 1.25
+      eye_r.scale: 1.25
+      eye_l.pupil_scale: 0.8
+      eye_r.pupil_scale: 0.8
+      mouth.open: 0.7
+      mouth.width: 0.8
+      mouth.height: 1.3
+      jaw.open: 0.6
+  - id: curious
+    name: Curious
+    builtin: true
+    description: One brow raised, glance aside, small lopsided smile.
+    values:
+      brow_l.raise: 0.7
+      brow_l.shape: 0.4
+      eye_l.pupil_x: 0.4
+      eye_r.pupil_x: 0.4
+      mouth.corner_l: 0.2
+      mouth.corner_r: -0.1
+  - id: confused
+    name: Confused
+    builtin: true
+    description: Asymmetric brows, mouth pulled to one side.
+    values:
+      brow_l.raise: 0.5
+      brow_r.raise: -0.3
+      brow_l.rotation: -8
+      brow_r.rotation: -8
+      mouth.corner_l: -0.3
+      mouth.corner_r: 0.2
+      mouth.offset_x: 0.1
+      eye_l.pupil_y: -0.2
+      eye_r.pupil_y: -0.2
+  - id: fearful
+    name: Fearful
+    builtin: true
+    description: Brows up and together, wide eyes, tense open mouth.
+    values:
+      brow_l.raise: 0.8
+      brow_r.raise: 0.8
+      brow_l.rotation: 10
+      brow_r.rotation: -10
+      brow_l.shape: -0.2
+      brow_r.shape: -0.2
+      eye_l.scale: 1.2
+      eye_r.scale: 1.2
+      eye_l.pupil_scale: 0.7
+      eye_r.pupil_scale: 0.7
+      mouth.open: 0.35
+      mouth.width: 1.2
+      mouth.corner_l: -0.4
+      mouth.corner_r: -0.4
+      jaw.open: 0.3
+  - id: disgusted
+    name: Disgusted
+    builtin: true
+    description: Nose wrinkle, raised upper lip, asymmetric squint.
+    values:
+      nose.wrinkle: 0.8
+      mouth.upper_lip: 0.7
+      mouth.corner_l: -0.4
+      mouth.corner_r: -0.6
+      mouth.offset_x: -0.1
+      brow_l.raise: -0.4
+      brow_r.raise: -0.2
+      brow_l.rotation: -6
+      brow_r.rotation: 6
+      eye_l.squint: 0.6
+      eye_r.squint: 0.3
+  - id: excited
+    name: Excited
+    builtin: true
+    description: Big open smile, wide eyes, high brows, raised cheeks.
+    values:
+      mouth.corner_l: 1.0
+      mouth.corner_r: 1.0
+      mouth.open: 0.6
+      mouth.width: 1.3
+      jaw.open: 0.4
+      eye_l.scale: 1.15
+      eye_r.scale: 1.15
+      brow_l.raise: 0.6
+      brow_r.raise: 0.6
+      brow_l.shape: 0.5
+      brow_r.shape: 0.5
+      cheek_l.raise: 0.8
+      cheek_r.raise: 0.8
+  - id: tired
+    name: Tired
+    builtin: true
+    description: Half-closed lids, low brows, slack mouth, gaze down.
+    values:
+      eye_l.blink: 0.55
+      eye_r.blink: 0.55
+      eye_l.pupil_y: 0.2
+      eye_r.pupil_y: 0.2
+      brow_l.raise: -0.2
+      brow_r.raise: -0.2
+      brow_l.rotation: 5
+      brow_r.rotation: -5
+      mouth.corner_l: -0.15
+      mouth.corner_r: -0.15
+      mouth.open: 0.05
+  - id: worried
+    name: Worried
+    builtin: true
+    description: Inner brows up, narrow tense mouth, glance away.
+    values:
+      brow_l.rotation: 14
+      brow_r.rotation: -14
+      brow_l.raise: 0.3
+      brow_r.raise: 0.3
+      brow_l.shape: -0.3
+      brow_r.shape: -0.3
+      mouth.corner_l: -0.3
+      mouth.corner_r: -0.3
+      mouth.width: 0.85
+      mouth.lower_lip: 0.2
+      eye_l.pupil_x: -0.3
+      eye_r.pupil_x: -0.3

@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 1092.9" width="1940" height="1092.9">
+<title>DIAGNOSTIC: sampled animation states (stills, not animation; continuity is tested numerically): chr_mira-vale set performance</title>
+<rect width="1940" height="1092.9" fill="#FAFAF7"/>
+<text x="10" y="20" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: sampled animation states (stills, not animation; continuity is tested numerically)</text>
+<text x="10" y="38" font-family="monospace" font-size="12" fill="#333">chr_mira-vale set performance</text>
+<g class="frame" data-time="0" transform="translate(20 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-28.67,636.15 -48.6,827.11 -112.26,820.47 -92.33,629.5" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-57.49,807.74 43.4,951.95 -2.48,984.05 -103.37,839.84" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="50.46,968 50.46,1000 -9.54,1000 -9.54,968" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="87.14,650.56 -19.27,810.38 -72.54,774.91 33.86,615.09" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="-18.01,795.04 -33.04,970.39 -88.84,965.61 -73.8,790.25" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="-30.94,968 -30.94,1000 -90.94,1000 -90.94,968" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-108.9,592.83 108.9,592.83 108.9,672.83 -108.9,672.83" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-87.86,637.7 -94.65,515.39 81.08,505.64 87.86,627.95" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-109.83,638.92 -129.22,289.46 90.44,277.27 109.83,626.73" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-88.24,432.41 -92.67,352.53 61.09,344 65.52,423.87" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-102.15,296.62 -140.84,442.79 -194.98,428.46 -156.29,282.29" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-143.92,436.39 -148.27,573.12 -196.25,571.59 -191.9,434.86" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="-142.28,573.31 -144.57,645.27 -204.54,643.36 -202.25,571.4" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="116.55,267.15 171.17,408.14 118.95,428.37 64.33,287.38" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="168.6,413.61 195.12,547.81 148.03,557.12 121.51,422.91" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="201,546.65 214.96,617.28 156.1,628.91 142.14,558.28" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-54.39,283.27 -54.26,233.27 15.74,233.46 15.61,283.46" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="50.96,153.55 51.07,113.55 91.07,113.66 90.96,153.66" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-129.04,153.06 -128.93,113.07 -88.93,113.17 -89.04,153.17" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-109.26,233.12 -108.71,33.12 71.29,33.61 70.74,233.61" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-117.96,123.09 -117.63,3.1 80.37,3.63 80.04,123.63" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-95.13,644.27 -100.84,531.77 -6.46,516.34" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-95.13,644.27 -6.46,516.34 0,632.83" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-100.84,531.77 -112.72,417.86 -12.93,399.85" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-100.84,531.77 -12.93,399.85 -6.46,516.34" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-112.72,417.86 -126.32,302.91 -19.39,283.36" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-112.72,417.86 -19.39,283.36 -12.93,399.85" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,632.83 -6.46,516.34 149.18,500.36" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,632.83 149.18,500.36 134.92,621.32" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-6.46,516.34 -12.93,399.85 132.58,386.06" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-6.46,516.34 132.58,386.06 149.18,500.36" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-12.93,399.85 -19.39,283.36 90.44,277.27" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-12.93,399.85 90.44,277.27 132.58,386.06" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="632.83" x2="0" y2="632.83" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="632.83" x2="-19.39" y2="283.36" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="-19.39" y1="283.36" x2="-19.26" y2="233.36" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-19.39" cy="283.36" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="-19.26" y1="233.36" x2="-18.71" y2="33.36" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-19.26" cy="233.36" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="90.44" y1="277.27" x2="145.06" y2="418.26" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="90.44" cy="277.27" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="145.06" y1="418.26" x2="171.57" y2="552.46" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="145.06" cy="418.26" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="171.57" y1="552.46" x2="185.53" y2="623.1" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="171.57" cy="552.46" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-129.22" y1="289.46" x2="-167.91" y2="435.62" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-129.22" cy="289.46" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-167.91" y1="435.62" x2="-172.26" y2="572.36" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-167.91" cy="435.62" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-172.26" y1="572.36" x2="-174.55" y2="644.32" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-172.26" cy="572.36" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.5" y1="632.83" x2="-45.91" y2="792.64" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.5" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="-45.91" y1="792.64" x2="-60.94" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-45.91" cy="792.64" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="-60.94" y1="968" x2="-60.94" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.94" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.5" y1="632.83" x2="-80.43" y2="823.79" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.5" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-80.43" y1="823.79" x2="20.46" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-80.43" cy="823.79" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="20.46" y1="968" x2="20.46" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="20.46" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M-74.94,968 h28 M-60.94,954 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M6.46,968 h28 M20.46,954 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="neutral+lipsync@0s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-39.6 Q36,-39.6 54,-39.6" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-39.6 Q-36,-39.6 -18,-39.6" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,39.6 Q0,39.6 27,39.6 Q0,39.6 -27,39.6 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="18" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.15" stroke="none"/>
+<circle cx="48.6" cy="18" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="18" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.15" stroke="none"/>
+<circle cx="-48.6" cy="18" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">neutral+lipsync@0s</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=0.000s clip walk@0.000 phase 0.00</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr neutral | viseme rest | events contact_l</text>
+</g>
+<g class="frame" data-time="0.2" transform="translate(340 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-28.9,619.44 -60.47,808.82 -123.6,798.3 -92.03,608.91" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-70.84,785.26 44.18,918.48 1.8,955.07 -113.23,821.86" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="52.99,936.35 53.44,968.35 -6.56,969.19 -7.01,937.2" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="89.98,630.56 15.77,807.64 -43.26,782.9 30.95,605.82" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="13.74,789.9 47.5,962.63 -7.46,973.37 -41.22,800.64" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="50.02,968 50.02,1000 -9.98,1000 -9.98,968" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-107.51,572.59 110.17,579.82 107.51,659.77 -110.17,652.55" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-88,615.76 -87.42,493.27 88.58,494.1 88,616.6" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-110.03,615.66 -108.37,265.66 111.7,266.71 110.03,616.7" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-76.05,410.82 -75.67,330.82 78.38,331.55 78,411.55" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-80.48,268.46 -95.85,418.87 -151.56,413.18 -136.19,262.76" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-99.8,413.9 -87.66,550.16 -135.47,554.42 -147.61,418.16" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="-81.68,549.62 -75.29,621.34 -135.05,626.66 -141.44,554.95" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="139.54,264.07 153.48,414.63 97.72,419.79 83.78,269.24" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="149.52,419.18 138.29,555.52 90.45,551.58 101.68,415.24" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="144.27,556.01 138.36,627.77 78.56,622.84 84.47,551.09" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-33.34,265.87 -32.89,215.88 37.11,216.5 36.66,266.5" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="73.73,137.7 72.29,97.73 112.27,96.29 113.7,136.27" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-106.26,136.09 -107.7,96.12 -67.72,94.68 -66.29,134.66" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-87.89,215.38 -86.1,15.39 93.89,17 92.11,216.99" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-92,111.43 -98.46,-8.39 99.26,-19.04 105.71,100.78" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-105.78,618.05 -105.21,502.64 0.55,499.52" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-105.78,618.05 0.55,499.52 0,616.18" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-105.21,502.64 -106.44,386.48 1.11,382.85" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-105.21,502.64 1.11,382.85 0.55,499.52" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-106.44,386.48 -108.15,269.92 1.66,266.19" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-106.44,386.48 1.66,266.19 1.11,382.85" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,616.18 0.55,499.52 125.08,499.37" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,616.18 125.08,499.37 117.95,616.34" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0.55,499.52 1.11,382.85 122.42,382.82" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0.55,499.52 122.42,382.82 125.08,499.37" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="1.11,382.85 1.66,266.19 111.66,266.65" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="1.11,382.85 111.66,266.65 122.42,382.82" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="616.18" x2="0" y2="616.18" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="616.18" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="616.18" x2="1.66" y2="266.19" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="616.18" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="1.66" y1="266.19" x2="2.11" y2="216.19" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="1.66" cy="266.19" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="2.11" y1="216.19" x2="3.9" y2="16.2" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="2.11" cy="216.19" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="111.66" y1="266.65" x2="125.6" y2="417.21" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="111.66" cy="266.65" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="125.6" y1="417.21" x2="114.37" y2="553.55" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="125.6" cy="417.21" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="114.37" y1="553.55" x2="108.46" y2="625.31" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="114.37" cy="553.55" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-108.34" y1="265.61" x2="-123.71" y2="416.03" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-108.34" cy="265.61" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-123.71" y1="416.03" x2="-111.56" y2="552.29" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-123.71" cy="416.03" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-111.56" y1="552.29" x2="-105.17" y2="624" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-111.56" cy="552.29" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.47" y1="618.19" x2="-13.74" y2="795.27" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.47" cy="618.19" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="-13.74" y1="795.27" x2="20.02" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-13.74" cy="795.27" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="20.02" y1="968" x2="20.02" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="20.02" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.47" y1="614.17" x2="-92.03" y2="803.56" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.47" cy="614.17" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-92.03" y1="803.56" x2="22.99" y2="936.77" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-92.03" cy="803.56" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="22.99" y1="936.77" x2="23.44" y2="968.77" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="22.99" cy="936.77" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M6.02,968 h28 M20.02,954 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M8.99,936.77 h28 M22.99,922.77 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="neutral+lipsync@0.2s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-14.951" rx="14.4" ry="12.049" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-14.951" rx="14.4" ry="12.049" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-40.072 Q36,-41.422 54,-40.072" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-40.072" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-40.072 Q-36,-41.422 -18,-40.072" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-40.072" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-28.35,40.423 Q0,28.055 28.35,40.423 Q0,57.832 -28.35,40.423 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="70.572" font-size="9" text-anchor="middle" fill="#555">shape k</text>
+<circle cx="0" cy="41.683" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,65.367 Q0,83.367 36,65.367" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="65.367" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="17.352" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.225" stroke="none"/>
+<circle cx="48.6" cy="17.352" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="17.352" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.225" stroke="none"/>
+<circle cx="-48.6" cy="17.352" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">neutral+lipsync@0.2s</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.037</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.075</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.037</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.075</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.150</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.150</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.087</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.087</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.463</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.200</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.200</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.081</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.533</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.width=1.050</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=0.200s clip walk@0.200 phase 0.20</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr neutral | viseme k</text>
+</g>
+<g class="frame" data-time="0.4" transform="translate(660 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-36.87,646.82 -166.45,788.51 -213.68,745.32 -84.1,603.63" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-163.04,759.58 -116.97,929.44 -171.01,944.1 -217.09,774.24" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="-113.99,936.77 -113.99,968.77 -173.99,968.77 -173.99,936.77" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="91.59,635.25 46.33,821.84 -15.86,806.76 29.39,620.17" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="39.69,800.66 125.43,954.36 76.53,981.64 -9.22,827.94" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="130.98,968 130.98,1000 70.98,1000 70.98,968" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-108.06,584.24 109.7,588.71 108.06,668.69 -109.7,664.23" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-87.99,627.81 -89.86,505.32 86.12,502.64 87.99,625.13" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-110.12,628.15 -115.46,278.19 104.78,274.83 110.12,624.79" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-80.21,422.67 -81.43,342.68 72.73,340.33 73.96,420.32" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-88.34,270.52 -48.1,416.27 -102.08,431.17 -142.32,285.43" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-53.41,413.41 5.35,536.95 -38,557.57 -96.76,434.03" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="10.76,534.38 41.69,599.4 -12.5,625.17 -43.42,560.15" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="131.85,281.25 96.07,428.15 41.66,414.9 77.44,267.99" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="90.41,432.09 30.2,554.92 -12.9,533.8 47.32,410.96" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="35.59,557.56 3.89,622.21 -49.98,595.8 -18.29,531.15" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-40.34,276.11 -39.77,226.11 30.23,226.91 29.66,276.91" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="65.43,146.56 67.34,106.61 107.3,108.52 105.38,148.48" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-114.56,144.51 -112.65,104.56 -72.69,106.47 -74.61,146.43" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-94.76,225.49 -92.49,25.5 87.5,27.55 85.22,227.54" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-105.39,110.23 -97.9,-9.54 99.72,2.82 92.23,122.59" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-119.9,620.22 -121.22,500.3 -1.78,509.81" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-119.9,620.22 -1.78,509.81 0,626.47" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-121.22,500.3 -118.18,383.05 -3.56,393.16" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-121.22,500.3 -3.56,393.16 -1.78,509.81" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-118.18,383.05 -114.08,267.06 -5.34,276.51" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-118.18,383.05 -5.34,276.51 -3.56,393.16" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,626.47 -1.78,509.81 70.47,503.76" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,626.47 70.47,503.76 89.32,622.42" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-1.78,509.81 -3.56,393.16 77.04,387.97" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-1.78,509.81 77.04,387.97 70.47,503.76" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-3.56,393.16 -5.34,276.51 104.64,274.62" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-3.56,393.16 104.64,274.62 77.04,387.97" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="626.47" x2="0" y2="626.47" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="626.47" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="626.47" x2="-5.34" y2="276.51" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="626.47" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="-5.34" y1="276.51" x2="-4.77" y2="226.51" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-5.34" cy="276.51" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="-4.77" y1="226.51" x2="-2.49" y2="26.52" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-4.77" cy="226.51" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="104.64" y1="274.62" x2="68.86" y2="421.53" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="104.64" cy="274.62" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="68.86" y1="421.53" x2="8.65" y2="544.36" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="68.86" cy="421.53" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="8.65" y1="544.36" x2="-23.04" y2="609.01" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="8.65" cy="544.36" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-115.33" y1="277.98" x2="-75.09" y2="423.72" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-115.33" cy="277.98" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-75.09" y1="423.72" x2="-16.33" y2="547.26" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-75.09" cy="423.72" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-16.33" y1="547.26" x2="14.6" y2="612.28" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-16.33" cy="547.26" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.49" y1="627.71" x2="15.23" y2="814.3" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.49" cy="627.71" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="15.23" y1="814.3" x2="100.98" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="15.23" cy="814.3" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="100.98" y1="968" x2="100.98" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="100.98" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.49" y1="625.23" x2="-190.06" y2="766.91" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.49" cy="625.23" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-190.06" y1="766.91" x2="-143.99" y2="936.77" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-190.06" cy="766.91" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="-143.99" y1="936.77" x2="-143.99" y2="968.77" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-143.99" cy="936.77" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M86.98,968 h28 M100.98,954 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M-157.99,936.77 h28 M-143.99,922.77 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="happy+lipsync@0.4s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-15.503" rx="14.4" ry="11.497" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-15.503" rx="14.4" ry="11.497" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-40.545 Q36,-43.245 54,-40.545" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-40.545" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-40.545 Q-36,-43.245 -18,-40.545" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-40.545" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-22.521,38.838 Q0,31.099 22.521,38.838 Q0,56.658 -22.521,38.838 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="68.138" font-size="9" text-anchor="middle" fill="#555">shape l</text>
+<circle cx="0" cy="41.358" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,64.717 Q0,82.717 36,64.717" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="64.717" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="16.704" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.3" stroke="none"/>
+<circle cx="48.6" cy="16.704" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="16.704" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.3" stroke="none"/>
+<circle cx="-48.6" cy="16.704" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">happy+lipsync@0.4s</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.075</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.150</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.075</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.150</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.300</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.300</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.175</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.175</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.391</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.400</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.400</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.081</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.461</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.pucker=0.204</text>
+<text x="-93.6" y="300.8" font-family="monospace" font-size="9" fill="#444">mouth.width=0.898</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=0.400s clip walk@0.400 phase 0.40</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr happy | viseme l</text>
+</g>
+<g class="frame" data-time="0.6" transform="translate(980 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-32.97,644.04 -130.95,809.15 -185.99,776.49 -88.01,611.38" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-130.6,790.12 -113.59,965.29 -169.33,970.71 -186.34,795.53" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="-111.46,968 -111.46,1000 -171.46,1000 -171.46,968" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="91.89,619.08 128.77,807.5 65.96,819.8 29.08,631.37" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="121.92,800.2 206.5,954.55 157.38,981.45 72.81,827.11" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="211.94,968 211.94,1000 151.94,1000 151.94,968" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-109.7,588.71 108.06,584.24 109.7,664.23 -108.06,668.69" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-87.68,633.94 -98.08,511.88 77.28,496.94 87.68,619" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-109.89,635.83 -139.6,287.09 80.17,268.37 109.89,617.1" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-94.33,428.76 -101.12,349.05 52.73,335.94 59.52,415.65" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-112.95,277.3 -62.65,419.89 -115.46,438.52 -165.76,295.93" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-68.15,417.41 -0.93,536.55 -42.73,560.14 -109.95,441" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="4.3,533.61 39.68,596.31 -12.58,625.8 -47.96,563.09" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="107.45,272.65 81.99,421.69 26.79,412.27 52.25,263.23" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="76.63,426.02 25.12,552.75 -19.35,534.68 32.16,407.94" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="30.68,555.01 3.57,621.71 -52.02,599.12 -24.91,532.42" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-64.71,277.39 -64.22,227.39 5.77,228.08 5.28,278.07" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="40.38,147.16 43.21,107.26 83.11,110.08 80.28,149.98" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-139.61,145.4 -136.78,105.5 -96.88,108.32 -99.71,148.22" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-119.22,226.86 -117.27,26.86 62.72,28.62 60.77,228.61" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-131.81,108.08 -120.43,-11.38 76.68,7.4 65.3,126.86" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-120.05,628.56 -129.73,509.01 -9.9,510.22" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-120.05,628.56 -9.9,510.22 0,626.47" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-129.73,509.01 -134.86,391.83 -19.81,393.98" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-129.73,509.01 -19.81,393.98 -9.9,510.22" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-134.86,391.83 -138.86,275.84 -29.71,277.73" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-134.86,391.83 -29.71,277.73 -19.81,393.98" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,626.47 -9.9,510.22 61.73,498.99" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,626.47 61.73,498.99 88.82,616.15" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-9.9,510.22 -19.81,393.98 60.21,382.94" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-9.9,510.22 60.21,382.94 61.73,498.99" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-19.81,393.98 -29.71,277.73 79.85,267.94" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-19.81,393.98 79.85,267.94 60.21,382.94" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="626.47" x2="0" y2="626.47" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="626.47" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="626.47" x2="-29.71" y2="277.73" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="626.47" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="-29.71" y1="277.73" x2="-29.23" y2="227.73" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-29.71" cy="277.73" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="-29.23" y1="227.73" x2="-27.27" y2="27.74" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-29.23" cy="227.73" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="79.85" y1="267.94" x2="54.39" y2="416.98" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="79.85" cy="267.94" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="54.39" y1="416.98" x2="2.88" y2="543.71" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="54.39" cy="416.98" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="2.88" y1="543.71" x2="-24.23" y2="610.41" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="2.88" cy="543.71" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-139.36" y1="286.62" x2="-89.05" y2="429.2" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-139.36" cy="286.62" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-89.05" y1="429.2" x2="-21.83" y2="548.35" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-89.05" cy="429.2" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-21.83" y1="548.35" x2="13.55" y2="611.05" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-21.83" cy="548.35" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.49" y1="625.23" x2="97.37" y2="813.65" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.49" cy="625.23" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="97.37" y1="813.65" x2="181.94" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="97.37" cy="813.65" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="181.94" y1="968" x2="181.94" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="181.94" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.49" y1="627.71" x2="-158.47" y2="792.82" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.49" cy="627.71" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-158.47" y1="792.82" x2="-141.46" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-158.47" cy="792.82" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="-141.46" y1="968" x2="-141.46" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-141.46" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M167.94,968 h28 M181.94,954 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M-155.46,968 h28 M-141.46,954 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="happy+lipsync@0.6s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.054" rx="14.4" ry="10.946" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.054" rx="14.4" ry="10.946" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.017 Q36,-45.067 54,-41.017" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.017" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.017 Q-36,-45.067 -18,-41.017" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.017" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-18.576,37.44 Q0,32.054 18.576,37.44 Q0,57.946 -18.576,37.44 Z" fill="#5D1A1A" stroke="#222" stroke-width="2"/>
+<text x="0" y="68.166" font-size="9" text-anchor="middle" fill="#555">shape o</text>
+<circle cx="0" cy="41.22" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,64.44 Q0,82.44 36,64.44" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="64.44" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="16.056" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.375" stroke="none"/>
+<circle cx="48.6" cy="16.056" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="16.056" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.375" stroke="none"/>
+<circle cx="-48.6" cy="16.056" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">happy+lipsync@0.6s</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.112</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.225</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.112</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.225</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.450</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.450</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.262</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.262</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">jaw.open=0.360</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.600</text>
+<text x="-93.6" y="256.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.600</text>
+<text x="-93.6" y="267.8" font-family="monospace" font-size="9" fill="#444">mouth.height=1.160</text>
+<text x="-93.6" y="278.8" font-family="monospace" font-size="9" fill="#444">mouth.open=0.440</text>
+<text x="-93.6" y="289.8" font-family="monospace" font-size="9" fill="#444">mouth.pucker=0.400</text>
+<text x="-93.6" y="300.8" font-family="monospace" font-size="9" fill="#444">mouth.width=0.800</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=0.600s clip walk@0.600 phase 0.60</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr happy | viseme o | events lift_l</text>
+</g>
+<g class="frame" data-time="0.8" transform="translate(1300 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-29.91,627.71 -87.01,811.02 -148.11,791.99 -91.02,608.67" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-91.07,792.43 -34.01,958.92 -86.99,977.08 -144.05,810.58" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="-30.5,968 -30.5,1000 -90.5,1000 -90.5,968" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="87.86,630.72 -11.4,795.07 -66.19,761.98 33.07,597.63" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="-15.68,762.73 83.62,908.04 37.38,939.64 -61.91,794.32" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="90.5,923.84 90.5,955.84 30.5,955.84 30.5,923.84" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-110.17,579.82 107.51,572.59 110.17,652.55 -107.51,659.77" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-87.51,625.44 -100.4,503.62 74.62,485.1 87.51,606.92" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-109.86,627.81 -146.7,279.75 73.02,256.5 109.86,604.55" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-98.48,420.46 -106.9,340.9 46.91,324.63 55.33,404.18" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-118.31,278.71 -117.04,429.91 -173.04,430.37 -174.31,279.18" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-121.52,425.39 -94.46,559.49 -141.51,568.98 -168.57,434.89" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="-88.58,558.3 -74.34,628.88 -133.16,640.75 -147.4,570.17" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="99.9,250.16 130.31,398.27 75.46,409.53 45.04,261.42" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="126.87,403.23 130.7,539.97 82.72,541.32 78.89,404.57" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="136.7,539.81 138.72,611.78 78.74,613.46 76.72,541.49" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-71.84,267.93 -71.56,217.94 -1.56,218.32 -1.84,268.32" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="33.97,138.61 33.99,98.61 73.99,98.63 73.97,138.63" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-146.03,137.63 -146.01,97.63 -106.01,97.65 -106.03,137.65" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-126.56,217.63 -125.47,17.64 54.53,18.62 53.43,218.62" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-134.54,108.28 -134.73,-11.72 63.27,-12.03 63.46,107.97" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-104.94,629.59 -117.07,514.78 -12.28,500.16" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-104.94,629.59 -12.28,500.16 0,616.18" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-117.07,514.78 -131.07,399.44 -24.56,384.14" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-117.07,514.78 -24.56,384.14 -12.28,500.16" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-131.07,399.44 -145.59,283.77 -36.84,268.13" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-131.07,399.44 -36.84,268.13 -24.56,384.14" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,616.18 -12.28,500.16 111.42,485.87" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,616.18 111.42,485.87 117.24,603.21" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-12.28,500.16 -24.56,384.14 95.94,370.07" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-12.28,500.16 95.94,370.07 111.42,485.87" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-24.56,384.14 -36.84,268.13 72.47,255.79" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-24.56,384.14 72.47,255.79 95.94,370.07" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="616.18" x2="0" y2="616.18" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="616.18" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="616.18" x2="-36.84" y2="268.13" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="616.18" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="-36.84" y1="268.13" x2="-36.56" y2="218.13" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-36.84" cy="268.13" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="-36.56" y1="218.13" x2="-35.47" y2="18.13" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-36.56" cy="218.13" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="72.47" y1="255.79" x2="102.88" y2="403.9" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="72.47" cy="255.79" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="102.88" y1="403.9" x2="106.71" y2="540.65" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="102.88" cy="403.9" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="106.71" y1="540.65" x2="108.73" y2="612.62" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="106.71" cy="540.65" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-146.31" y1="278.95" x2="-145.04" y2="430.14" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-146.31" cy="278.95" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-145.04" y1="430.14" x2="-117.99" y2="564.24" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-145.04" cy="430.14" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-117.99" y1="564.24" x2="-103.75" y2="634.82" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-117.99" cy="564.24" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.47" y1="614.17" x2="-38.79" y2="778.52" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.47" cy="614.17" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="-38.79" y1="778.52" x2="60.5" y2="923.84" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-38.79" cy="778.52" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="60.5" y1="923.84" x2="60.5" y2="955.84" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.5" cy="923.84" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.47" y1="618.19" x2="-117.56" y2="801.51" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.47" cy="618.19" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-117.56" y1="801.51" x2="-60.5" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-117.56" cy="801.51" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="-60.5" y1="968" x2="-60.5" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.5" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M46.5,923.84 h28 M60.5,909.84 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M-74.5,968 h28 M-60.5,954 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="happy+lipsync@0.8s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">happy+lipsync@0.8s</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=0.800s clip walk@0.800 phase 0.80</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr happy | viseme rest | events smile</text>
+</g>
+<g class="frame" data-time="1" transform="translate(1620 50)">
+<rect width="300" height="618.9" fill="#FFF" stroke="#DDD"/>
+<g transform="scale(0.543350) translate(277.09 79.04)">
+<polygon class="part" data-part="thigh_r" points="-28.67,636.15 -48.6,827.11 -112.26,820.47 -92.33,629.5" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_r" points="-57.49,807.74 43.4,951.95 -2.48,984.05 -103.37,839.84" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="foot_r" points="50.46,968 50.46,1000 -9.54,1000 -9.54,968" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="thigh_l" points="87.14,650.56 -19.27,810.38 -72.54,774.91 33.86,615.09" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="lower_leg_l" points="-18.01,795.04 -33.04,970.39 -88.84,965.61 -73.8,790.25" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="foot_l" points="-30.94,968 -30.94,1000 -90.94,1000 -90.94,968" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="pelvis" points="-108.9,592.83 108.9,592.83 108.9,672.83 -108.9,672.83" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="waist" points="-87.91,636.88 -93.55,514.51 82.26,506.4 87.91,628.77" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="upper_torso" points="-110.57,637.93 -126.7,288.3 94.44,278.1 110.57,627.73" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="chest" points="-86.84,431.61 -90.53,351.7 64.27,344.56 67.95,424.47" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_r" points="-99.06,294.58 -139.11,440.38 -193.11,425.55 -153.06,279.75" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="forearm_r" points="-142.13,433.95 -147.76,570.63 -195.72,568.66 -190.09,431.97" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="hand_r" points="-141.77,570.88 -144.73,642.82 -204.68,640.35 -201.71,568.41" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="upper_arm_l" points="119.91,267.16 173.21,408.65 120.8,428.39 67.5,286.9" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="part" data-part="forearm_l" points="170.59,414.09 195.85,548.54 148.68,557.4 123.42,422.95" fill="#4C78A8" fill-opacity="0.15" stroke="#4C78A8" stroke-width="2"/>
+<polygon class="part" data-part="hand_l" points="201.75,547.43 215.04,618.19 156.08,629.27 142.78,558.51" fill="#F58518" fill-opacity="0.15" stroke="#F58518" stroke-width="2"/>
+<polygon class="part" data-part="neck" points="-51.13,283.18 -51.1,233.18 18.9,233.21 18.87,283.21" fill="#54A24B" fill-opacity="0.15" stroke="#54A24B" stroke-width="2"/>
+<polygon class="part" data-part="ear_l" points="55.25,154.47 52.72,114.55 92.64,112.02 95.17,151.94" fill="#B279A2" fill-opacity="0.15" stroke="#B279A2" stroke-width="2"/>
+<polygon class="part" data-part="ear_r" points="-124.75,154.38 -127.28,114.46 -87.36,111.93 -84.83,151.85" fill="#E45756" fill-opacity="0.15" stroke="#E45756" stroke-width="2"/>
+<polygon class="part" data-part="head" points="-106.1,233.15 -106.01,33.15 73.99,33.24 73.9,233.24" fill="#72B7B2" fill-opacity="0.15" stroke="#72B7B2" stroke-width="2"/>
+<polygon class="part" data-part="hair" points="-109.31,131.74 -119.95,12.21 77.27,-5.34 87.91,114.18" fill="#EECA3B" fill-opacity="0.15" stroke="#EECA3B" stroke-width="2"/>
+<polygon class="mesh" points="-95.23,643.24 -99.9,530.63 -5.38,516.28" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-95.23,643.24 -5.38,516.28 0,632.83" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-99.9,530.63 -110.72,416.6 -10.75,399.74" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-99.9,530.63 -10.75,399.74 -5.38,516.28" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-110.72,416.6 -123.24,301.53 -16.13,283.2" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-110.72,416.6 -16.13,283.2 -10.75,399.74" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,632.83 -5.38,516.28 150.38,501.05" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="0,632.83 150.38,501.05 135.01,622.32" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-5.38,516.28 -10.75,399.74 134.83,386.2" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-5.38,516.28 134.83,386.2 150.38,501.05" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-10.75,399.74 -16.13,283.2 93.71,277.03" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<polygon class="mesh" points="-10.75,399.74 93.71,277.03 134.83,386.2" fill="none" stroke="#6A1B9A" stroke-width="1"/>
+<line class="bone" data-bone="root" x1="0" y1="632.83" x2="0" y2="632.83" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="spine" x1="0" y1="632.83" x2="-16.13" y2="283.2" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="neck" x1="-16.13" y1="283.2" x2="-16.1" y2="233.2" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-16.13" cy="283.2" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="head" x1="-16.1" y1="233.2" x2="-16.01" y2="33.2" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-16.1" cy="233.2" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_l" x1="93.71" y1="277.03" x2="147.01" y2="418.52" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="93.71" cy="277.03" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_l" x1="147.01" y1="418.52" x2="172.27" y2="552.97" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="147.01" cy="418.52" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_l" x1="172.27" y1="552.97" x2="185.56" y2="623.73" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="172.27" cy="552.97" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="upper_arm_r" x1="-126.06" y1="287.16" x2="-166.11" y2="432.96" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-126.06" cy="287.16" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="forearm_r" x1="-166.11" y1="432.96" x2="-171.74" y2="569.65" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-166.11" cy="432.96" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="hand_r" x1="-171.74" y1="569.65" x2="-174.7" y2="641.59" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-171.74" cy="569.65" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_l" x1="60.5" y1="632.83" x2="-45.91" y2="792.64" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60.5" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_l" x1="-45.91" y1="792.64" x2="-60.94" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-45.91" cy="792.64" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_l" x1="-60.94" y1="968" x2="-60.94" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.94" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="thigh_r" x1="-60.5" y1="632.83" x2="-80.43" y2="823.79" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-60.5" cy="632.83" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="shin_r" x1="-80.43" y1="823.79" x2="20.46" y2="968" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="-80.43" cy="823.79" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<line class="bone" data-bone="foot_r" x1="20.46" y1="968" x2="20.46" y2="1000" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+<circle cx="20.46" cy="968" r="6" fill="#FFF" stroke="#222" stroke-width="2"/>
+<path class="ik-target" d="M-74.94,968 h28 M-60.94,954 v28" stroke="#2E7D32" stroke-width="3"/>
+<path class="ik-target" d="M6.46,968 h28 M20.46,954 v28" stroke="#2E7D32" stroke-width="3"/>
+</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247.2 586.48" x="0" y="618.9" width="300" height="260">
+<title>DIAGNOSTIC: facial controls (not artwork, not animation)</title>
+<rect width="247.2" height="586.48" fill="#FAFAF7"/>
+<text x="10" y="18" font-family="monospace" font-size="13" fill="#B00020">DIAGNOSTIC: facial controls (not artwork, not animation)</text>
+<text x="10" y="34" font-family="monospace" font-size="11" fill="#333"></text>
+<g class="panel" data-caption="happy+lipsync@1s" transform="translate(123.6 153.68)">
+<ellipse cx="0" cy="7.56" rx="93.6" ry="111.24" fill="#FFF3E0" stroke="#BCAAA4"/>
+<g id="c-eye_l" data-kind="eye">
+<ellipse cx="36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="21.6" y1="-27" x2="50.4" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-eye_r" data-kind="eye">
+<ellipse cx="-36" cy="-14.4" rx="14.4" ry="12.6" fill="none" stroke="#999" stroke-dasharray="3 2"/>
+<ellipse cx="-36" cy="-16.605" rx="14.4" ry="10.395" fill="#FFF" stroke="#222" stroke-width="2"/>
+<circle cx="-36" cy="-14.4" r="5.544" fill="#222"/>
+<line x1="-50.4" y1="-27" x2="-21.6" y2="-27" stroke="#C2185B" stroke-width="1.5"/>
+<circle cx="-36" cy="-14.4" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_l" data-kind="brow">
+<path d="M18,-41.49 Q36,-46.89 54,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-brow_r" data-kind="brow">
+<path d="M-54,-41.49 Q-36,-46.89 -18,-41.49" fill="none" stroke="#3E2723" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="-36" cy="-41.49" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-mouth" data-kind="mouth">
+<path d="M-27,34.56 Q0,44.64 27,34.56 Q0,44.64 -27,34.56 Z" fill="none" stroke="#222" stroke-width="2"/>
+<text x="0" y="57.6" font-size="9" text-anchor="middle" fill="#555">shape rest</text>
+<circle cx="0" cy="39.6" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-jaw" data-kind="jaw">
+<path d="M-36,61.2 Q0,79.2 36,61.2" fill="none" stroke="#777" stroke-dasharray="5 3" stroke-width="1.5"/>
+<circle cx="0" cy="61.2" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_l" data-kind="cheek">
+<ellipse cx="48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-cheek_r" data-kind="cheek">
+<ellipse cx="-48.6" cy="15.408" rx="10.8" ry="7.2" fill="#F48FB1" fill-opacity="0.45" stroke="none"/>
+<circle cx="-48.6" cy="15.408" r="1.5" fill="#1565C0"/>
+</g>
+<g id="c-nose" data-kind="nose">
+<path d="M0,0 L6,21.6 L-6,21.6" fill="none" stroke="#555" stroke-width="1.5"/>
+<circle cx="0" cy="10.8" r="1.5" fill="#1565C0"/>
+</g>
+<text x="-93.6" y="132.8" font-family="monospace" font-size="11" fill="#000">happy+lipsync@1s</text>
+<text x="-93.6" y="146.8" font-family="monospace" font-size="9" fill="#444">brow_l.raise=0.150</text>
+<text x="-93.6" y="157.8" font-family="monospace" font-size="9" fill="#444">brow_l.shape=0.300</text>
+<text x="-93.6" y="168.8" font-family="monospace" font-size="9" fill="#444">brow_r.raise=0.150</text>
+<text x="-93.6" y="179.8" font-family="monospace" font-size="9" fill="#444">brow_r.shape=0.300</text>
+<text x="-93.6" y="190.8" font-family="monospace" font-size="9" fill="#444">cheek_l.raise=0.600</text>
+<text x="-93.6" y="201.8" font-family="monospace" font-size="9" fill="#444">cheek_r.raise=0.600</text>
+<text x="-93.6" y="212.8" font-family="monospace" font-size="9" fill="#444">eye_l.squint=0.350</text>
+<text x="-93.6" y="223.8" font-family="monospace" font-size="9" fill="#444">eye_r.squint=0.350</text>
+<text x="-93.6" y="234.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_l=0.800</text>
+<text x="-93.6" y="245.8" font-family="monospace" font-size="9" fill="#444">mouth.corner_r=0.800</text>
+</g>
+</svg>
+
+<text x="2" y="894.9" font-family="monospace" font-size="10" fill="#222">t=1.000s clip walk@0.000 phase 0.00</text>
+<text x="2" y="908.9" font-family="monospace" font-size="10" fill="#222">expr happy | viseme rest | events contact_l</text>
+</g>
+<g class="timeline" transform="translate(20 1042.9)">
+<line x1="0" y1="10" x2="1900" y2="10" stroke="#555" stroke-width="2"/>
+<line class="key" x1="0" y1="2" x2="0" y2="18" stroke="#1565C0"/>
+<line class="key" x1="95" y1="2" x2="95" y2="18" stroke="#1565C0"/>
+<line class="key" x1="190" y1="2" x2="190" y2="18" stroke="#1565C0"/>
+<line class="key" x1="285" y1="2" x2="285" y2="18" stroke="#1565C0"/>
+<line class="key" x1="380" y1="2" x2="380" y2="18" stroke="#1565C0"/>
+<line class="key" x1="475" y1="2" x2="475" y2="18" stroke="#1565C0"/>
+<line class="key" x1="570" y1="2" x2="570" y2="18" stroke="#1565C0"/>
+<line class="key" x1="665" y1="2" x2="665" y2="18" stroke="#1565C0"/>
+<line class="key" x1="760" y1="2" x2="760" y2="18" stroke="#1565C0"/>
+<line class="key" x1="855" y1="2" x2="855" y2="18" stroke="#1565C0"/>
+<line class="key" x1="950" y1="2" x2="950" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1045" y1="2" x2="1045" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1140" y1="2" x2="1140" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1235" y1="2" x2="1235" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1330" y1="2" x2="1330" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1425" y1="2" x2="1425" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1520" y1="2" x2="1520" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1615" y1="2" x2="1615" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1710" y1="2" x2="1710" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1805" y1="2" x2="1805" y2="18" stroke="#1565C0"/>
+<line class="key" x1="1900" y1="2" x2="1900" y2="18" stroke="#1565C0"/>
+<path class="event" d="M0,24 l5,6 l-5,6 l-5,-6 z" fill="#F57C00"><title>contact_l</title></path>
+<path class="event" d="M190,24 l5,6 l-5,6 l-5,-6 z" fill="#F57C00"><title>lift_r</title></path>
+<path class="event" d="M950,24 l5,6 l-5,6 l-5,-6 z" fill="#F57C00"><title>contact_r</title></path>
+<path class="event" d="M1140,24 l5,6 l-5,6 l-5,-6 z" fill="#F57C00"><title>lift_l</title></path>
+<circle class="sample" cx="0" cy="10" r="4" fill="#C62828"/>
+<circle class="sample" cx="380" cy="10" r="4" fill="#C62828"/>
+<circle class="sample" cx="760" cy="10" r="4" fill="#C62828"/>
+<circle class="sample" cx="1140" cy="10" r="4" fill="#C62828"/>
+<circle class="sample" cx="1520" cy="10" r="4" fill="#C62828"/>
+<circle class="sample" cx="0" cy="10" r="4" fill="#C62828"/>
+<text x="0" y="52" font-family="monospace" font-size="10" fill="#333">clip walk: 1s, 21 key times (blue), 4 events (orange), samples (red)</text>
+</g>
+</svg>

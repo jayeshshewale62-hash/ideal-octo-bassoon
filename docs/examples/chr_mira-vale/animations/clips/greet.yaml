@@ -1,0 +1,122 @@
+schema_version: 1
+id: greet
+name: Greeting (hand-keyed)
+version: 10
+character_id: chr_mira-vale
+duration: 2.0
+fps: 24.0
+loop:
+  mode: once
+playback:
+  speed: 1.0
+  offset: 0.0
+tracks:
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: expression
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: linear
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    expression: neutral
+    weight: 1.0
+  - time: 0.8
+    frame: null
+    curve:
+      interpolation: smooth
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    expression: happy
+    weight: 1.0
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: neck
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: ease_in_out
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: null
+    frame: 12
+    curve:
+      interpolation: ease_in_out
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 1.2
+    frame: null
+    curve:
+      interpolation: linear
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: face
+  keys:
+  - time: 1.4
+    frame: null
+    curve:
+      interpolation: linear
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    values:
+      eye_l.blink: 0.0
+      eye_r.blink: 0.0
+  - time: 1.48
+    frame: null
+    curve:
+      interpolation: linear
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    values:
+      eye_l.blink: 1.0
+      eye_r.blink: 1.0
+  - time: 1.58
+    frame: null
+    curve:
+      interpolation: linear
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    values:
+      eye_l.blink: 0.0
+      eye_r.blink: 0.0
+events:
+- time: 0.8
+  frame: null
+  kind: expression_change
+  name: smile
+  data: {}
+cycle: null
+tags: []
+metadata: {}

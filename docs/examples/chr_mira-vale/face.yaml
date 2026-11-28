@@ -1,0 +1,447 @@
+schema_version: 1
+id: face_mira_vale
+version: 1
+character_id: chr_mira-vale
+template: standard
+anchor:
+  part: head
+  attachment: null
+  position:
+    x: 84.0
+    y: 90.0
+components:
+- id: eye_l
+  kind: eye
+  side: left
+  position:
+    x: 36.0
+    y: -14.4
+  size:
+  - 28.8
+  - 25.2
+  channels:
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: horizontal shift, x eye width
+  - name: offset_y
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: vertical shift, x eye height (+ down)
+  - name: scale
+    min: 0.5
+    max: 1.5
+    default: 1.0
+    unit: ratio
+    description: eye size
+  - name: rotation
+    min: -30.0
+    max: 30.0
+    default: 0.0
+    unit: degrees
+    description: eye tilt (+ clockwise on screen)
+  - name: pupil_x
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: gaze left(-)/right(+)
+  - name: pupil_y
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: gaze up(-)/down(+)
+  - name: pupil_scale
+    min: 0.5
+    max: 1.5
+    default: 1.0
+    unit: ratio
+    description: pupil size
+  - name: blink
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: upper lid closure (1 = closed)
+  - name: squint
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: lower lid raise
+  - name: visible
+    min: 0.0
+    max: 1.0
+    default: 1.0
+    unit: toggle
+    description: eye drawn (0/1)
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: false
+- id: eye_r
+  kind: eye
+  side: right
+  position:
+    x: -36.0
+    y: -14.4
+  size:
+  - 28.8
+  - 25.2
+  channels:
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: horizontal shift, x eye width
+  - name: offset_y
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: vertical shift, x eye height (+ down)
+  - name: scale
+    min: 0.5
+    max: 1.5
+    default: 1.0
+    unit: ratio
+    description: eye size
+  - name: rotation
+    min: -30.0
+    max: 30.0
+    default: 0.0
+    unit: degrees
+    description: eye tilt (+ clockwise on screen)
+  - name: pupil_x
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: gaze left(-)/right(+)
+  - name: pupil_y
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: gaze up(-)/down(+)
+  - name: pupil_scale
+    min: 0.5
+    max: 1.5
+    default: 1.0
+    unit: ratio
+    description: pupil size
+  - name: blink
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: upper lid closure (1 = closed)
+  - name: squint
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: lower lid raise
+  - name: visible
+    min: 0.0
+    max: 1.0
+    default: 1.0
+    unit: toggle
+    description: eye drawn (0/1)
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: false
+- id: brow_l
+  kind: brow
+  side: left
+  position:
+    x: 36.0
+    y: -39.6
+  size:
+  - 36.0
+  - 7.2
+  channels:
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: horizontal shift, x brow width
+  - name: raise
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: vertical movement (+ up)
+  - name: rotation
+    min: -30.0
+    max: 30.0
+    default: 0.0
+    unit: degrees
+    description: brow tilt (+ clockwise on screen)
+  - name: scale
+    min: 0.6
+    max: 1.4
+    default: 1.0
+    unit: ratio
+    description: brow length
+  - name: shape
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: 'curve: -1 angled down, +1 arched'
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: false
+- id: brow_r
+  kind: brow
+  side: right
+  position:
+    x: -36.0
+    y: -39.6
+  size:
+  - 36.0
+  - 7.2
+  channels:
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: horizontal shift, x brow width
+  - name: raise
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: vertical movement (+ up)
+  - name: rotation
+    min: -30.0
+    max: 30.0
+    default: 0.0
+    unit: degrees
+    description: brow tilt (+ clockwise on screen)
+  - name: scale
+    min: 0.6
+    max: 1.4
+    default: 1.0
+    unit: ratio
+    description: brow length
+  - name: shape
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: 'curve: -1 angled down, +1 arched'
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: false
+- id: mouth
+  kind: mouth
+  side: center
+  position:
+    x: 0.0
+    y: 39.6
+  size:
+  - 54.0
+  - 18.0
+  channels:
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: horizontal shift, x mouth width
+  - name: offset_y
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: vertical shift (+ down)
+  - name: width
+    min: 0.5
+    max: 1.6
+    default: 1.0
+    unit: ratio
+    description: mouth width
+  - name: height
+    min: 0.5
+    max: 1.6
+    default: 1.0
+    unit: ratio
+    description: mouth height when open
+  - name: open
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: lip opening
+  - name: corner_l
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: left corner down(-)/up(+)
+  - name: corner_r
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: right corner down(-)/up(+)
+  - name: upper_lip
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: upper lip pressed(-)/raised(+)
+  - name: lower_lip
+    min: -1.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: lower lip pressed(-)/lowered(+)
+  - name: pucker
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: lips pushed forward / rounded
+  attachment: null
+  asset: null
+  shapes:
+    rest: null
+    mbp: null
+    ai: null
+    e: null
+    ee: null
+    o: null
+    u: null
+    ch: null
+    st: null
+    fv: null
+    th: null
+    l: null
+    k: null
+    r: null
+  optional: false
+- id: jaw
+  kind: jaw
+  side: center
+  position:
+    x: 0.0
+    y: 61.2
+  size:
+  - 72.0
+  - 18.0
+  channels:
+  - name: open
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: jaw drop
+  - name: offset_x
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: sideways shift
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: false
+- id: cheek_l
+  kind: cheek
+  side: left
+  position:
+    x: 48.6
+    y: 18.0
+  size:
+  - 21.6
+  - 14.4
+  channels:
+  - name: raise
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: cheek lift (smile)
+  - name: puff
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: cheek puff
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: true
+- id: cheek_r
+  kind: cheek
+  side: right
+  position:
+    x: -48.6
+    y: 18.0
+  size:
+  - 21.6
+  - 14.4
+  channels:
+  - name: raise
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: cheek lift (smile)
+  - name: puff
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: cheek puff
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: true
+- id: nose
+  kind: nose
+  side: center
+  position:
+    x: 0.0
+    y: 10.8
+  size:
+  - 18.0
+  - 21.6
+  channels:
+  - name: wrinkle
+    min: 0.0
+    max: 1.0
+    default: 0.0
+    unit: normalized
+    description: nose wrinkle
+  - name: offset_y
+    min: -0.5
+    max: 0.5
+    default: 0.0
+    unit: normalized
+    description: vertical shift
+  - name: scale
+    min: 0.8
+    max: 1.2
+    default: 1.0
+    unit: ratio
+    description: nose size
+  attachment: null
+  asset: null
+  shapes: {}
+  optional: true
+notes: Generated face structure; no artwork. Edit positions, sizes and limits freely.

@@ -1,0 +1,45 @@
+schema_version: 1
+id: hello
+character_id: chr_mira-vale
+viseme_set: default
+phoneme_map: en_arpabet
+duration: 1.0
+settings:
+  transition: 0.06
+  coarticulation: 0.2
+  ease: smoothstep
+events:
+- viseme: rest
+  start: 0.0
+  end: 0.1
+  phonemes: []
+  confidence: null
+  source: silence
+- viseme: k
+  start: 0.1
+  end: 0.18
+  phonemes:
+  - HH
+  confidence: null
+  source: phoneme
+- viseme: ai
+  start: 0.18
+  end: 0.3
+  phonemes:
+  - AH0
+  confidence: null
+  source: phoneme
+- viseme: l
+  start: 0.3
+  end: 0.38
+  phonemes:
+  - L
+  confidence: null
+  source: phoneme
+- viseme: o
+  start: 0.38
+  end: 0.6
+  phonemes:
+  - OW1
+  confidence: null
+  source: phoneme

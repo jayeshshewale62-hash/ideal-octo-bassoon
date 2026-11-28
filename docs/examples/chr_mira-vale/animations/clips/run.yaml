@@ -1,0 +1,2426 @@
+schema_version: 1
+id: run
+name: Run cycle
+version: 1
+character_id: chr_mira-vale
+duration: 0.7
+fps: 24.0
+loop:
+  mode: loop
+playback:
+  speed: 1.0
+  offset: 0.0
+tracks:
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: root
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: 629.1751
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.9271
+    x: null
+    y: 639.9904
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 1.7634
+    x: null
+    y: 650.8056
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 2.4271
+    x: null
+    y: 657.4898
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 2.8532
+    x: null
+    y: 657.4898
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 3.0
+    x: null
+    y: 650.8056
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 2.8532
+    x: null
+    y: 639.9904
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 2.4271
+    x: null
+    y: 629.1751
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 1.7634
+    x: null
+    y: 622.4909
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.9271
+    x: null
+    y: 622.4909
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: 629.1751
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -0.9271
+    x: null
+    y: 639.9904
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -1.7634
+    x: null
+    y: 650.8056
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -2.4271
+    x: null
+    y: 657.4898
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -2.8532
+    x: null
+    y: 657.4898
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -3.0
+    x: null
+    y: 650.8056
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -2.8532
+    x: null
+    y: 639.9904
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -2.4271
+    x: null
+    y: 629.1751
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -1.7634
+    x: null
+    y: 622.4909
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -0.9271
+    x: null
+    y: 622.4909
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 0.0
+    x: null
+    y: 629.1751
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: spine
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -100.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: neck
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 9.0729
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 8.2366
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 7.5729
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 7.1468
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 7.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 7.1468
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 7.5729
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 8.2366
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 9.0729
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.9271
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 11.7634
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 12.4271
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 12.8532
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 13.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 12.8532
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 12.4271
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 11.7634
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.9271
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 10.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: ik
+  chain: leg_l
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -68.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -31.5
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 5.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 42.1
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 78.9
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 115.7
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 88.5973
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 152.5
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 89.7025
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 189.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 205.2851
+    y: 930.4876
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 80.566
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 209.0618
+    y: 904.2099
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 70.29
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 201.4052
+    y: 883.224
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 61.1359
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 183.5613
+    y: 867.2347
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 53.8945
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 157.2295
+    y: 856.4028
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 50.2531
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 124.5095
+    y: 850.9274
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 52.2102
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 87.8197
+    y: 850.9274
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 60.692
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 49.792
+    y: 856.4028
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 73.8325
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 18.344
+    y: 878.2821
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 88.7639
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -13.716
+    y: 889.2528
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -45.3073
+    y: 904.2099
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -62.2681
+    y: 930.4876
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -68.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: ik
+  chain: leg_r
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 80.4052
+    y: 883.224
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 61.1359
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 62.5613
+    y: 867.2347
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 53.8957
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 36.2295
+    y: 856.4028
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 50.2608
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 3.5095
+    y: 850.9274
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 52.2316
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -33.1803
+    y: 850.9274
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 60.7305
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -71.208
+    y: 856.4028
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 73.8797
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -107.8468
+    y: 867.2347
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 88.2723
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -140.3979
+    y: 883.224
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -166.3073
+    y: 904.2099
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -183.2681
+    y: 930.4876
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -189.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -152.5
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -115.7
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -78.9
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -42.1
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: -5.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 88.6172
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 31.5
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 89.7101
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 68.3
+    y: 968.0
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 90.0
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 84.2851
+    y: 930.4876
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 80.5645
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 88.0618
+    y: 904.2099
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 70.2901
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    x: 80.4052
+    y: 883.224
+    pole_x: null
+    pole_y: null
+    weight: 1.0
+    end_rotation: 61.1359
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: upper_arm_l
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 145.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 146.713
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 151.6844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 159.4275
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 169.1844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 190.8156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 200.5725
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 208.3156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 213.287
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 215.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 213.287
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 208.3156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 200.5725
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 190.8156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 169.1844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 159.4275
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 151.6844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 146.713
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 145.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: forearm_l
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 87.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 94.1068
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 99.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 102.8254
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 104.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 102.8254
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 99.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 94.1068
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 87.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: upper_arm_r
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 215.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 213.287
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 208.3156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 200.5725
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 190.8156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 169.1844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 159.4275
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 151.6844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 146.713
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 145.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 146.713
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 151.6844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 159.4275
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 169.1844
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 180.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 190.8156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 200.5725
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 208.3156
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 213.287
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: 215.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+- id: null
+  enabled: true
+  shortest_path: false
+  kind: bone
+  bone: forearm_r
+  keys:
+  - time: 0.0
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -104.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.035
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -102.8254
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.07
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -99.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.105
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -94.1068
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.14
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -87.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.175
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.21
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.245
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.28
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.315
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.35
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.385
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.42
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.455
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.49
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.525
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -80.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.56
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -87.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.595
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -94.1068
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.63
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -99.4164
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.665
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -102.8254
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+  - time: 0.7
+    frame: null
+    curve:
+      interpolation: hermite
+      bezier: null
+      tension: 0.0
+      allow_overshoot: false
+    rotation: -104.0
+    x: null
+    y: null
+    scale_x: null
+    scale_y: null
+events:
+- time: 0.0
+  frame: null
+  kind: foot_contact
+  name: contact_l
+  data:
+    foot: l
+- time: 0.245
+  frame: null
+  kind: foot_lift
+  name: lift_l
+  data:
+    foot: l
+- time: 0.35
+  frame: null
+  kind: foot_contact
+  name: contact_r
+  data:
+    foot: r
+- time: 0.595
+  frame: null
+  kind: foot_lift
+  name: lift_r
+  data:
+    foot: r
+cycle:
+  kind: run
+  parameters:
+    stride: 736.0
+    stance: 0.35
+    lift: 117.76
+    bob: 18.4
+    arm_swing: 35.0
+    elbow: 80.0
+    lean: 10.0
+    sway: 3.0
+    recovery: 92.0
+    crouch: 39.9904
+    ground_y: 968.0
+    limit_adjusted_samples: 2
+  facing: left
+  speed: 1051.4286
+  distance_per_cycle: 736.0
+  samples: 20
+tags:
+- cycle
+- run
+- generated
+metadata: {}
